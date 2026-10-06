@@ -17,6 +17,7 @@ import { ColoresPersonaje, Personaje, PosePersonaje } from "../n64/Personaje";
 import duraciones from "./duraciones.json";
 import guion from "./guion.json";
 import { EstadoPantalla, Oficina, Robot, Silla } from "./Oficina";
+import { Sonidos } from "./Sonidos";
 
 // «El bug chiquito»: un desarrollador le pide a la IA que arregle un botón y la IA...
 // Vertical 1080x1920, 30 s. Cada línea del guion tiene su propio movimiento de cámara.
@@ -329,6 +330,8 @@ export const BugChiquito: React.FC = () => {
       <Sequence from={fin(L(6)) + 30} layout="none">
         <CartelFinal />
       </Sequence>
+
+      <Sonidos lineas={LINEAS} />
     </AbsoluteFill>
   );
 };

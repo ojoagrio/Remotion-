@@ -91,3 +91,14 @@ ELEVENLABS_API_KEY=tu_clave npm run voces -- src/ia/guion.json
 ```
 
 Cada línea del guion admite `pausa` (segundos de silencio extra después) para dar ritmo cómico.
+
+## Efectos de sonido y música
+
+`npm run sonidos` (necesita Python 3 con numpy) sintetiza en `public/sonidos/` una música
+chiptune y efectos retro de 8 bits: teclado, barridos (whoosh), disco rayado, impacto,
+pitidos de robot, alarma, «dun dun dunnn», campanita, silbato de caída, golpe y «ba-dum-tss».
+No usan servicios externos ni tienen problemas de derechos.
+
+Se colocan en el video con el componente `<Sonido>` de `src/comun/Sonido.tsx`, que admite
+fundidos, bucle y bajar el volumen automáticamente mientras alguien habla. Ejemplo de uso:
+`src/ia/Sonidos.tsx`.
