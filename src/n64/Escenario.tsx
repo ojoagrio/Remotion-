@@ -3,7 +3,7 @@ import * as THREE from "three";
 
 // Textura de cuadros de 8x8 píxeles con filtro "nearest": el look borroso/pixelado
 // de las texturas pequeñas de N64.
-const crearTexturaCuadros = (a: string, b: string, repeticiones: number) => {
+export const crearTexturaCuadros = (a: string, b: string, repeticiones: number) => {
   const tam = 8;
   const datos = new Uint8Array(tam * tam * 4);
   const ca = new THREE.Color(a);

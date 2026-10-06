@@ -13,6 +13,8 @@ npm install        # instalar dependencias
 npm run dev        # abrir Remotion Studio (vista previa y edición en el navegador)
 npm run build      # renderizar la composición HelloWorld a out/video.mp4
 npm run render:n64 # renderizar la escena 3D estilo N64 a out/escena-n64.mp4
+npm run voces      # generar las voces del guion con ElevenLabs (ver abajo)
+npm run render:tiktok # renderizar el video vertical de TikTok a out/ya-voy-saliendo.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -46,3 +48,22 @@ Documentación: https://www.remotion.dev/docs
 El look N64 sale de: geometría con pocas caras y `flatShading`, texturas pequeñas con
 `NearestFilter`, niebla, sombras circulares falsas y renderizar a 1/4 de resolución
 (`ESCALA_PIXEL`) para ampliar después sin suavizado.
+
+## Video para TikTok con voces de ElevenLabs
+
+`src/tiktok/` contiene «Ya voy saliendo»: un video vertical de 1080x1920 y 30 s en pantalla
+dividida. Arriba, Lola espera en el cine; abajo, Pepe le jura desde la cama que ya va en camino.
+
+- `guion.json`: las líneas de diálogo y la voz de ElevenLabs de cada personaje.
+- `duraciones.json`: duración de cada audio (lo genera el script; la línea de tiempo se
+  calcula a partir de él).
+- `public/voces/`: los MP3 generados.
+- Las bocas se mueven según el volumen real del audio (`@remotion/media-utils`).
+
+Para cambiar el diálogo, edita `guion.json` y vuelve a generar las voces. La clave de API
+se pasa por variable de entorno y **nunca** debe guardarse en el repositorio:
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run voces
+npm run render:tiktok
+```

@@ -1,0 +1,16 @@
+{
+  "modelo": "eleven_multilingual_v2",
+  "voces": {
+    "pepe": "cQIBhnciTWugZAxX52uW",
+    "lola": "j7e3J6ksqsziQcIGyAWI"
+  },
+  "lineas": [
+    { "id": "01", "personaje": "lola", "texto": "¡Pepe! ¿Dónde estás? ¡Llevo media hora esperándote en el cine!" },
+    { "id": "02", "personaje": "pepe", "texto": "Mmm... ya voy saliendo, amor. Estoy a cinco minutitos." },
+    { "id": "03", "personaje": "lola", "texto": "¿Cinco minutos? Se escucha como si estuvieras acostado." },
+    { "id": "04", "personaje": "pepe", "texto": "¿Acostado yo? ¡Para nada! ¡Voy manejando a toda velocidad!" },
+    { "id": "05", "personaje": "lola", "texto": "Pepe... acabo de ver a tu mamá. Dice que sigues en piyama." },
+    { "id": "06", "personaje": "pepe", "texto": "Eh... ¿y si mejor nos vemos mañana?" },
+    { "id": "07", "personaje": "lola", "texto": "¡¡PEPEEEEE!!" }
+  ]
+}

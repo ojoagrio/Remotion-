@@ -8,11 +8,15 @@
     "build": "remotion render HelloWorld out/video.mp4",
     "upgrade": "remotion upgrade",
     "typecheck": "tsc --noEmit",
-    "render:n64": "remotion render EscenaN64 out/escena-n64.mp4"
+    "render:n64": "remotion render EscenaN64 out/escena-n64.mp4",
+    "voces": "node scripts/generar-voces.mjs",
+    "render:tiktok": "remotion render YaVoySaliendo out/ya-voy-saliendo.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",
     "@remotion/cli": "4.0.533",
+    "@remotion/fonts": "4.0.533",
+    "@remotion/media-utils": "4.0.533",
     "@remotion/three": "4.0.533",
     "react": "19.3.0",
     "react-dom": "19.3.0",
