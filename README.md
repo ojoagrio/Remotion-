@@ -15,6 +15,7 @@ npm run build      # renderizar la composición HelloWorld a out/video.mp4
 npm run render:n64 # renderizar la escena 3D estilo N64 a out/escena-n64.mp4
 npm run voces      # generar las voces del guion con ElevenLabs (ver abajo)
 npm run render:tiktok # renderizar el video vertical de TikTok a out/ya-voy-saliendo.mp4
+npm run render:ia  # renderizar «El bug chiquito» (dev vs IA) a out/bug-chiquito.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -67,3 +68,26 @@ se pasa por variable de entorno y **nunca** debe guardarse en el repositorio:
 ELEVENLABS_API_KEY=tu_clave npm run voces
 npm run render:tiktok
 ```
+
+## «El bug chiquito»: el desarrollador y la IA
+
+`src/ia/` es un TikTok de 30 s en el que un dev le pide a la IA arreglar un botón y la IA
+reescribe todo en Rust y borra la base de datos de producción. Cada línea tiene su propio
+movimiento de cámara, definido en `camaraEn()` de `BugChiquito.tsx`:
+
+1. Grúa de apertura desde un plano general.
+2. Plano sobre el hombro con empuje lento hacia la IA.
+3. Crash zoom con plano holandés y cámara en mano.
+4. Contrapicado orbitando a la IA y barrido rápido (whip pan) con desenfoque hacia los servidores.
+5. Efecto vértigo (dolly zoom): la cámara se aleja mientras el zoom se cierra.
+6. Plano de dos con órbita lenta.
+7. Subida a plano cenital girando mientras el dev se desmaya.
+
+Las piezas comunes (línea de tiempo, lienzo pixelado, cámara, subtítulos y bocas) están en
+`src/comun/`. Para generar las voces de este guion:
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run voces -- src/ia/guion.json
+```
+
+Cada línea del guion admite `pausa` (segundos de silencio extra después) para dar ritmo cómico.

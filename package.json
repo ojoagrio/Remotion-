@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "render:n64": "remotion render EscenaN64 out/escena-n64.mp4",
     "voces": "node scripts/generar-voces.mjs",
-    "render:tiktok": "remotion render YaVoySaliendo out/ya-voy-saliendo.mp4"
+    "render:tiktok": "remotion render YaVoySaliendo out/ya-voy-saliendo.mp4",
+    "render:ia": "remotion render BugChiquito out/bug-chiquito.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

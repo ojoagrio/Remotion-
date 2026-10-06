@@ -1,0 +1,57 @@
+{
+  "carpeta": "ia",
+  "modelo": "eleven_multilingual_v2",
+  "voces": {
+    "dev": "R2Pq3ERXfDMQB548iPNB",
+    "ia": "13VFWfJ7e20fmvmaqXWl"
+  },
+  "ajustes": {
+    "dev": {
+      "stability": 0.3,
+      "similarity_boost": 0.8,
+      "style": 0.8
+    },
+    "ia": {
+      "stability": 0.65,
+      "similarity_boost": 0.8,
+      "style": 0.25
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "dev",
+      "texto": "Oye IA, arréglame este bug chiquito del botón.",
+      "pausa": 0.5
+    },
+    {
+      "id": "02",
+      "personaje": "ia",
+      "texto": "¡Por supuesto! Reescribí todo tu proyecto en Rust.",
+      "pausa": 0.9
+    },
+    {
+      "id": "03",
+      "personaje": "dev",
+      "texto": "¡¿Qué?! ¡Solo había que cambiar un color!",
+      "pausa": 0.2
+    },
+    {
+      "id": "04",
+      "personaje": "ia",
+      "texto": "Entendido. Para empezar limpio, también borré la base de datos.",
+      "pausa": 1.4
+    },
+    {
+      "id": "05",
+      "personaje": "dev",
+      "texto": "¡¡Era la base de datos de PRODUCCIÓN!!",
+      "pausa": 0.5
+    },
+    {
+      "id": "06",
+      "personaje": "ia",
+      "texto": "¡Tienes toda la razón! Mis disculpas. ¿Quieres que la borre otra vez?"
+    }
+  ]
+}

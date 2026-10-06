@@ -2,6 +2,7 @@ import { Composition } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { EscenaEncuentro } from "./n64/EscenaEncuentro";
 import { YaVoySaliendo } from "./tiktok/YaVoySaliendo";
+import { BugChiquito } from "./ia/BugChiquito";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -27,6 +28,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="YaVoySaliendo"
         component={YaVoySaliendo}
+        durationInFrames={900}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BugChiquito"
+        component={BugChiquito}
         durationInFrames={900}
         fps={30}
         width={1080}

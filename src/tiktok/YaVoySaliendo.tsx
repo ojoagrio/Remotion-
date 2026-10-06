@@ -1,29 +1,22 @@
-import { ThreeCanvas } from "@remotion/three";
-import { useThree } from "@react-three/fiber";
-import { useAudioData, visualizeAudio } from "@remotion/media-utils";
 import {
   AbsoluteFill,
   Audio,
   interpolate,
   Sequence,
-  spring,
   staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { loadFont } from "@remotion/fonts";
+import { fijo, saltar } from "../comun/lineaDeTiempo";
+import { Camara, Lienzo } from "../comun/Lienzo";
+import { Etiqueta, Gancho, Subtitulo } from "../comun/Textos";
+import { useBocas } from "../comun/useBocas";
 import { ColoresPersonaje, Personaje, PosePersonaje } from "../n64/Personaje";
 import { Cine, Cobija, Habitacion } from "./Escenas3D";
-import { fin, linea, lineaActiva, LINEAS, Personaje as Quien } from "./linea";
+import { fin, linea, LINEAS } from "./linea";
 
 // Video vertical (TikTok) en pantalla dividida: arriba Lola en el cine,
 // abajo Pepe en su cama jurando que "ya va saliendo".
-
-const ESCALA_PIXEL = 4;
-// Fuente "Luckiest Guy" (licencia OFL) incluida en public/ para renderizar sin internet
-const FUENTE = "Luckiest Guy";
-loadFont({ family: FUENTE, url: staticFile("fuentes/LuckiestGuy.woff2") });
-const fijo = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 const PEPE: ColoresPersonaje = {
   // Piyama celeste
@@ -69,74 +62,6 @@ const POSE_BASE: PosePersonaje = {
   salto: 0,
   respiracion: 0,
 };
-
-// Parábola de salto entre dos frames
-const saltar = (frame: number, inicio: number, duracion: number, altura: number) => {
-  const t = (frame - inicio) / duracion;
-  if (t < 0 || t > 1) return 0;
-  return 4 * altura * t * (1 - t);
-};
-
-// Apertura de boca de cada personaje según el volumen real de su audio
-const useBocas = (): Record<Quien, number> => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const audios = LINEAS.map((l) => useAudioData(staticFile(`voces/${l.id}.mp3`)));
-  const bocas: Record<Quien, number> = { pepe: 0, lola: 0 };
-  const activa = lineaActiva(frame);
-  if (activa) {
-    const datos = audios[LINEAS.indexOf(activa)];
-    if (datos) {
-      const espectro = visualizeAudio({
-        fps,
-        frame: frame - activa.inicio,
-        audioData: datos,
-        numberOfSamples: 16,
-      });
-      const volumen = espectro.slice(0, 8).reduce((a, b) => a + b, 0) / 8;
-      bocas[activa.personaje] = Math.min(1, volumen * 6);
-    }
-  }
-  return bocas;
-};
-
-const Camara: React.FC<{
-  pos: [number, number, number];
-  mira: [number, number, number];
-}> = ({ pos, mira }) => {
-  const camera = useThree((s) => s.camera);
-  camera.position.set(...pos);
-  camera.lookAt(...mira);
-  return null;
-};
-
-// Lienzo 3D a baja resolución ampliado con píxeles nítidos
-const Lienzo: React.FC<{ ancho: number; alto: number; children: React.ReactNode }> = ({
-  ancho,
-  alto,
-  children,
-}) => (
-  <div
-    style={{
-      width: ancho / ESCALA_PIXEL,
-      height: alto / ESCALA_PIXEL,
-      transform: `scale(${ESCALA_PIXEL})`,
-      transformOrigin: "top left",
-      imageRendering: "pixelated",
-    }}
-  >
-    <ThreeCanvas
-      width={ancho / ESCALA_PIXEL}
-      height={alto / ESCALA_PIXEL}
-      dpr={1}
-      gl={{ antialias: false }}
-      camera={{ fov: 50, near: 0.1, far: 100 }}
-      style={{ imageRendering: "pixelated" }}
-    >
-      {children}
-    </ThreeCanvas>
-  </div>
-);
 
 const MundoLola: React.FC<{ boca: number }> = ({ boca }) => {
   const frame = useCurrentFrame();
@@ -248,81 +173,10 @@ const MundoPepe: React.FC<{ boca: number }> = ({ boca }) => {
   );
 };
 
-const Etiqueta: React.FC<{ texto: string; color: string; style: React.CSSProperties }> = ({
-  texto,
-  color,
-  style,
-}) => (
-  <div
-    style={{
-      position: "absolute",
-      padding: "10px 22px",
-      borderRadius: 14,
-      background: color,
-      color: "white",
-      fontFamily: FUENTE,
-      fontWeight: 900,
-      fontSize: 38,
-      boxShadow: "0 6px 0 rgba(0,0,0,0.35)",
-      ...style,
-    }}
-  >
-    {texto}
-  </div>
-);
-
-// Subtítulo grande al estilo TikTok, en la franja entre ambas mitades
-const Subtitulo: React.FC<{ texto: string; quien: Quien }> = ({ texto, quien }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const pop = spring({ frame, fps, config: { damping: 10, stiffness: 200 } });
-  const color = quien === "lola" ? "#f72585" : "#2f8fd6";
-  return (
-    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
-      <div
-        style={{
-          transform: `scale(${0.6 + pop * 0.4})`,
-          maxWidth: 900,
-          textAlign: "center",
-        }}
-      >
-        <span
-          style={{
-            display: "inline-block",
-            background: color,
-            color: "white",
-            fontFamily: FUENTE,
-            fontSize: 34,
-            padding: "4px 18px",
-            borderRadius: 10,
-            marginBottom: 10,
-          }}
-        >
-          {quien.toUpperCase()}
-        </span>
-        <div
-          style={{
-            fontFamily: FUENTE,
-            fontWeight: 900,
-            fontSize: 62,
-            lineHeight: 1.15,
-            color: "white",
-            WebkitTextStroke: "10px black",
-            paintOrder: "stroke fill",
-            textShadow: "0 6px 0 #000, 0 0 18px rgba(0,0,0,0.6)",
-          }}
-        >
-          {texto}
-        </div>
-      </div>
-    </AbsoluteFill>
-  );
-};
-
 export const YaVoySaliendo: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
-  const bocas = useBocas();
+  const bocas = useBocas(LINEAS, "voces");
   const mitad = height / 2;
 
   const l7 = linea(7);
@@ -336,12 +190,12 @@ export const YaVoySaliendo: React.FC = () => {
       <AbsoluteFill style={{ transform: `translate(${dx}px, ${dy}px)` }}>
         <div style={{ position: "absolute", top: 0, left: 0, width, height: mitad, overflow: "hidden" }}>
           <Lienzo ancho={width} alto={mitad}>
-            <MundoLola boca={bocas.lola} />
+            <MundoLola boca={bocas.lola ?? 0} />
           </Lienzo>
         </div>
         <div style={{ position: "absolute", top: mitad, left: 0, width, height: mitad, overflow: "hidden" }}>
           <Lienzo ancho={width} alto={mitad}>
-            <MundoPepe boca={bocas.pepe} />
+            <MundoPepe boca={bocas.pepe ?? 0} />
           </Lienzo>
         </div>
         {/* Línea divisoria */}
@@ -351,33 +205,16 @@ export const YaVoySaliendo: React.FC = () => {
         <Etiqueta texto="PEPE · «EN CAMINO»" color="#2f8fd6" style={{ left: 40, top: height - 470 }} />
       </AbsoluteFill>
 
-      {/* Gancho fijo arriba, típico de TikTok */}
-      <div
-        style={{
-          position: "absolute",
-          top: 140,
-          left: 60,
-          right: 60,
-          padding: "14px 10px 6px",
-          borderRadius: 24,
-          background: "rgba(0,0,0,0.55)",
-          textAlign: "center",
-          fontFamily: FUENTE,
-          fontWeight: 900,
-          fontSize: 58,
-          color: "white",
-          WebkitTextStroke: "10px black",
-            paintOrder: "stroke fill",
-          textShadow: "0 5px 0 #000",
-        }}
-      >
-        Cuando dices «ya voy saliendo»
-      </div>
+      <Gancho texto="Cuando dices «ya voy saliendo»" />
 
       {LINEAS.map((l) => (
         <Sequence key={l.id} from={l.inicio} durationInFrames={l.duracion + 4} layout="none">
           <Audio src={staticFile(`voces/${l.id}.mp3`)} />
-          <Subtitulo texto={l.texto} quien={l.personaje} />
+          <Subtitulo
+            texto={l.texto}
+            nombre={l.personaje.toUpperCase()}
+            color={l.personaje === "lola" ? "#f72585" : "#2f8fd6"}
+          />
         </Sequence>
       ))}
     </AbsoluteFill>

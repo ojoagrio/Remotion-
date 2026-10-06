@@ -12,7 +12,8 @@ if (!apiKey) {
 
 const rutaGuion = process.argv[2] ?? "src/tiktok/guion.json";
 const guion = JSON.parse(readFileSync(rutaGuion, "utf8"));
-const carpetaAudio = "public/voces";
+// Cada guion guarda sus audios en public/voces/<carpeta del guion>
+const carpetaAudio = join("public/voces", guion.carpeta ?? "");
 mkdirSync(carpetaAudio, { recursive: true });
 
 const duraciones = {};
@@ -26,7 +27,11 @@ for (const linea of guion.lineas) {
       body: JSON.stringify({
         text: linea.texto,
         model_id: guion.modelo,
-        voice_settings: { stability: 0.35, similarity_boost: 0.8, style: 0.6 },
+        voice_settings: guion.ajustes?.[linea.personaje] ?? {
+          stability: 0.35,
+          similarity_boost: 0.8,
+          style: 0.6,
+        },
       }),
     },
   );

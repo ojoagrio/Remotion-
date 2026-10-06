@@ -16,6 +16,7 @@ export type ColoresPersonaje = {
   cabello?: string;
   // Si se indica, dibuja coletas y un moño de este color
   mono?: string;
+  lentes?: boolean;
 };
 
 export type PosePersonaje = {
@@ -45,6 +46,12 @@ export type PosePersonaje = {
   enojo?: number;
   // Ojos cerrados 0..1 (dormido)
   sueno?: number;
+  // Sentado en una silla 0..1
+  sentado?: number;
+  // Brazos al frente tecleando 0..1
+  teclear?: number;
+  // Brazos arriba, agarrándose la cabeza 0..1
+  manosCabeza?: number;
 };
 
 const Material: React.FC<{ color: string }> = ({ color }) => (
@@ -67,6 +74,9 @@ export const Personaje: React.FC<{
   const impaciencia = pose.impaciencia ?? 0;
   const enojo = pose.enojo ?? 0;
   const sueno = pose.sueno ?? 0;
+  const sentado = pose.sentado ?? 0;
+  const teclear = pose.teclear ?? 0;
+  const manosCabeza = pose.manosCabeza ?? 0;
 
   const balanceo = Math.sin(fasePaso) * 0.7 * caminar;
   const rebote = Math.abs(Math.sin(fasePaso)) * 0.08 * caminar;
@@ -102,14 +112,14 @@ export const Personaje: React.FC<{
         </mesh>
       )}
 
-      <group position={[0, salto + rebote + respira, 0]}>
+      <group position={[0, salto + rebote + respira - sentado * 0.32, 0]}>
         {/* Piernas (pivotan desde la cadera) */}
         {[-1, 1].map((lado) => (
           <group
             key={lado}
             position={[lado * 0.18, 0.75, 0]}
             rotation={[
-              lado * balanceo - enAire * 0.6 - (lado === 1 ? golpePie : 0),
+              lado * balanceo - enAire * 0.6 - (lado === 1 ? golpePie : 0) - sentado * (Math.PI / 2),
               0,
               0,
             ]}
@@ -142,14 +152,18 @@ export const Personaje: React.FC<{
           const s = saluda ? saludo : 0;
           // El brazo derecho sujeta el teléfono si no está manejando
           const tel = lado === 1 ? telefono * (1 - adelante) : 0;
-          const libre = (1 - s) * (1 - tel) * (1 - adelante);
+          const libre = (1 - s) * (1 - tel) * (1 - adelante) * (1 - teclear) * (1 - manosCabeza);
+          const tecleo = Math.sin(respiracion * 30 + lado * 2) * 0.12 * teclear;
           // Ángulo de apertura lateral: en reposo un poco abierto, arriba al saltar o saludar
           const apertura =
             (0.25 + enAire * 2.2) * libre +
             s * (2.6 + Math.sin(respiracion * 6) * 0.35) +
             tel * -0.35 +
-            adelante * (0.12 + lado * volante);
-          const frente = -lado * balanceo * libre - tel * 2.5 - adelante * 1.45;
+            adelante * (0.12 + lado * volante) +
+            teclear * -0.12 +
+            manosCabeza * (2.75 + Math.sin(respiracion * 20) * 0.08);
+          const frente =
+            -lado * balanceo * libre - tel * 2.5 - adelante * 1.45 - teclear * 1.25 + tecleo;
           return (
             <group key={lado} position={[lado * 0.5, 1.4, 0]} rotation={[frente, 0, lado * apertura]}>
               <mesh position={[0, -0.3, 0]}>
@@ -191,6 +205,19 @@ export const Personaje: React.FC<{
               <meshBasicMaterial color="#1a1a40" />
             </mesh>
           ))}
+          {colores.lentes &&
+            [-1, 1].map((lado) => (
+              <mesh key={lado} position={[lado * 0.16, 0.12, 0.43]}>
+                <torusGeometry args={[0.11, 0.025, 3, 6]} />
+                <meshBasicMaterial color="#111111" />
+              </mesh>
+            ))}
+          {colores.lentes && (
+            <mesh position={[0, 0.14, 0.45]}>
+              <boxGeometry args={[0.1, 0.03, 0.03]} />
+              <meshBasicMaterial color="#111111" />
+            </mesh>
+          )}
           {/* Cejas enojadas */}
           {enojo > 0.05 &&
             [-1, 1].map((lado) => (
@@ -217,8 +244,8 @@ export const Personaje: React.FC<{
           {cabello && (
             <>
               {/* Pelo: casquete sobre la cabeza y flequillo */}
-              <mesh position={[0, 0.06, -0.04]} scale={1.06}>
-                <sphereGeometry args={[0.45, 8, 5, 0, Math.PI * 2, 0, Math.PI / 1.7]} />
+              <mesh position={[0, 0.1, -0.08]} scale={1.06}>
+                <sphereGeometry args={[0.45, 8, 5, 0, Math.PI * 2, 0, Math.PI / 2.3]} />
                 <Material color={cabello} />
               </mesh>
               {mono &&
