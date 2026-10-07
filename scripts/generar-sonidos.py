@@ -548,6 +548,54 @@ def misterio():
     return (tono * 0.7 + pad) * envolvente(n, 0.4) * np.linspace(1, 0.6, n)
 
 
+# ---------------------------------------------------------------- «Prompt & Compañía» (sitcom)
+def bajo_slap(n, d):
+    """Cuerda pulsada brillante (Karplus-Strong) con golpe inicial, como un bajo slap."""
+    f = nota(n)
+    periodo = int(SR / f)
+    largo = int(SR * d)
+    buf = rng.uniform(-1, 1, periodo)
+    salida = np.zeros(largo)
+    for i in range(largo):
+        salida[i] = buf[i % periodo]
+        buf[i % periodo] = 0.5 * (buf[i % periodo] + buf[(i + 1) % periodo]) * 0.996
+    golpe = paso_alto(ruido(0.015)) * envolvente(int(SR * 0.015), 0.0005, 0.003)
+    salida[: len(golpe)] += golpe * 0.8
+    return np.tanh(salida * 2.2)
+
+
+def riff_slap():
+    """Transición de sitcom: riff de bajo slap."""
+    partes = []
+    for k, (n, pos, d) in enumerate([(40, 0.0, 0.12), (52, 0.12, 0.1), (40, 0.24, 0.1), (47, 0.36, 0.1), (50, 0.5, 0.12), (52, 0.64, 0.5)]):
+        partes.append((pos, bajo_slap(n, d + 0.1) * (1.0 if k % 2 == 0 else 0.7)))
+    return mezclar(1.3, *partes)
+
+
+def tema_sitcom():
+    """Cortinilla de entrada: metales alegres, bajo caminante y batería (5 s, 132 bpm)."""
+    negra = 60 / 132
+    partes = []
+    bajo = [43, 47, 50, 52, 48, 52, 55, 57, 50, 54, 57, 59, 55, 55, 43, 43]
+    for k, n in enumerate(bajo):
+        partes.append((k * negra * 0.5, bajo_slap(n, negra * 0.5) * 0.6))
+    metales = [(67, 0, 0.5), (71, 0.5, 0.5), (74, 1.0, 1.0), (72, 2.5, 0.5), (74, 3.0, 0.5), (79, 3.5, 2.5)]
+    for n, pos, d in metales:
+        dd = d * negra
+        x = sum(sierra(nota(n + i), dd) for i in (0, 4, 7)) * 0.4
+        x = paso_bajo(x, 6) * envolvente(int(SR * dd), 0.02, dd * 0.9)
+        partes.append((pos * negra, x * 0.35))
+    for b in range(int(5 / negra)):
+        bombo = senoidal(np.geomspace(140, 50, int(SR * 0.15)), 0.15) * envolvente(int(SR * 0.15), 0.001, 0.05)
+        partes.append((b * negra, bombo * 0.5))
+        if b % 2 == 1:
+            caja = paso_alto(ruido(0.15)) * envolvente(int(SR * 0.15), 0.001, 0.04)
+            partes.append((b * negra, caja * 0.3))
+    plat = paso_alto(paso_alto(ruido(1.6))) * envolvente(int(SR * 1.6), 0.001, 0.5)
+    partes.append((3.5 * negra, plat * 0.3))
+    return mezclar(5.0, *partes)
+
+
 if __name__ == "__main__":
     os.makedirs(CARPETA, exist_ok=True)
     guardar("musica-chiptune", musica_chiptune(), 0.8)
@@ -582,3 +630,5 @@ if __name__ == "__main__":
     guardar("glitch", glitch(), 0.5)
     guardar("grillos", grillos(), 0.4)
     guardar("misterio", misterio(), 0.6)
+    guardar("riff-slap", riff_slap(), 0.7)
+    guardar("tema-sitcom", tema_sitcom(), 0.8)

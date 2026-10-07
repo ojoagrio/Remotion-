@@ -18,7 +18,10 @@
     "render:industria": "remotion render Industria out/industria-tech.mp4",
     "ritmo": "python3 scripts/ritmo-viral.py",
     "render:tipos": "remotion render TiposIA out/tipos-ia.mp4",
-    "render:clawd": "remotion render ClawdDocumental out/clawd-documental.mp4"
+    "render:clawd": "remotion render ClawdDocumental out/clawd-documental.mp4",
+    "render:sitcom": "remotion render Sitcom out/sitcom-prompt-y-compania.mp4",
+    "risas": "python3 scripts/generar-risas.py",
+    "bocas": "python3 scripts/envolventes.py"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

@@ -21,6 +21,7 @@ import { ColoresPersonaje, Personaje, PosePersonaje } from "../n64/Personaje";
 import { Cobija, Habitacion } from "../tiktok/Escenas3D";
 import { Rueda, RUEDA_X } from "./Escenas";
 import { ChatMama, HojaTarea } from "./Pantallas2D";
+import envolventes from "./envolventes.json";
 import { Sonidos } from "./Sonidos";
 import { DURACION, L, LINEAS, PALABRAS, Quien, SECCIONES as S, T } from "./tiempos";
 
@@ -353,7 +354,7 @@ const RESALTE: Record<Quien, string> = {
 export const Tipos: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
-  const bocas = useBocas(LINEAS, "voces/tipos");
+  const bocas = useBocas(LINEAS, envolventes);
   const seccion = seccionEn(frame);
   const camara = camaraEn(frame);
 

@@ -12,6 +12,8 @@ import { Tipos } from "./tipos/Tipos";
 import { DURACION as DURACION_TIPOS } from "./tipos/tiempos";
 import { ClawdDocumental } from "./clawd/ClawdDocumental";
 import { DURACION as DURACION_CLAWD } from "./clawd/tiempos";
+import { Sitcom } from "./sitcom/Sitcom";
+import { DURACION as DURACION_SITCOM } from "./sitcom/tiempos";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -90,6 +92,15 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      {/* Sitcom en horizontal 16:9 */}
+      <Composition
+        id="Sitcom"
+        component={Sitcom}
+        durationInFrames={DURACION_SITCOM}
+        fps={30}
+        width={1920}
+        height={1080}
       />
     </>
   );

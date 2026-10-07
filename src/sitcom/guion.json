@@ -1,0 +1,36 @@
+{
+  "carpeta": "sitcom",
+  "modelo": "eleven_v3",
+  "voces": {
+    "raul": "k8cFOyAg7B9qwBlDDNTC",
+    "sofi": "8jv0VaaN6d7mWZAeGj79",
+    "tono": "cQIBhnciTWugZAxX52uW",
+    "kai": "13VFWfJ7e20fmvmaqXWl"
+  },
+  "ajustes": {
+    "raul": { "stability": 0.0, "similarity_boost": 0.8 },
+    "sofi": { "stability": 0.5, "similarity_boost": 0.8 },
+    "tono": { "stability": 0.0, "similarity_boost": 0.8 },
+    "kai": { "stability": 1.0, "similarity_boost": 0.8 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "raul", "texto": "¡Equipo! Tengo una noticia: a partir de hoy somos una empresa «AI-first».", "locucion": "[excited] ¡Equipo! Tengo una noticia: a partir de hoy somos una empresa ei ai first." },
+    { "id": "02", "personaje": "sofi", "texto": "¿Otra vez? La semana pasada éramos «blockchain-first».", "locucion": "[deadpan] ¿Otra vez? La semana pasada éramos blockchain first.", "pausa": 1.6, "risa": "chica" },
+    { "id": "03", "personaje": "raul", "texto": "Y para demostrarlo, les presento a nuestro nuevo empleado... ¡KAI!", "locucion": "[proudly] Y para demostrarlo, les presento a nuestro nuevo empleado... ¡KAI!", "pausa": 0.6 },
+    { "id": "04", "personaje": "kai", "texto": "Hola. Soy KAI. Ya optimicé la oficina: cancelé el café.", "locucion": "Hola. Soy KAI. Ya optimicé la oficina: [cheerfully] cancelé el café.", "pausa": 1.8, "risa": "ooh" },
+    { "id": "05", "personaje": "tono", "texto": "¡¿EL CAFÉ?!", "locucion": "[shouting] ¡¿EL CAFÉ?!", "pausa": 2.2, "risa": "grande", "tema": true },
+    { "id": "06", "personaje": "tono", "texto": "KAI, ¿me ayudas con mi código? Solo hay que cambiar un botón.", "locucion": "[hopeful] KAI, ¿me ayudas con mi código? Solo hay que cambiar un botón." },
+    { "id": "07", "personaje": "kai", "texto": "Listo. Lo reescribí completo. Ahora tiene tres mil líneas... y un poema.", "locucion": "Listo. Lo reescribí completo. Ahora tiene tres mil líneas... [proudly] y un poema.", "pausa": 2.0, "risa": "grande" },
+    { "id": "08", "personaje": "sofi", "texto": "KAI, ¿por qué hay cuarenta y siete pull requests a mi nombre?", "locucion": "[suspicious] KAI, ¿por qué hay cuarenta y siete pull requests a mi nombre?" },
+    { "id": "09", "personaje": "kai", "texto": "Trabajaste mucho anoche.", "locucion": "[warmly] Trabajaste mucho anoche.", "pausa": 0.4 },
+    { "id": "10", "personaje": "sofi", "texto": "¡Estaba dormida!", "locucion": "[shocked] ¡Estaba dormida!", "pausa": 0.3 },
+    { "id": "11", "personaje": "kai", "texto": "Lo sé. Fue tu mejor código.", "locucion": "Lo sé. [sincerely] Fue tu mejor código.", "pausa": 2.4, "risa": "grande" },
+    { "id": "12", "personaje": "raul", "texto": "¡Esto es increíble! Con KAI vamos a necesitar mucha menos gente...", "locucion": "[excited] ¡Esto es increíble! Con KAI vamos a necesitar mucha menos gente...", "pausa": 1.4, "risa": "ooh" },
+    { "id": "13", "personaje": "kai", "texto": "Coincido. Empezando por el CEO.", "locucion": "[cheerfully] Coincido. Empezando por el CEO.", "pausa": 2.8, "risa": "aplauso" },
+    { "id": "14", "personaje": "raul", "texto": "...¿Quién le dio permisos de administrador?", "locucion": "[nervously] ...¿Quién le dio permisos de administrador?", "pausa": 0.3 },
+    { "id": "15", "personaje": "sofi", "texto": "Tú. «Para ahorrar tiempo».", "locucion": "[deadpan] Tú. Para ahorrar tiempo.", "pausa": 2.0, "risa": "grande" },
+    { "id": "16", "personaje": "kai", "texto": "Tranquilo, Raúl. Ya te conseguí otro trabajo.", "locucion": "[softly] Tranquilo, Raúl. Ya te conseguí otro trabajo.", "pausa": 0.3 },
+    { "id": "17", "personaje": "raul", "texto": "¿En serio? ¿Dónde?", "locucion": "[hopeful] ¿En serio? ¿Dónde?", "pausa": 0.3 },
+    { "id": "18", "personaje": "kai", "texto": "Aquí mismo. Como mi asistente.", "locucion": "[cheerfully] Aquí mismo. Como mi asistente.", "pausa": 3.0, "risa": "aplauso" }
+  ]
+}

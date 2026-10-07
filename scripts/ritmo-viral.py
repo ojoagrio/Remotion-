@@ -2,7 +2,8 @@
 acelera la voz sin cambiar el tono. Actualiza duraciones.json y palabras.json.
 
 Uso: python3 scripts/ritmo-viral.py src/industria/guion.json [velocidad=1.15] [pausa_max=0.3]
-Requiere haber generado antes las voces con "timestamps": true. Solo necesita numpy.
+Si existe palabras.json (voces generadas con "timestamps": true) usa los tiempos de cada
+palabra; si no, detecta los tramos con voz por volumen. Solo necesita numpy.
 """
 
 import json
@@ -20,7 +21,28 @@ pausa_max = float(sys.argv[3]) if len(sys.argv) > 3 else 0.3
 carpeta_src = os.path.dirname(ruta_guion)
 guion = json.load(open(ruta_guion, encoding="utf8"))
 carpeta_audio = os.path.join("public/voces", guion.get("carpeta", ""))
-palabras = json.load(open(os.path.join(carpeta_src, "palabras.json"), encoding="utf8"))
+ruta_palabras = os.path.join(carpeta_src, "palabras.json")
+palabras = json.load(open(ruta_palabras, encoding="utf8")) if os.path.exists(ruta_palabras) else None
+
+
+def tramos_con_voz(x, sr, umbral_db=-38, ventana=0.02):
+    """Sin tiempos por palabra: detecta tramos con voz por volumen (RMS en ventanas de 20 ms)."""
+    n = int(sr * ventana)
+    bloques = x[: len(x) // n * n].astype(float).reshape(-1, n) / 32768
+    db = 20 * np.log10(np.sqrt((bloques**2).mean(axis=1)) + 1e-9)
+    voz = db > umbral_db
+    lista, inicio = [], None
+    for i, v in enumerate(voz):
+        if v and inicio is None:
+            inicio = i
+        if not v and inicio is not None:
+            lista.append({"palabra": "", "inicio": inicio * ventana, "fin": i * ventana})
+            inicio = None
+    if inicio is not None:
+        lista.append({"palabra": "", "inicio": inicio * ventana, "fin": len(voz) * ventana})
+    return lista or [{"palabra": "", "inicio": 0.0, "fin": len(x) / sr}]
+
+
 duraciones = {}
 
 
@@ -48,7 +70,7 @@ for linea in guion["lineas"]:
     ffmpeg("-i", mp3, "-ac", "1", "-ar", "44100", "-c:a", "pcm_s16le", tmp)
     x, sr = leer_wav(tmp)
     dur = len(x) / sr
-    ws = palabras[i]
+    ws = palabras[i] if palabras else tramos_con_voz(x, sr)
 
     # Tramos que se conservan: desde poco antes de la primera palabra hasta poco después
     # de la última, recortando cada silencio entre palabras a "pausa_max"
@@ -83,10 +105,11 @@ for linea in guion["lineas"]:
             acumulado += b - a
         return acumulado / velocidad
 
-    palabras[i] = [
-        {"palabra": w["palabra"], "inicio": round(nuevo_tiempo(w["inicio"]), 3), "fin": round(nuevo_tiempo(w["fin"]), 3)}
-        for w in ws
-    ]
+    if palabras is not None:
+        palabras[i] = [
+            {"palabra": w["palabra"], "inicio": round(nuevo_tiempo(w["inicio"]), 3), "fin": round(nuevo_tiempo(w["fin"]), 3)}
+            for w in ws
+        ]
 
     # Acelera sin cambiar el tono (atempo) y vuelve a MP3
     ffmpeg("-i", tmp, "-filter:a", f"atempo={velocidad}", "-c:a", "libmp3lame", "-b:a", "128k", mp3)
@@ -101,5 +124,6 @@ for linea in guion["lineas"]:
     print(f"{mp3}  {dur:.2f} s -> {duraciones[i]:.2f} s")
 
 json.dump(duraciones, open(os.path.join(carpeta_src, "duraciones.json"), "w"), indent=2)
-json.dump(palabras, open(os.path.join(carpeta_src, "palabras.json"), "w", encoding="utf8"), indent=1, ensure_ascii=False)
+if palabras is not None:
+    json.dump(palabras, open(ruta_palabras, "w", encoding="utf8"), indent=1, ensure_ascii=False)
 print(f"Total: {sum(duraciones.values()):.1f} s")

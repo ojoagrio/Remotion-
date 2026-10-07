@@ -21,6 +21,7 @@ npm run render:chisme # renderizar «El chisme» (parodia) a out/el-chisme.mp4
 npm run render:industria # renderizar «La industria tech» a out/industria-tech.mp4
 npm run render:tipos # renderizar «5 tipos de personas usando la IA» a out/tipos-ia.mp4
 npm run render:clawd # renderizar «Vida salvaje en la terminal» (Clawd) a out/clawd-documental.mp4
+npm run render:sitcom # renderizar la sitcom «Prompt & Compañía» (16:9) a out/sitcom-prompt-y-compania.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -206,3 +207,28 @@ Datos usados y sus fuentes:
   [ClawdMoji](https://kompozy.io/ai-tools/clawdmoji).
 - Reporte de que se veía azul en la v2.0.67, cerrado sin explicación:
   [issue #13755](https://claudeissues.com/issue/13755-question-why-did-the-clawd-mascot-color-change-from-orange-to-blue).
+
+## Sitcom «Prompt & Compañía» (16:9, 1:31)
+
+`src/sitcom/` es una sitcom de 1.5 minutos en horizontal: una startup que se declara
+«AI-first» y contrata a KAI, un agente de IA demasiado eficiente (cancela el café, reescribe un
+botón en 3,000 líneas y un poema, hace 47 pull requests a tu nombre... y despide al CEO).
+
+- **Cámaras de sitcom** (`GUION_CAMARA` en `Sitcom.tsx`): plano general, planos medios de
+  quien habla y **planos de reacción durante las risas**. Cold open, presentación con la
+  canción de la serie y final congelado en sepia con créditos.
+- **Risas grabadas**: se fabrican con `npm run risas` mezclando risas de 8 voces de ElevenLabs
+  (`eleven_v3` con `[laughs]`, guardadas en `audio-fuente/risas/`) como un público de estudio,
+  más aplausos sintetizados. En el guion, cada remate indica `"risa": "chica" | "grande" |
+  "ooh" | "aplauso"` y su `pausa`.
+- **Bocas sin decodificar audio**: `npm run bocas -- src/sitcom/guion.json` precalcula el
+  volumen por frame (`envolventes.json`); `useBocas(LINEAS, envolventes)` lo usa. Así se evitan
+  los límites de AudioContext del navegador cuando hay muchos audios.
+- `ritmo-viral.py` también funciona sin tiempos por palabra (detecta la voz por volumen).
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run voces -- src/sitcom/guion.json
+npm run ritmo -- src/sitcom/guion.json 1.06 0.4
+npm run bocas -- src/sitcom/guion.json
+npm run render:sitcom
+```
