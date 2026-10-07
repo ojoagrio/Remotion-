@@ -22,6 +22,7 @@ import { DURACION_PRESENTACION, HojaModeloJuanito, PresentacionJuanito } from ".
 import { PropuestasJuanito } from "./personajes/juanito/Propuestas";
 import { PropuestasPaty } from "./personajes/paty/Propuestas";
 import { PropuestasNova } from "./personajes/nova/Propuestas";
+import { DURACIONES_NOVA, PresentacionNova1, PresentacionNova2, PresentacionNova3 } from "./personajes/nova/Presentacion";
 import { DURACION_PRESENTACION_PATY, HojaModeloPaty, PresentacionPaty } from "./personajes/paty/Presentacion";
 
 export const RemotionRoot: React.FC = () => {
@@ -123,6 +124,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PropuestasJuanito" component={PropuestasJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasPaty" component={PropuestasPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasNova" component={PropuestasNova} durationInFrames={1} fps={30} width={1920} height={1080} />
+      {[PresentacionNova1, PresentacionNova2, PresentacionNova3].map((c, i) => (
+        <Composition key={i} id={`PresentacionNova${i + 1}`} component={c} durationInFrames={DURACIONES_NOVA[i]} fps={30} width={1080} height={1920} />
+      ))}
       <Composition id="PresentacionPaty" component={PresentacionPaty} durationInFrames={DURACION_PRESENTACION_PATY} fps={30} width={1080} height={1920} />
       <Composition id="HojaModeloPaty" component={HojaModeloPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
     </>

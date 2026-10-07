@@ -13,8 +13,11 @@ import { FichaPersonaje } from "./elenco";
 // Presentación (vertical, 4 frases) y hoja de modelo (16:9) de cualquier personaje del elenco.
 //  1: saluda y aparece su nombre · 2: acercamiento a la cara (su rasgo) · 3: el chiste (redoble) · 4: remate
 
+// Datos mínimos de la ficha (los robots no usan colores de persona: se dibujan con "modelo")
+type FichaBase = Pick<FichaPersonaje, "id" | "nombre" | "rol" | "color"> & { colores?: ColoresPersonaje };
+
 export type DatosPresentacion = {
-  ficha: FichaPersonaje;
+  ficha: FichaBase;
   guion: { carpeta: string; lineas: { id: string; personaje: string; texto: string }[] };
   duraciones: Record<string, number>;
   envolventes: Envolventes;
@@ -23,6 +26,9 @@ export type DatosPresentacion = {
   // Pose durante el chiste (frase 3) y aspecto animado (p. ej. coletas que se levantan)
   poseChiste?: keyof PosePersonaje;
   aspecto?: (f: number, L: (n: number) => Linea) => ColoresPersonaje;
+  // Otro modelo 3D en lugar del Personaje (p. ej. Nova) y sonidos extra
+  modelo?: (pose: PosePersonaje, f: number) => React.ReactNode;
+  sonidos?: (L: (n: number) => Linea) => React.ReactNode;
 };
 
 const lineasDe = (d: DatosPresentacion) => crearLineas(d.guion.lineas, d.duraciones, { inicio: 1.2, pausa: 0.35 });
@@ -114,7 +120,7 @@ export const Presentacion: React.FC<{ datos: DatosPresentacion }> = ({ datos }) 
         <Camara pos={camPos} mira={[0, 1.5 + acercar * 0.3, 0]} fov={46} />
         <Estudio frame={f} color={ficha.color} simbolos={datos.simbolos} />
         <group position={[0, 0.3, 0]}>
-          <Personaje colores={datos.aspecto ? datos.aspecto(f, L) : ficha.colores} pose={pose} />
+          {datos.modelo ? datos.modelo(pose, f) : <Personaje colores={datos.aspecto ? datos.aspecto(f, L) : ficha.colores!} pose={pose} />}
         </group>
       </Lienzo>
       <AbsoluteFill style={{ boxShadow: "inset 0 0 220px 60px rgba(0,0,0,0.6)" }} />
@@ -151,6 +157,7 @@ export const Presentacion: React.FC<{ datos: DatosPresentacion }> = ({ datos }) 
       <Sonido archivo="sonidos/brillo.wav" desde={L(1).inicio + 18} volumen={0.4} />
       <Sonido archivo="sonidos/rimshot.wav" desde={fin(L(3)) + 2} volumen={0.5} />
       <Sonido archivo="sonidos/risa-chica.wav" desde={fin(L(4))} volumen={0.4} />
+      {datos.sonidos?.(L)}
       {[0, 8, 16].map((d) => (
         <Sonido key={d} archivo="sonidos/pop.wav" desde={fin(L(4)) + 10 + d} volumen={0.3} />
       ))}

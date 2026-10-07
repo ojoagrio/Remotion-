@@ -1,0 +1,43 @@
+{
+  "carpeta": "personaje-nova-voz2",
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "nova": "jw1XYij1FCiI9FENSxIf"
+  },
+  "ajustes": {
+    "nova": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "nova",
+      "texto": "¡Hola, humano! Soy Nova, tu asistente de inteligencia artificial. Floto, luego existo.",
+      "locucion": "[excited] ¡Hola, humano! Soy Nova, tu asistente de inteligencia artificial. [proud] Floto, luego existo."
+    },
+    {
+      "id": "02",
+      "personaje": "nova",
+      "texto": "¿Mis ojos? Pantallas de alta resolución... para verte cuando me pides cosas a las tres de la mañana.",
+      "locucion": "¿Mis ojos? Pantallas de alta resolución... [mischievously] para verte cuando me pides cosas a las tres de la mañana."
+    },
+    {
+      "id": "03",
+      "personaje": "nova",
+      "texto": "Pídeme lo que sea. ¡Listo, ya lo hice! ...¿Qué era lo que querías?",
+      "locucion": "Pídeme lo que sea. [excited] ¡Listo, ya lo hice! [pause] [confused] ...¿Qué era lo que querías?"
+    },
+    {
+      "id": "04",
+      "personaje": "nova",
+      "texto": "Sígueme. Prometo no alucinar... mucho.",
+      "locucion": "[cheerfully] Sígueme. Prometo no alucinar... [whispers] mucho."
+    }
+  ]
+}
