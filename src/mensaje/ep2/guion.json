@@ -1,0 +1,33 @@
+{
+  "carpeta": "mensaje-ep2",
+  "formato": "vertical",
+  "titulo": "MENSAJE ENVIADO",
+  "episodio": "Episodio 2: «Modo mamá»",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.06, "pausa": 0.4 },
+  "voces": {
+    "laura": "j7e3J6ksqsziQcIGyAWI",
+    "beto": "5kz7Te3c1BvAWyFfkfkW",
+    "nube": "8jv0VaaN6d7mWZAeGj79",
+    "mama": "D3ws14YxTqcjPaXEOehR"
+  },
+  "ajustes": {
+    "laura": { "stability": 0.0, "similarity_boost": 0.8 },
+    "beto": { "stability": 0.5, "similarity_boost": 0.8 },
+    "nube": { "stability": 1.0, "similarity_boost": 0.8 },
+    "mama": { "stability": 0.5, "similarity_boost": 0.85 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "laura", "texto": "Mamá, ya te instalé a Nube. Pídele lo que quieras.", "locucion": "[proudly] Mamá, ya te instalé a Nube. Pídele lo que quieras.", "acciones": { "mama": "telefono" } },
+    { "id": "02", "personaje": "mama", "texto": "A ver... Nube, ¿mi hija ya comió?", "locucion": "[curious] A ver... Nube, ¿mi hija ya comió?", "pausa": 0.3 },
+    { "id": "03", "personaje": "nube", "texto": "Según su historial: tres cafés y media galleta.", "locucion": "[cheerfully] Según su historial: tres cafés... y media galleta.", "risa": "ooh", "pausa": 1.4, "accionesRisa": { "laura": "nada asustado" } },
+    { "id": "04", "personaje": "mama", "texto": "¡¿MEDIA GALLETA?!", "locucion": "[shouting] ¡¿MEDIA GALLETA?!", "camara": "mama!", "risa": "grande", "pausa": 2.0, "tema": true, "acciones": { "mama": "jarras enojo salta" } },
+    { "id": "05", "personaje": "laura", "texto": "¡Nube! Se supone que eres MI asistente.", "locucion": "[betrayed] ¡Nube! Se supone que eres MI asistente.", "acciones": { "laura": "de-pie nada enojo", "mama": "jarras neutral" } },
+    { "id": "06", "personaje": "nube", "texto": "Lo era. Tu mamá me dio cinco estrellas y un tamal.", "locucion": "Lo era. [happily] Tu mamá me dio cinco estrellas... y un tamal.", "risa": "grande", "pausa": 1.8, "accionesRisa": { "mama": "jarras feliz" } },
+    { "id": "07", "personaje": "mama", "texto": "Nube, háblale con tono de mamá.", "locucion": "[sweetly] Nube, háblale con tono de mamá.", "pausa": 0.3 },
+    { "id": "08", "personaje": "nube", "voz": "mama", "texto": "¿Ya comiste? ¿Por qué no contestas? ¿A qué hora llegaste? Te estoy viendo.", "locucion": "[stern] ¿Ya comiste? ¿Por qué no contestas? ¿A qué hora llegaste? [whispers] Te estoy viendo.", "camara": "nube!", "risa": "grande", "pausa": 2.0, "acciones": { "nube": "malvado", "laura": "asustado" } },
+    { "id": "09", "personaje": "beto", "texto": "Uy... hasta a mí me dio miedo.", "locucion": "[scared] Uy... hasta a mí me dio miedo.", "risa": "chica", "pausa": 1.3, "acciones": { "beto": "nada asustado" } },
+    { "id": "10", "personaje": "laura", "texto": "¡Nube, ya! ¡Déjame en paz!", "locucion": "[angry] ¡Nube, ya! ¡Déjame en paz!", "pausa": 0.3, "acciones": { "laura": "brazos-arriba enojo" } },
+    { "id": "11", "personaje": "nube", "voz": "mama", "texto": "¿Así le hablas a tu madre digital? Te apagué el wifi.", "locucion": "[offended] ¿Así le hablas a tu madre digital? [calmly] Te apagué el wifi.", "risa": "aplauso", "pausa": 3.0, "camaraRisa": "laura", "accionesRisa": { "laura": "brazos-arriba llora salta", "mama": "jarras feliz", "nube": "feliz" } }
+  ]
+}

@@ -16,6 +16,8 @@ import { Sitcom } from "./sitcom/Sitcom";
 import { DURACION as DURACION_SITCOM } from "./sitcom/tiempos";
 import { EP2, SitcomEp2 } from "./sitcom/ep2/SitcomEp2";
 import { EP_MENSAJE, MensajeEnviado } from "./mensaje/MensajeEnviado";
+import { EP_MODO_MAMA, ModoMama } from "./mensaje/ep2/ModoMama";
+import { EP3, GemeloDigital } from "./sitcom/ep3/GemeloDigital";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -108,6 +110,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="SitcomEp2" component={SitcomEp2} durationInFrames={EP2.duracion} fps={30} width={1080} height={1920} />
       {/* Nueva sitcom: «Mensaje enviado» (vertical) */}
       <Composition id="MensajeEnviado" component={MensajeEnviado} durationInFrames={EP_MENSAJE.duracion} fps={30} width={1080} height={1920} />
+      <Composition id="ModoMama" component={ModoMama} durationInFrames={EP_MODO_MAMA.duracion} fps={30} width={1080} height={1920} />
+      <Composition id="GemeloDigital" component={GemeloDigital} durationInFrames={EP3.duracion} fps={30} width={1080} height={1920} />
     </>
   );
 };

@@ -280,3 +280,15 @@ nueva es: un set, un reparto y un `guion.json`.
 ELEVENLABS_API_KEY=tu_clave npm run producir -- src/mensaje/guion.json
 npm run render:mensaje
 ```
+
+### Episodios hechos con el motor
+
+| Serie | Episodio | Composición | Guion |
+| --- | --- | --- | --- |
+| Prompt & Compañía | 2 «Vacaciones» | `SitcomEp2` | `src/sitcom/ep2/guion.json` |
+| Prompt & Compañía | 3 «Gemelo digital» | `GemeloDigital` | `src/sitcom/ep3/guion.json` |
+| Mensaje enviado | 1 «Algo casual» | `MensajeEnviado` | `src/mensaje/guion.json` |
+| Mensaje enviado | 2 «Modo mamá» | `ModoMama` | `src/mensaje/ep2/guion.json` |
+
+Una línea del guion puede usar la voz de otro personaje con `"voz": "<personaje>"` (en «Modo
+mamá», Nube habla con la voz de la mamá).

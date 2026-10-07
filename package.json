@@ -25,7 +25,9 @@
     "producir": "node scripts/producir.mjs",
     "hoja": "node scripts/hoja.mjs",
     "render:sitcom2": "REMOTION_GL=swangle remotion render SitcomEp2 out/sitcom-ep2-vacaciones.mp4",
-    "render:mensaje": "REMOTION_GL=swangle remotion render MensajeEnviado out/mensaje-enviado-ep1.mp4"
+    "render:mensaje": "REMOTION_GL=swangle remotion render MensajeEnviado out/mensaje-enviado-ep1.mp4",
+    "render:modomama": "REMOTION_GL=swangle remotion render ModoMama out/mensaje-enviado-ep2-modo-mama.mp4",
+    "render:sitcom3": "REMOTION_GL=swangle remotion render GemeloDigital out/sitcom-ep3-gemelo-digital.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

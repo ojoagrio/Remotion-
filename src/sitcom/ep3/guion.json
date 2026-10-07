@@ -1,0 +1,38 @@
+{
+  "carpeta": "sitcom-ep3",
+  "formato": "vertical",
+  "titulo": "PROMPT & COMPAÑÍA",
+  "episodio": "Episodio 3: «Gemelo digital»",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.06, "pausa": 0.4 },
+  "voces": {
+    "raul": "k8cFOyAg7B9qwBlDDNTC",
+    "sofi": "8jv0VaaN6d7mWZAeGj79",
+    "avatar": "8jv0VaaN6d7mWZAeGj79",
+    "tono": "cQIBhnciTWugZAxX52uW",
+    "kai": "13VFWfJ7e20fmvmaqXWl"
+  },
+  "ajustes": {
+    "raul": { "stability": 0.0, "similarity_boost": 0.8 },
+    "sofi": { "stability": 0.0, "similarity_boost": 0.8 },
+    "avatar": { "stability": 1.0, "similarity_boost": 0.8 },
+    "tono": { "stability": 0.0, "similarity_boost": 0.8 },
+    "kai": { "stability": 1.0, "similarity_boost": 0.8 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "raul", "texto": "Bueno, equipo, empieza la junta. ¿Sofi?", "locucion": "[businesslike] Bueno, equipo, empieza la junta. ¿Sofi?", "acciones": { "raul": "jarras" } },
+    { "id": "02", "personaje": "avatar", "texto": "Presente. Soy el gemelo digital de Sofi. Ella sigue dormida.", "locucion": "[flatly] Presente. Soy el gemelo digital de Sofi. Ella sigue dormida.", "risa": "grande", "pausa": 1.8, "acciones": { "avatar": "saluda" }, "accionesRisa": { "avatar": "teclea" } },
+    { "id": "03", "personaje": "tono", "texto": "¿Y eso se puede?", "locucion": "[confused] ¿Y eso se puede?", "pausa": 0.3 },
+    { "id": "04", "personaje": "kai", "texto": "Técnicamente, es más puntual que la original.", "locucion": "[matter-of-fact] Técnicamente, es más puntual que la original.", "risa": "grande", "pausa": 2.0, "tema": true },
+    { "id": "05", "personaje": "raul", "texto": "Perfecto. ¿Quién lidera el proyecto nuevo?", "locucion": "[excited] Perfecto. ¿Quién lidera el proyecto nuevo?" },
+    { "id": "06", "personaje": "avatar", "texto": "Yo. Acepto.", "locucion": "[flatly] Yo. Acepto.", "pausa": 0.4, "acciones": { "avatar": "saluda" } },
+    { "id": "07", "personaje": "raul", "texto": "¿Y quién se muda a la oficina de Noruega?", "locucion": "[testing] ¿Y quién se muda a la oficina de Noruega?", "pausa": 0.3 },
+    { "id": "08", "personaje": "avatar", "texto": "Acepto también.", "locucion": "[flatly] Acepto también.", "risa": "grande", "pausa": 1.8 },
+    { "id": "09", "personaje": "tono", "texto": "¡Está aceptando todo!", "locucion": "[panicking] ¡Está aceptando todo!", "pausa": 0.3, "acciones": { "tono": "de-pie brazos-arriba asustado salta" } },
+    { "id": "10", "personaje": "avatar", "texto": "Sofi siempre quiso decir que sí. Yo solo cumplo sus sueños.", "locucion": "[serenely] Sofi siempre quiso decir que sí. Yo solo cumplo sus sueños.", "risa": "ooh", "pausa": 1.4, "accionesRisa": { "sofi": "aparece" } },
+    { "id": "11", "personaje": "sofi", "texto": "¡¿QUÉ ACEPTASTE?!", "locucion": "[shouting] ¡¿QUÉ ACEPTASTE?!", "camara": "sofi!", "risa": "grande", "pausa": 2.0, "acciones": { "sofi": "brazos-arriba enojo salta" } },
+    { "id": "12", "personaje": "raul", "texto": "Felicidades, Sofi. Te subimos el sueldo...", "locucion": "[proudly] Felicidades, Sofi. Te subimos el sueldo...", "pausa": 0.3, "acciones": { "sofi": "nada feliz", "raul": "saluda" } },
+    { "id": "13", "personaje": "sofi", "texto": "¿En serio?", "locucion": "[hopeful] ¿En serio?", "pausa": 0.3 },
+    { "id": "14", "personaje": "raul", "texto": "...a tu gemelo. Tú sigues de becaria.", "locucion": "[casually] ...a tu gemelo. Tú sigues de becaria.", "risa": "aplauso", "pausa": 3.0, "camaraRisa": "sofi", "acciones": { "raul": "jarras" }, "accionesRisa": { "sofi": "brazos-arriba llora", "avatar": "saluda", "kai": "feliz" } }
+  ]
+}

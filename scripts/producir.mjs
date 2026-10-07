@@ -28,7 +28,8 @@ const cache = existsSync(rutaCache) ? JSON.parse(readFileSync(rutaCache, "utf8")
 // 1. Voces
 let nuevas = 0;
 for (const linea of guion.lineas) {
-  const voz = guion.voces[linea.personaje];
+  // Una línea puede usar otra voz con "voz": "<personaje o id de voz>"
+  const voz = guion.voces[linea.voz] ?? linea.voz ?? guion.voces[linea.personaje];
   const cuerpo = {
     text: linea.locucion ?? linea.texto,
     model_id: linea.modelo ?? guion.modelo,
