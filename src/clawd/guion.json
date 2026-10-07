@@ -1,0 +1,21 @@
+{
+  "carpeta": "clawd",
+  "modelo": "eleven_v3",
+  "timestamps": true,
+  "voces": {
+    "narrador": "4KqeipGJCCqs2hVhiUFn"
+  },
+  "ajustes": {
+    "narrador": { "stability": 0.5, "similarity_boost": 0.85 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "narrador", "texto": "Esta criatura vive en la terminal de miles de programadores... y casi nadie sabe su nombre.", "locucion": "[whispers] Esta criatura vive en la terminal de miles de programadores... y casi nadie sabe su nombre." },
+    { "id": "02", "personaje": "narrador", "texto": "Se llama Clawd. Un cangrejito de píxeles, naranja, con ojos cuadrados y patitas diminutas.", "locucion": "[in awe] Se llama Clawd. Un cangrejito de píxeles, naranja, con ojos cuadrados... y patitas diminutas." },
+    { "id": "03", "personaje": "narrador", "texto": "Su nombre mezcla «claw», garra en inglés, con Claude.", "locucion": "Su nombre mezcla claw, garra en inglés, con Claude." },
+    { "id": "04", "personaje": "narrador", "texto": "Aparece cada vez que inicias Claude Code... solo para saludarte.", "locucion": "Aparece cada vez que inicias Claude Code... [softly] solo para saludarte." },
+    { "id": "05", "personaje": "narrador", "texto": "Mientras tú peleas con tus conflictos de git... él sigue creyendo en ti.", "locucion": "Mientras tú peleas con tus conflictos de git... [warmly] él sigue creyendo en ti." },
+    { "id": "06", "personaje": "narrador", "texto": "La comunidad lo adoptó: lo imprimen en 3D y lo convierten en emojis.", "locucion": "La comunidad lo adoptó: lo imprimen en 3D y lo convierten en emojis." },
+    { "id": "07", "personaje": "narrador", "texto": "Y hubo un misterio: un día, algunos lo vieron... azul. Nadie explicó por qué.", "locucion": "[mysteriously] Y hubo un misterio: un día, algunos lo vieron... azul. Nadie explicó por qué." },
+    { "id": "08", "personaje": "narrador", "texto": "Si lo has visto en tu terminal, salúdalo en los comentarios.", "locucion": "[warmly] Si lo has visto en tu terminal... salúdalo en los comentarios." }
+  ]
+}

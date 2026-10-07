@@ -20,6 +20,7 @@ npm run render:chancla # renderizar «La chancla» (mamá vs IA) a out/la-chancl
 npm run render:chisme # renderizar «El chisme» (parodia) a out/el-chisme.mp4
 npm run render:industria # renderizar «La industria tech» a out/industria-tech.mp4
 npm run render:tipos # renderizar «5 tipos de personas usando la IA» a out/tipos-ia.mp4
+npm run render:clawd # renderizar «Vida salvaje en la terminal» (Clawd) a out/clawd-documental.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -184,3 +185,24 @@ ELEVENLABS_API_KEY=tu_clave npm run voces -- src/tipos/guion.json
 npm run ritmo -- src/tipos/guion.json 1.12 0.3
 npm run render:tipos
 ```
+
+## «Vida salvaje en la terminal»: Clawd, la mascota de Claude Code
+
+`src/clawd/` (44 s, vertical) es un **video de fan** en formato de documental de naturaleza
+sobre Clawd, el cangrejito de píxeles de Claude Code, modelado en vóxeles
+(`Clawd3D.tsx`): cuerpo naranja, ojos cuadrados, pinzas y cuatro patitas. Narración con
+`eleven_v3` (voz «Leon», documental) y etiquetas como `[whispers]`.
+
+Datos usados y sus fuentes:
+
+- Pixel art de 8 bits, naranja (RGB 218, 119, 88 según la comunidad), ojos negros cuadrados,
+  aparece al iniciar Claude Code: [Stark Insider](https://www.starkinsider.com/2025/10/clawd-ai-retro-mascot-command-line.html),
+  [Classmethod](https://dev.classmethod.jp/en/articles/love-clawd-claude-code/).
+- Presentado en X a finales de septiembre de 2025:
+  [anthropics/claude-code#8536](https://github.com/anthropics/claude-code/issues/8536).
+- Nombre: juego de palabras entre «claw» (garra) y «Claude».
+- Figuras para imprimir en 3D y emojis de la comunidad:
+  [MakerWorld](https://makerworld.com/en/models/2576503-v2-updated-clawd-claude-code-mascot),
+  [ClawdMoji](https://kompozy.io/ai-tools/clawdmoji).
+- Reporte de que se veía azul en la v2.0.67, cerrado sin explicación:
+  [issue #13755](https://claudeissues.com/issue/13755-question-why-did-the-clawd-mascot-color-change-from-orange-to-blue).

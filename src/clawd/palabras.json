@@ -1,0 +1,518 @@
+{
+ "01": [
+  {
+   "palabra": "Esta",
+   "inicio": 0.046,
+   "fin": 0.081
+  },
+  {
+   "palabra": "criatura",
+   "inicio": 0.119,
+   "fin": 0.6
+  },
+  {
+   "palabra": "vive",
+   "inicio": 0.719,
+   "fin": 1.193
+  },
+  {
+   "palabra": "en",
+   "inicio": 1.218,
+   "fin": 1.267
+  },
+  {
+   "palabra": "la",
+   "inicio": 1.292,
+   "fin": 1.341
+  },
+  {
+   "palabra": "terminal",
+   "inicio": 1.406,
+   "fin": 1.933
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.056,
+   "fin": 2.304
+  },
+  {
+   "palabra": "miles",
+   "inicio": 2.366,
+   "fin": 2.674
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.699,
+   "fin": 2.748
+  },
+  {
+   "palabra": "programadores...",
+   "inicio": 2.794,
+   "fin": 3.859
+  },
+  {
+   "palabra": "y",
+   "inicio": 3.896,
+   "fin": 3.933
+  },
+  {
+   "palabra": "casi",
+   "inicio": 4.007,
+   "fin": 4.304
+  },
+  {
+   "palabra": "nadie",
+   "inicio": 4.359,
+   "fin": 4.674
+  },
+  {
+   "palabra": "sabe",
+   "inicio": 4.778,
+   "fin": 5.193
+  },
+  {
+   "palabra": "su",
+   "inicio": 5.242,
+   "fin": 5.341
+  },
+  {
+   "palabra": "nombre.",
+   "inicio": 5.394,
+   "fin": 5.785
+  }
+ ],
+ "02": [
+  {
+   "palabra": "Se",
+   "inicio": 0.046,
+   "fin": 0.063
+  },
+  {
+   "palabra": "llama",
+   "inicio": 0.137,
+   "fin": 0.507
+  },
+  {
+   "palabra": "Clawd.",
+   "inicio": 0.641,
+   "fin": 1.47
+  },
+  {
+   "palabra": "Un",
+   "inicio": 1.718,
+   "fin": 2.211
+  },
+  {
+   "palabra": "cangrejito",
+   "inicio": 2.248,
+   "fin": 2.73
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.779,
+   "fin": 2.878
+  },
+  {
+   "palabra": "píxeles,",
+   "inicio": 2.915,
+   "fin": 3.619
+  },
+  {
+   "palabra": "naranja,",
+   "inicio": 3.693,
+   "fin": 4.211
+  },
+  {
+   "palabra": "con",
+   "inicio": 4.285,
+   "fin": 4.507
+  },
+  {
+   "palabra": "ojos",
+   "inicio": 4.544,
+   "fin": 4.73
+  },
+  {
+   "palabra": "cuadrados...",
+   "inicio": 4.779,
+   "fin": 5.619
+  },
+  {
+   "palabra": "y",
+   "inicio": 5.656,
+   "fin": 5.693
+  },
+  {
+   "palabra": "patitas",
+   "inicio": 5.767,
+   "fin": 6.285
+  },
+  {
+   "palabra": "diminutas.",
+   "inicio": 6.334,
+   "fin": 7.1
+  }
+ ],
+ "03": [
+  {
+   "palabra": "Su",
+   "inicio": 0.0,
+   "fin": 0.074
+  },
+  {
+   "palabra": "nombre",
+   "inicio": 0.117,
+   "fin": 0.37
+  },
+  {
+   "palabra": "mezcla",
+   "inicio": 0.426,
+   "fin": 0.815
+  },
+  {
+   "palabra": "claw,",
+   "inicio": 0.904,
+   "fin": 1.333
+  },
+  {
+   "palabra": "garra",
+   "inicio": 1.444,
+   "fin": 1.852
+  },
+  {
+   "palabra": "en",
+   "inicio": 1.877,
+   "fin": 1.926
+  },
+  {
+   "palabra": "inglés,",
+   "inicio": 1.985,
+   "fin": 2.444
+  },
+  {
+   "palabra": "con",
+   "inicio": 2.537,
+   "fin": 2.815
+  },
+  {
+   "palabra": "Claude.",
+   "inicio": 2.879,
+   "fin": 3.704
+  }
+ ],
+ "04": [
+  {
+   "palabra": "Aparece",
+   "inicio": 0.0,
+   "fin": 0.444
+  },
+  {
+   "palabra": "cada",
+   "inicio": 0.489,
+   "fin": 0.667
+  },
+  {
+   "palabra": "vez",
+   "inicio": 0.704,
+   "fin": 0.815
+  },
+  {
+   "palabra": "que",
+   "inicio": 0.852,
+   "fin": 0.963
+  },
+  {
+   "palabra": "inicias",
+   "inicio": 1.012,
+   "fin": 1.407
+  },
+  {
+   "palabra": "Claude",
+   "inicio": 1.439,
+   "fin": 1.63
+  },
+  {
+   "palabra": "Code...",
+   "inicio": 1.704,
+   "fin": 2.519
+  },
+  {
+   "palabra": "solo",
+   "inicio": 2.768,
+   "fin": 2.815
+  },
+  {
+   "palabra": "para",
+   "inicio": 2.859,
+   "fin": 3.037
+  },
+  {
+   "palabra": "saludarte.",
+   "inicio": 3.086,
+   "fin": 3.778
+  }
+ ],
+ "05": [
+  {
+   "palabra": "Mientras",
+   "inicio": 0.0,
+   "fin": 0.37
+  },
+  {
+   "palabra": "tú",
+   "inicio": 0.419,
+   "fin": 0.519
+  },
+  {
+   "palabra": "peleas",
+   "inicio": 0.568,
+   "fin": 0.963
+  },
+  {
+   "palabra": "con",
+   "inicio": 0.981,
+   "fin": 1.037
+  },
+  {
+   "palabra": "tus",
+   "inicio": 1.093,
+   "fin": 1.259
+  },
+  {
+   "palabra": "conflictos",
+   "inicio": 1.308,
+   "fin": 1.778
+  },
+  {
+   "palabra": "de",
+   "inicio": 1.803,
+   "fin": 1.852
+  },
+  {
+   "palabra": "git...",
+   "inicio": 1.944,
+   "fin": 2.889
+  },
+  {
+   "palabra": "él",
+   "inicio": 3.081,
+   "fin": 3.111
+  },
+  {
+   "palabra": "sigue",
+   "inicio": 3.16,
+   "fin": 3.407
+  },
+  {
+   "palabra": "creyendo",
+   "inicio": 3.444,
+   "fin": 3.852
+  },
+  {
+   "palabra": "en",
+   "inicio": 3.877,
+   "fin": 3.926
+  },
+  {
+   "palabra": "ti.",
+   "inicio": 4.0,
+   "fin": 4.444
+  }
+ ],
+ "06": [
+  {
+   "palabra": "La",
+   "inicio": 0.0,
+   "fin": 0.148
+  },
+  {
+   "palabra": "comunidad",
+   "inicio": 0.215,
+   "fin": 0.815
+  },
+  {
+   "palabra": "lo",
+   "inicio": 0.84,
+   "fin": 0.889
+  },
+  {
+   "palabra": "adoptó:",
+   "inicio": 0.951,
+   "fin": 2.148
+  },
+  {
+   "palabra": "lo",
+   "inicio": 2.197,
+   "fin": 2.296
+  },
+  {
+   "palabra": "imprimen",
+   "inicio": 2.345,
+   "fin": 2.667
+  },
+  {
+   "palabra": "en",
+   "inicio": 2.692,
+   "fin": 2.741
+  },
+  {
+   "palabra": "3D",
+   "inicio": 2.815,
+   "fin": 3.259
+  },
+  {
+   "palabra": "y",
+   "inicio": 3.407,
+   "fin": 3.556
+  },
+  {
+   "palabra": "lo",
+   "inicio": 3.581,
+   "fin": 3.63
+  },
+  {
+   "palabra": "convierten",
+   "inicio": 3.689,
+   "fin": 4.222
+  },
+  {
+   "palabra": "en",
+   "inicio": 4.247,
+   "fin": 4.296
+  },
+  {
+   "palabra": "emojis.",
+   "inicio": 4.37,
+   "fin": 5.111
+  }
+ ],
+ "07": [
+  {
+   "palabra": "Y",
+   "inicio": 0.046,
+   "fin": 0.061
+  },
+  {
+   "palabra": "hubo",
+   "inicio": 0.069,
+   "fin": 0.165
+  },
+  {
+   "palabra": "un",
+   "inicio": 0.19,
+   "fin": 0.239
+  },
+  {
+   "palabra": "misterio:",
+   "inicio": 0.313,
+   "fin": 1.424
+  },
+  {
+   "palabra": "un",
+   "inicio": 1.473,
+   "fin": 1.572
+  },
+  {
+   "palabra": "día,",
+   "inicio": 1.665,
+   "fin": 2.461
+  },
+  {
+   "palabra": "algunos",
+   "inicio": 2.517,
+   "fin": 2.906
+  },
+  {
+   "palabra": "lo",
+   "inicio": 2.931,
+   "fin": 2.98
+  },
+  {
+   "palabra": "vieron...",
+   "inicio": 3.017,
+   "fin": 4.091
+  },
+  {
+   "palabra": "azul.",
+   "inicio": 4.165,
+   "fin": 4.609
+  },
+  {
+   "palabra": "Nadie",
+   "inicio": 4.933,
+   "fin": 6.007
+  },
+  {
+   "palabra": "explicó",
+   "inicio": 6.06,
+   "fin": 6.452
+  },
+  {
+   "palabra": "por",
+   "inicio": 6.507,
+   "fin": 6.674
+  },
+  {
+   "palabra": "qué.",
+   "inicio": 6.73,
+   "fin": 6.97
+  }
+ ],
+ "08": [
+  {
+   "palabra": "Si",
+   "inicio": 0.046,
+   "fin": 0.056
+  },
+  {
+   "palabra": "lo",
+   "inicio": 0.106,
+   "fin": 0.205
+  },
+  {
+   "palabra": "has",
+   "inicio": 0.242,
+   "fin": 0.353
+  },
+  {
+   "palabra": "visto",
+   "inicio": 0.39,
+   "fin": 0.575
+  },
+  {
+   "palabra": "en",
+   "inicio": 0.6,
+   "fin": 0.649
+  },
+  {
+   "palabra": "tu",
+   "inicio": 0.698,
+   "fin": 0.797
+  },
+  {
+   "palabra": "terminal...",
+   "inicio": 0.846,
+   "fin": 1.834
+  },
+  {
+   "palabra": "salúdalo",
+   "inicio": 1.871,
+   "fin": 2.279
+  },
+  {
+   "palabra": "en",
+   "inicio": 2.304,
+   "fin": 2.353
+  },
+  {
+   "palabra": "los",
+   "inicio": 2.371,
+   "fin": 2.427
+  },
+  {
+   "palabra": "comentarios.",
+   "inicio": 2.476,
+   "fin": 3.168
+  }
+ ]
+}

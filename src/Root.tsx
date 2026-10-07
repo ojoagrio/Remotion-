@@ -10,6 +10,8 @@ import { Industria } from "./industria/Industria";
 import { DURACION as DURACION_INDUSTRIA } from "./industria/tiempos";
 import { Tipos } from "./tipos/Tipos";
 import { DURACION as DURACION_TIPOS } from "./tipos/tiempos";
+import { ClawdDocumental } from "./clawd/ClawdDocumental";
+import { DURACION as DURACION_CLAWD } from "./clawd/tiempos";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -77,6 +79,14 @@ export const RemotionRoot: React.FC = () => {
         id="TiposIA"
         component={Tipos}
         durationInFrames={DURACION_TIPOS}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ClawdDocumental"
+        component={ClawdDocumental}
+        durationInFrames={DURACION_CLAWD}
         fps={30}
         width={1080}
         height={1920}

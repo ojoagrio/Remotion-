@@ -17,7 +17,8 @@
     "render:chisme": "remotion render ElChisme out/el-chisme.mp4",
     "render:industria": "remotion render Industria out/industria-tech.mp4",
     "ritmo": "python3 scripts/ritmo-viral.py",
-    "render:tipos": "remotion render TiposIA out/tipos-ia.mp4"
+    "render:tipos": "remotion render TiposIA out/tipos-ia.mp4",
+    "render:clawd": "remotion render ClawdDocumental out/clawd-documental.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

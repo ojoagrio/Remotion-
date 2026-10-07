@@ -519,6 +519,35 @@ def glitch():
     return escalones * corte * envolvente(int(SR * seg), 0.001)
 
 
+# ---------------------------------------------------------------- «Clawd»
+def grillos():
+    """Ambiente nocturno de documental: grillos con chirridos irregulares."""
+    seg = 6.0
+    partes = []
+    for voz in range(3):
+        pos = rng.uniform(0, 0.4)
+        f = rng.uniform(4200, 5200)
+        while pos < seg - 0.3:
+            for k in range(3):
+                d = 0.03
+                s = senoidal(f, d) * envolvente(int(SR * d), 0.003, 0.008)
+                partes.append((pos + k * 0.045, s * (0.5 - voz * 0.12)))
+            pos += rng.uniform(0.35, 0.8)
+    return mezclar(seg, *partes)
+
+
+def misterio():
+    """Theremin de misterio: senoidal con vibrato que se desliza entre notas."""
+    seg = 5.0
+    n = int(SR * seg)
+    puntos = np.array([nota(n) for n in [69, 76, 74, 71, 72, 69]])
+    curva = np.interp(np.linspace(0, len(puntos) - 1, n), np.arange(len(puntos)), puntos)
+    vibrato = 1 + 0.012 * np.sin(2 * np.pi * 6 * t(seg))
+    tono = senoidal(curva * vibrato, seg) + senoidal(curva * vibrato * 2, seg) * 0.15
+    pad = paso_bajo(sierra(nota(45), seg) + sierra(nota(52), seg), 25) * 0.3
+    return (tono * 0.7 + pad) * envolvente(n, 0.4) * np.linspace(1, 0.6, n)
+
+
 if __name__ == "__main__":
     os.makedirs(CARPETA, exist_ok=True)
     guardar("musica-chiptune", musica_chiptune(), 0.8)
@@ -551,3 +580,5 @@ if __name__ == "__main__":
     guardar("musica-trap", musica_trap(), 0.8)
     guardar("vine-boom", vine_boom())
     guardar("glitch", glitch(), 0.5)
+    guardar("grillos", grillos(), 0.4)
+    guardar("misterio", misterio(), 0.6)
