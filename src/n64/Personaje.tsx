@@ -44,7 +44,12 @@ export type ColoresPersonaje = {
     pecas?: number;
     cejaEsceptica?: number;
     frenos?: boolean;
+    // Barbilla de superhéroe y marca de enojo (vena estilo anime) en la frente
+    barbilla?: number;
+    vena?: number;
   };
+  // Corbata (con el nudo bajo el cuello)
+  corbata?: string;
   // Melena larga detrás de la cabeza y lápiz atravesando el chongo
   melena?: boolean;
   lapiz?: boolean;
@@ -208,6 +213,22 @@ export const Personaje: React.FC<{
             <Material color={colores.camisa} />
           </mesh>
         )}
+        {colores.corbata && (
+          <group position={[0, 1.1, 0.4]} rotation={[-0.07, 0, 0]}>
+            <mesh position={[0, 0.3, 0]}>
+              <boxGeometry args={[0.1, 0.08, 0.04]} />
+              <Material color={colores.corbata} />
+            </mesh>
+            <mesh position={[0, 0.02, 0]}>
+              <boxGeometry args={[0.09, 0.5, 0.03]} />
+              <Material color={colores.corbata} />
+            </mesh>
+            <mesh position={[0, -0.24, 0]} rotation={[0, 0, Math.PI / 4]}>
+              <boxGeometry args={[0.064, 0.064, 0.03]} />
+              <Material color={colores.corbata} />
+            </mesh>
+          </group>
+        )}
         {colores.cadena && (
           <mesh position={[0, 1.18, 0.38]} rotation={[-0.2, 0, 0]}>
             <torusGeometry args={[0.16, 0.025, 4, 10, Math.PI]} />
@@ -361,9 +382,9 @@ export const Personaje: React.FC<{
           {(r.cejas ?? 0) > 0 &&
             enojo <= 0.05 &&
             [-1, 1].map((lado) => (
-              <mesh key={lado} position={[lado * 0.16, 0.3 + (r.lentes ?? 1) * 0.02, 0.42]} rotation={[0, 0, -lado * 0.12]}>
+              <mesh key={lado} position={[lado * 0.16, 0.3 + (r.lentes ?? 1) * 0.02, 0.46]} rotation={[0, 0, -lado * 0.12]}>
                 <boxGeometry args={[0.2, 0.04 * (1 + (r.cejas ?? 0)), 0.05]} />
-                <meshBasicMaterial color={cabello ?? "#2b1608"} />
+                <meshBasicMaterial color="#120a06" />
               </mesh>
             ))}
           {/* Ceja escéptica: una normal y otra muy levantada */}
@@ -379,6 +400,24 @@ export const Personaje: React.FC<{
                 <meshBasicMaterial color="#120a06" />
               </mesh>
             ))}
+          {/* Barbilla prominente */}
+          {(r.barbilla ?? 0) > 0 && (
+            <mesh position={[0, -0.33, 0.27 + (r.barbilla ?? 0) * 0.05]} scale={[1 + (r.barbilla ?? 0) * 0.25, 1 + (r.barbilla ?? 0) * 0.2, 1]}>
+              <boxGeometry args={[0.3, 0.14, 0.2]} />
+              <Material color={colorPiel} />
+            </mesh>
+          )}
+          {/* Marca de enojo (vena) en la frente */}
+          {(r.vena ?? 0) > 0 && (
+            <group position={[0.24, 0.36, 0.42]} rotation={[-0.3, 0.45, 0]} scale={r.vena}>
+              {[0, 1, 2, 3].map((k) => (
+                <mesh key={k} rotation={[0, 0, (k * Math.PI) / 2]} position={[Math.cos((k * Math.PI) / 2 + Math.PI / 4) * 0.06, Math.sin((k * Math.PI) / 2 + Math.PI / 4) * 0.06, 0]}>
+                  <boxGeometry args={[0.07, 0.025, 0.02]} />
+                  <meshBasicMaterial color="#e5383b" />
+                </mesh>
+              ))}
+            </group>
+          )}
           {/* Pecas */}
           {(r.pecas ?? 0) > 0 &&
             [-1, 1].map((lado) =>
