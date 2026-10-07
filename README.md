@@ -18,6 +18,7 @@ npm run render:tiktok # renderizar el video vertical de TikTok a out/ya-voy-sali
 npm run render:ia  # renderizar «El bug chiquito» (dev vs IA) a out/bug-chiquito.mp4
 npm run render:chancla # renderizar «La chancla» (mamá vs IA) a out/la-chancla.mp4
 npm run render:chisme # renderizar «El chisme» (parodia) a out/el-chisme.mp4
+npm run render:industria # renderizar «La industria tech» a out/industria-tech.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -145,3 +146,24 @@ Fuentes: [N+](https://www.nmas.com.mx/entretenimiento/foro-tv-video-si-estoy-loc
 [Récord](https://www.record.com.mx/historia/video-aleks-syntek-dice-que-esta-loco-y-sorprende-con-comentario-sobre-zague-la-tiene-bien-grande-2026092022325323911),
 [Criterio Hidalgo](https://www.criteriohidalgo.com/ticket/lo-que-circula-en-la-red/aleks-syntek-causa-polemica-tras-decir-si-estoy-loco-durante-un-live-en-redes-sociales),
 [ABC Noticias](https://abcnoticias.mx/show/2026/10/6/y-el-no-mas-gratis-aleks-syntek-anuncia-concierto-gratuito-esto-se-sabe-291613.html).
+
+## «La industria tech»: estructura viral
+
+`src/industria/` (43 s, vertical) sigue la estructura de video viral: **gancho** en los primeros
+2 segundos, **lista numerada** de puntos rápidos (#1 a #4, una escena por punto), **giro** y
+**llamada a compartir**, con barra de progreso arriba para la retención.
+
+- Narrador único con `eleven_v3` y etiquetas de tono (`[sarcastic]`, `[deadpan]`, `[laughs]`).
+- Subtítulos palabra por palabra (`src/comun/SubtituloViral.tsx`) usando los tiempos que
+  devuelve ElevenLabs con `"timestamps": true` en el guion (se guardan en `palabras.json`).
+- `tiempos.ts` expone `momento(n, "palabra")` para sincronizar efectos con palabras concretas.
+- Ritmo: `npm run ritmo -- src/industria/guion.json 1.15 0.3` recorta silencios largos
+  (cortes de salto) y acelera la voz 1.15x sin cambiar el tono, actualizando los tiempos.
+
+Flujo completo para regenerar:
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run voces -- src/industria/guion.json
+npm run ritmo -- src/industria/guion.json 1.15 0.3
+npm run render:industria
+```

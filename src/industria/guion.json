@@ -1,0 +1,55 @@
+{
+  "carpeta": "industria",
+  "modelo": "eleven_v3",
+  "timestamps": true,
+  "voces": {
+    "narrador": "nZDJE2daaH0meWHbWbxh"
+  },
+  "ajustes": {
+    "narrador": { "stability": 0.5, "similarity_boost": 0.8 }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "narrador",
+      "texto": "Si trabajas en tecnología... este video te va a doler.",
+      "locucion": "[serious] Si trabajas en tecnología... este video te va a doler."
+    },
+    {
+      "id": "02",
+      "personaje": "narrador",
+      "texto": "Antes te decían: aprende a programar. Ahora: aprende a pedirle a la IA que programe... y luego arregla lo que rompió.",
+      "locucion": "Antes te decían: aprende a programar. [sarcastic] Ahora: aprende a pedirle a la IA que programe... y luego arregla lo que rompió."
+    },
+    {
+      "id": "03",
+      "personaje": "narrador",
+      "texto": "Las empresas despiden gente para invertir en IA... y después contratan gente para vigilar a la IA. Innovación.",
+      "locucion": "Las empresas despiden gente para invertir en IA... [sarcastic] y después contratan gente para vigilar a la IA. [deadpan] Innovación."
+    },
+    {
+      "id": "04",
+      "personaje": "narrador",
+      "texto": "Las juntas ahora son tres humanos y doce agentes de IA tomando notas... que nadie va a leer.",
+      "locucion": "Las juntas ahora son tres humanos y doce agentes de IA tomando notas... [deadpan] que nadie va a leer."
+    },
+    {
+      "id": "05",
+      "personaje": "narrador",
+      "texto": "Y todo es «con IA»: el refri con IA, el cepillo con IA, la tostadora con IA... y el pan sigue saliendo quemado.",
+      "locucion": "Y todo es con IA: el refri con IA, el cepillo con IA, la tostadora con IA... [sarcastic] y el pan sigue saliendo quemado."
+    },
+    {
+      "id": "06",
+      "personaje": "narrador",
+      "texto": "¿La buena noticia? Alguien tiene que arreglar todo esto... y ese alguien eres tú.",
+      "locucion": "[serious] ¿La buena noticia? Alguien tiene que arreglar todo esto... [excited] y ese alguien eres tú."
+    },
+    {
+      "id": "07",
+      "personaje": "narrador",
+      "texto": "Mándaselo a tu amigo que dice que su chamba está a prueba de IA.",
+      "locucion": "[laughs] Mándaselo a tu amigo que dice que su chamba está a prueba de IA."
+    }
+  ]
+}

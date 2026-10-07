@@ -1,0 +1,606 @@
+{
+ "01": [
+  {
+   "palabra": "Si",
+   "inicio": 0.043,
+   "fin": 0.067
+  },
+  {
+   "palabra": "trabajas",
+   "inicio": 0.107,
+   "fin": 0.415
+  },
+  {
+   "palabra": "en",
+   "inicio": 0.438,
+   "fin": 0.484
+  },
+  {
+   "palabra": "tecnología...",
+   "inicio": 0.526,
+   "fin": 1.876
+  },
+  {
+   "palabra": "este",
+   "inicio": 1.917,
+   "fin": 2.084
+  },
+  {
+   "palabra": "video",
+   "inicio": 2.13,
+   "fin": 2.363
+  },
+  {
+   "palabra": "te",
+   "inicio": 2.432,
+   "fin": 2.571
+  },
+  {
+   "palabra": "va",
+   "inicio": 2.583,
+   "fin": 2.606
+  },
+  {
+   "palabra": "a",
+   "inicio": 2.623,
+   "fin": 2.641
+  },
+  {
+   "palabra": "doler.",
+   "inicio": 2.676,
+   "fin": 3.058
+  }
+ ],
+ "02": [
+  {
+   "palabra": "Antes",
+   "inicio": 0.0,
+   "fin": 0.278
+  },
+  {
+   "palabra": "te",
+   "inicio": 0.324,
+   "fin": 0.417
+  },
+  {
+   "palabra": "decían:",
+   "inicio": 0.452,
+   "fin": 0.904
+  },
+  {
+   "palabra": "aprende",
+   "inicio": 0.974,
+   "fin": 1.426
+  },
+  {
+   "palabra": "a",
+   "inicio": 1.443,
+   "fin": 1.461
+  },
+  {
+   "palabra": "programar.",
+   "inicio": 1.496,
+   "fin": 2.017
+  },
+  {
+   "palabra": "Ahora:",
+   "inicio": 2.278,
+   "fin": 2.858
+  },
+  {
+   "palabra": "aprende",
+   "inicio": 2.908,
+   "fin": 3.241
+  },
+  {
+   "palabra": "a",
+   "inicio": 3.258,
+   "fin": 3.276
+  },
+  {
+   "palabra": "pedirle",
+   "inicio": 3.31,
+   "fin": 3.623
+  },
+  {
+   "palabra": "a",
+   "inicio": 3.658,
+   "fin": 3.693
+  },
+  {
+   "palabra": "la",
+   "inicio": 3.717,
+   "fin": 3.763
+  },
+  {
+   "palabra": "IA",
+   "inicio": 3.878,
+   "fin": 4.11
+  },
+  {
+   "palabra": "que",
+   "inicio": 4.163,
+   "fin": 4.319
+  },
+  {
+   "palabra": "programe...",
+   "inicio": 4.371,
+   "fin": 5.015
+  },
+  {
+   "palabra": "y",
+   "inicio": 5.05,
+   "fin": 5.084
+  },
+  {
+   "palabra": "luego",
+   "inicio": 5.143,
+   "fin": 5.432
+  },
+  {
+   "palabra": "arregla",
+   "inicio": 5.525,
+   "fin": 5.919
+  },
+  {
+   "palabra": "lo",
+   "inicio": 5.943,
+   "fin": 5.989
+  },
+  {
+   "palabra": "que",
+   "inicio": 6.023,
+   "fin": 6.128
+  },
+  {
+   "palabra": "rompió.",
+   "inicio": 6.163,
+   "fin": 6.544
+  }
+ ],
+ "03": [
+  {
+   "palabra": "Las",
+   "inicio": 0.0,
+   "fin": 0.139
+  },
+  {
+   "palabra": "empresas",
+   "inicio": 0.201,
+   "fin": 0.696
+  },
+  {
+   "palabra": "despiden",
+   "inicio": 0.748,
+   "fin": 1.113
+  },
+  {
+   "palabra": "gente",
+   "inicio": 1.171,
+   "fin": 1.461
+  },
+  {
+   "palabra": "para",
+   "inicio": 1.503,
+   "fin": 1.67
+  },
+  {
+   "palabra": "invertir",
+   "inicio": 1.719,
+   "fin": 2.087
+  },
+  {
+   "palabra": "en",
+   "inicio": 2.157,
+   "fin": 2.296
+  },
+  {
+   "palabra": "IA...",
+   "inicio": 2.365,
+   "fin": 3.27
+  },
+  {
+   "palabra": "y",
+   "inicio": 3.333,
+   "fin": 3.339
+  },
+  {
+   "palabra": "después",
+   "inicio": 3.391,
+   "fin": 3.757
+  },
+  {
+   "palabra": "contratan",
+   "inicio": 3.791,
+   "fin": 4.243
+  },
+  {
+   "palabra": "gente",
+   "inicio": 4.302,
+   "fin": 4.591
+  },
+  {
+   "palabra": "para",
+   "inicio": 4.647,
+   "fin": 4.87
+  },
+  {
+   "palabra": "vigilar",
+   "inicio": 4.922,
+   "fin": 5.287
+  },
+  {
+   "palabra": "a",
+   "inicio": 5.322,
+   "fin": 5.357
+  },
+  {
+   "palabra": "la",
+   "inicio": 5.403,
+   "fin": 5.496
+  },
+  {
+   "palabra": "IA.",
+   "inicio": 5.611,
+   "fin": 5.913
+  },
+  {
+   "palabra": "Innovación.",
+   "inicio": 6.174,
+   "fin": 6.957
+  }
+ ],
+ "04": [
+  {
+   "palabra": "Las",
+   "inicio": 0.0,
+   "fin": 0.07
+  },
+  {
+   "palabra": "juntas",
+   "inicio": 0.104,
+   "fin": 0.417
+  },
+  {
+   "palabra": "ahora",
+   "inicio": 0.452,
+   "fin": 0.626
+  },
+  {
+   "palabra": "son",
+   "inicio": 0.678,
+   "fin": 0.835
+  },
+  {
+   "palabra": "tres",
+   "inicio": 0.877,
+   "fin": 1.043
+  },
+  {
+   "palabra": "humanos",
+   "inicio": 1.102,
+   "fin": 1.461
+  },
+  {
+   "palabra": "y",
+   "inicio": 1.6,
+   "fin": 1.739
+  },
+  {
+   "palabra": "doce",
+   "inicio": 1.809,
+   "fin": 2.017
+  },
+  {
+   "palabra": "agentes",
+   "inicio": 2.063,
+   "fin": 2.435
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.458,
+   "fin": 2.504
+  },
+  {
+   "palabra": "IA",
+   "inicio": 2.62,
+   "fin": 2.852
+  },
+  {
+   "palabra": "tomando",
+   "inicio": 2.922,
+   "fin": 3.339
+  },
+  {
+   "palabra": "notas...",
+   "inicio": 3.42,
+   "fin": 4.73
+  },
+  {
+   "palabra": "que",
+   "inicio": 4.79,
+   "fin": 4.8
+  },
+  {
+   "palabra": "nadie",
+   "inicio": 4.852,
+   "fin": 5.078
+  },
+  {
+   "palabra": "va",
+   "inicio": 5.102,
+   "fin": 5.148
+  },
+  {
+   "palabra": "a",
+   "inicio": 5.183,
+   "fin": 5.217
+  },
+  {
+   "palabra": "leer.",
+   "inicio": 5.287,
+   "fin": 5.704
+  }
+ ],
+ "05": [
+  {
+   "palabra": "Y",
+   "inicio": 0.0,
+   "fin": 0.07
+  },
+  {
+   "palabra": "todo",
+   "inicio": 0.167,
+   "fin": 0.557
+  },
+  {
+   "palabra": "es",
+   "inicio": 0.626,
+   "fin": 0.765
+  },
+  {
+   "palabra": "con",
+   "inicio": 0.817,
+   "fin": 0.974
+  },
+  {
+   "palabra": "IA:",
+   "inicio": 1.113,
+   "fin": 1.739
+  },
+  {
+   "palabra": "el",
+   "inicio": 1.785,
+   "fin": 1.878
+  },
+  {
+   "palabra": "refri",
+   "inicio": 1.948,
+   "fin": 2.296
+  },
+  {
+   "palabra": "con",
+   "inicio": 2.348,
+   "fin": 2.504
+  },
+  {
+   "palabra": "IA,",
+   "inicio": 2.597,
+   "fin": 2.922
+  },
+  {
+   "palabra": "el",
+   "inicio": 2.945,
+   "fin": 2.991
+  },
+  {
+   "palabra": "cepillo",
+   "inicio": 3.061,
+   "fin": 3.478
+  },
+  {
+   "palabra": "con",
+   "inicio": 3.53,
+   "fin": 3.687
+  },
+  {
+   "palabra": "IA,",
+   "inicio": 3.803,
+   "fin": 4.174
+  },
+  {
+   "palabra": "la",
+   "inicio": 4.197,
+   "fin": 4.243
+  },
+  {
+   "palabra": "tostadora",
+   "inicio": 4.313,
+   "fin": 4.87
+  },
+  {
+   "palabra": "con",
+   "inicio": 4.922,
+   "fin": 5.078
+  },
+  {
+   "palabra": "IA...",
+   "inicio": 5.194,
+   "fin": 6.051
+  },
+  {
+   "palabra": "y",
+   "inicio": 6.115,
+   "fin": 6.122
+  },
+  {
+   "palabra": "el",
+   "inicio": 6.168,
+   "fin": 6.261
+  },
+  {
+   "palabra": "pan",
+   "inicio": 6.348,
+   "fin": 6.609
+  },
+  {
+   "palabra": "sigue",
+   "inicio": 6.667,
+   "fin": 6.957
+  },
+  {
+   "palabra": "saliendo",
+   "inicio": 7.009,
+   "fin": 7.374
+  },
+  {
+   "palabra": "quemado.",
+   "inicio": 7.416,
+   "fin": 7.861
+  }
+ ],
+ "06": [
+  {
+   "palabra": "¿La",
+   "inicio": 0.043,
+   "fin": 0.124
+  },
+  {
+   "palabra": "buena",
+   "inicio": 0.159,
+   "fin": 0.333
+  },
+  {
+   "palabra": "noticia?",
+   "inicio": 0.385,
+   "fin": 0.89
+  },
+  {
+   "palabra": "Alguien",
+   "inicio": 1.122,
+   "fin": 1.863
+  },
+  {
+   "palabra": "tiene",
+   "inicio": 1.91,
+   "fin": 2.142
+  },
+  {
+   "palabra": "que",
+   "inicio": 2.159,
+   "fin": 2.211
+  },
+  {
+   "palabra": "arreglar",
+   "inicio": 2.257,
+   "fin": 2.559
+  },
+  {
+   "palabra": "todo",
+   "inicio": 2.615,
+   "fin": 2.837
+  },
+  {
+   "palabra": "esto...",
+   "inicio": 2.907,
+   "fin": 3.81
+  },
+  {
+   "palabra": "y",
+   "inicio": 3.853,
+   "fin": 3.888
+  },
+  {
+   "palabra": "ese",
+   "inicio": 3.957,
+   "fin": 4.166
+  },
+  {
+   "palabra": "alguien",
+   "inicio": 4.218,
+   "fin": 4.583
+  },
+  {
+   "palabra": "eres",
+   "inicio": 4.699,
+   "fin": 5.07
+  },
+  {
+   "palabra": "tú.",
+   "inicio": 5.14,
+   "fin": 5.418
+  }
+ ],
+ "07": [
+  {
+   "palabra": "Mándaselo",
+   "inicio": 0.043,
+   "fin": 0.565
+  },
+  {
+   "palabra": "a",
+   "inicio": 0.6,
+   "fin": 0.635
+  },
+  {
+   "palabra": "tu",
+   "inicio": 0.658,
+   "fin": 0.704
+  },
+  {
+   "palabra": "amigo",
+   "inicio": 0.763,
+   "fin": 1.052
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.087,
+   "fin": 1.191
+  },
+  {
+   "palabra": "dice",
+   "inicio": 1.233,
+   "fin": 1.4
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.435,
+   "fin": 1.539
+  },
+  {
+   "palabra": "su",
+   "inicio": 1.585,
+   "fin": 1.678
+  },
+  {
+   "palabra": "chamba",
+   "inicio": 1.724,
+   "fin": 2.026
+  },
+  {
+   "palabra": "está",
+   "inicio": 2.11,
+   "fin": 2.443
+  },
+  {
+   "palabra": "a",
+   "inicio": 2.513,
+   "fin": 2.583
+  },
+  {
+   "palabra": "prueba",
+   "inicio": 2.612,
+   "fin": 2.791
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.837,
+   "fin": 2.93
+  },
+  {
+   "palabra": "IA.",
+   "inicio": 3.023,
+   "fin": 4.252
+  }
+ ]
+}

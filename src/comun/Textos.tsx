@@ -94,3 +94,23 @@ export const Gancho: React.FC<{ texto: string; top?: number }> = ({ texto, top =
     {texto}
   </div>
 );
+
+// Sello que aparece de golpe (para remates: «¡BUUU!», «INNOVACIÓN™», etc.)
+export const Sello: React.FC<{ texto: string; color: string; top: number; tam?: number; giro?: number }> = ({
+  texto,
+  color,
+  top,
+  tam = 110,
+  giro = -6,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame, fps, config: { damping: 8, stiffness: 180 } });
+  return (
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: top }}>
+      <div style={{ ...estiloContorno, fontSize: tam, color, transform: `scale(${pop}) rotate(${giro}deg)`, textAlign: "center" }}>
+        {texto}
+      </div>
+    </AbsoluteFill>
+  );
+};

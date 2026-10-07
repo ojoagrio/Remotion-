@@ -6,6 +6,8 @@ import { BugChiquito } from "./ia/BugChiquito";
 import { ChanclaIA } from "./chancla/ChanclaIA";
 import { ElChisme } from "./syntek/ElChisme";
 import { DURACION as DURACION_CHISME } from "./syntek/tiempos";
+import { Industria } from "./industria/Industria";
+import { DURACION as DURACION_INDUSTRIA } from "./industria/tiempos";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -57,6 +59,14 @@ export const RemotionRoot: React.FC = () => {
         id="ElChisme"
         component={ElChisme}
         durationInFrames={DURACION_CHISME}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Industria"
+        component={Industria}
+        durationInFrames={DURACION_INDUSTRIA}
         fps={30}
         width={1080}
         height={1920}

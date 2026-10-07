@@ -459,6 +459,66 @@ def pop():
     return senoidal(f, seg) * envolvente(int(SR * seg), 0.001, 0.03)
 
 
+# ---------------------------------------------------------------- «La industria tech»
+def musica_trap():
+    """Ritmo trap a 140 bpm (medio tiempo) en Fa menor: 808, charles con redobles y campana."""
+    negra = 60 / 140
+    compas = 4 * negra
+    raices = [41, 41, 44, 39]  # Fa, Fa, La bemol, Mi bemol
+    vueltas = 4
+    total = len(raices) * compas * vueltas
+    partes = []
+    for v in range(vueltas):
+        for i, raiz in enumerate(raices):
+            base = (v * len(raices) + i) * compas
+            # 808: bombo largo con tono que cae ligeramente
+            for pos in [0, 1.5, 2.75]:
+                d = negra * 1.4
+                f = nota(raiz - 12) * np.geomspace(1.25, 1.0, int(SR * d))
+                s = np.tanh(senoidal(f, d) * 2.5) * envolvente(int(SR * d), 0.002, d * 0.6)
+                partes.append((base + pos * negra, s * 0.5))
+            # Caja/palmada en el tiempo 3 (medio tiempo)
+            palma = paso_alto(ruido(0.2)) * envolvente(int(SR * 0.2), 0.001, 0.05)
+            partes.append((base + 2 * negra, palma * 0.4))
+            # Charles en corcheas con redoble de semifusas al final de cada compás
+            for k in range(8):
+                h = paso_alto(paso_alto(ruido(0.03))) * envolvente(int(SR * 0.03), 0.001, 0.008)
+                partes.append((base + k * negra / 2, h * 0.12))
+            if i % 2 == 1:
+                for k in range(8):
+                    h = paso_alto(paso_alto(ruido(0.02))) * envolvente(int(SR * 0.02), 0.001, 0.005)
+                    partes.append((base + 3 * negra + k * negra / 8, h * 0.1))
+            # Campana (melodía) oscura
+            for k, n in enumerate([raiz + 24, raiz + 27, raiz + 31, raiz + 27]):
+                d = negra * 0.9
+                s = (senoidal(nota(n), d) + senoidal(nota(n) * 2.76, d) * 0.3) * envolvente(int(SR * d), 0.002, 0.2)
+                partes.append((base + k * negra, s * 0.07))
+    return mezclar(total, *partes)
+
+
+def vine_boom():
+    """El «boom» grave de los remates virales."""
+    seg = 1.6
+    f = np.geomspace(90, 38, int(SR * seg))
+    cuerpo = np.tanh(senoidal(f, seg) * 3) * envolvente(int(SR * seg), 0.002, 0.45)
+    golpe = paso_bajo(ruido(seg), 8) * envolvente(int(SR * seg), 0.001, 0.04)
+    # Eco corto para que suene "grande"
+    x = cuerpo + golpe * 0.6
+    eco = np.zeros_like(x)
+    r = int(SR * 0.09)
+    eco[r:] = x[:-r] * 0.35
+    return x + eco
+
+
+def glitch():
+    """Ruido digital entrecortado (bitcrush)."""
+    seg = 0.5
+    x = cuadrada(np.where(t(seg) % 0.08 < 0.04, 180, 1400), seg) * 0.5 + ruido(seg) * 0.5
+    escalones = np.round(x * 4) / 4  # pocos bits
+    corte = (rng.random(int(seg / 0.025) + 1) > 0.3).repeat(int(SR * 0.025))[: int(SR * seg)]
+    return escalones * corte * envolvente(int(SR * seg), 0.001)
+
+
 if __name__ == "__main__":
     os.makedirs(CARPETA, exist_ok=True)
     guardar("musica-chiptune", musica_chiptune(), 0.8)
@@ -488,3 +548,6 @@ if __name__ == "__main__":
     guardar("sting-chisme", sting_chisme(), 0.8)
     guardar("abucheo", abucheo(), 0.7)
     guardar("pop", pop(), 0.5)
+    guardar("musica-trap", musica_trap(), 0.8)
+    guardar("vine-boom", vine_boom())
+    guardar("glitch", glitch(), 0.5)
