@@ -31,7 +31,8 @@
     "render:juanito": "REMOTION_GL=swangle remotion render PresentacionJuanito out/juanito-presentacion.mp4 && REMOTION_GL=swangle remotion still HojaModeloJuanito docs/elenco/juanito.png",
     "render:paty": "remotion render PresentacionPaty out/paty-presentacion.mp4 --gl=swangle",
     "render:oficinita-ep1": "remotion render PilotoOficinita out/oficinita-ep1.mp4 --gl=swangle",
-    "render:oficinita-ep2": "remotion render OficinitaEp2 out/oficinita-ep2.mp4 --gl=swangle"
+    "render:oficinita-ep2": "remotion render OficinitaEp2 out/oficinita-ep2.mp4 --gl=swangle",
+    "render:oficinita-ep3": "remotion render OficinitaEp3 out/oficinita-ep3.mp4 --gl=swangle"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",
