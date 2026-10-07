@@ -41,7 +41,7 @@ const useEtiqueta = (texto: string, fondo: string, color: string, ancho = 64, al
   return tex;
 };
 
-const Etiqueta3D: React.FC<{
+export const Etiqueta3D: React.FC<{
   texto: string;
   pos: [number, number, number];
   tam: [number, number];

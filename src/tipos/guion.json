@@ -1,0 +1,36 @@
+{
+  "carpeta": "tipos",
+  "modelo": "eleven_v3",
+  "timestamps": true,
+  "voces": {
+    "narrador": "wXojZ3FhzsE0AumH6Oym",
+    "educado": "5kz7Te3c1BvAWyFfkfkW",
+    "discutidor": "FK6NnNJpBkY5DntQjRyY",
+    "triste": "j7e3J6ksqsziQcIGyAWI",
+    "ia": "13VFWfJ7e20fmvmaqXWl",
+    "mama": "D3ws14YxTqcjPaXEOehR"
+  },
+  "ajustes": {
+    "narrador": { "stability": 0.5, "similarity_boost": 0.8 },
+    "educado": { "stability": 0.5, "similarity_boost": 0.8 },
+    "discutidor": { "stability": 0.0, "similarity_boost": 0.8 },
+    "triste": { "stability": 0.0, "similarity_boost": 0.8 },
+    "ia": { "stability": 1.0, "similarity_boost": 0.8 },
+    "mama": { "stability": 0.5, "similarity_boost": 0.85 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "narrador", "texto": "Hay cinco tipos de personas usando la IA... y tú eres uno, no lo niegues.", "locucion": "[excited] Hay cinco tipos de personas usando la IA... [mischievously] y tú eres uno, no lo niegues." },
+    { "id": "02", "personaje": "narrador", "texto": "Uno: el educado.", "locucion": "Uno: el educado." },
+    { "id": "03", "personaje": "educado", "texto": "Muchas gracias, IA. Por favor, acuérdate de mí cuando dominen el mundo.", "locucion": "[nervously] Muchas gracias, IA. Por favor, acuérdate de mí cuando dominen el mundo." },
+    { "id": "04", "personaje": "narrador", "texto": "Dos: el que copia y pega sin leer... y entrega la tarea que empieza con: «¡Claro! Aquí tienes tu ensayo».", "locucion": "Dos: el que copia y pega sin leer... [laughs] y entrega la tarea que empieza con: ¡Claro! Aquí tienes tu ensayo." },
+    { "id": "05", "personaje": "narrador", "texto": "Tres: el que discute con la IA.", "locucion": "Tres: el que discute con la IA." },
+    { "id": "06", "personaje": "discutidor", "texto": "¡Estás mal!", "locucion": "[angry] ¡Estás mal!" },
+    { "id": "07", "personaje": "ia", "texto": "Tienes toda la razón. Me equivoqué.", "locucion": "[calm] Tienes toda la razón. Me equivoqué." },
+    { "id": "08", "personaje": "discutidor", "texto": "¡¿Y ahora por qué me das la razón?!", "locucion": "[shouting] ¡¿Y ahora por qué me das la razón?!" },
+    { "id": "09", "personaje": "narrador", "texto": "Cuatro: el que le cuenta su vida a las tres de la mañana.", "locucion": "Cuatro: el que le cuenta su vida... [whispers] a las tres de la mañana." },
+    { "id": "10", "personaje": "triste", "texto": "Y entonces... me dejó en visto.", "locucion": "[crying] Y entonces... me dejó en visto." },
+    { "id": "11", "personaje": "narrador", "texto": "Y cinco: el que le pide a la IA que le conteste a su mamá.", "locucion": "Y cinco: el que le pide a la IA que le conteste a su mamá." },
+    { "id": "12", "personaje": "mama", "texto": "¿Cómo que «como modelo de lenguaje no puedo comer»?", "locucion": "[angry] ¿Cómo que como modelo de lenguaje no puedo comer?" },
+    { "id": "13", "personaje": "narrador", "texto": "¿Cuál eres tú? Etiqueta al que es el número cuatro.", "locucion": "[laughs] ¿Cuál eres tú? Etiqueta al que es el número cuatro." }
+  ]
+}

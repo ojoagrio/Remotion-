@@ -16,7 +16,8 @@
     "render:chancla": "remotion render ChanclaIA out/la-chancla.mp4",
     "render:chisme": "remotion render ElChisme out/el-chisme.mp4",
     "render:industria": "remotion render Industria out/industria-tech.mp4",
-    "ritmo": "python3 scripts/ritmo-viral.py"
+    "ritmo": "python3 scripts/ritmo-viral.py",
+    "render:tipos": "remotion render TiposIA out/tipos-ia.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

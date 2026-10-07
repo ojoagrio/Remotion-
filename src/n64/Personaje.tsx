@@ -58,6 +58,8 @@ export type PosePersonaje = {
   manosCabeza?: number;
   // Manos "en jarras" (en la cintura) 0..1
   jarras?: number;
+  // Llanto 0..1: lágrimas que caen de los ojos
+  llanto?: number;
   // Sujeta una chancla en la mano del saludo (brazoSaludo) 0..1 (escala de la chancla)
   chancla?: number;
 };
@@ -87,6 +89,7 @@ export const Personaje: React.FC<{
   const manosCabeza = pose.manosCabeza ?? 0;
   const jarras = pose.jarras ?? 0;
   const chancla = pose.chancla ?? 0;
+  const llanto = pose.llanto ?? 0;
 
   const balanceo = Math.sin(fasePaso) * 0.7 * caminar;
   const rebote = Math.abs(Math.sin(fasePaso)) * 0.08 * caminar;
@@ -264,6 +267,18 @@ export const Personaje: React.FC<{
               <meshBasicMaterial color="#111111" />
             </mesh>
           )}
+          {llanto > 0 &&
+            [-1, 1].map((lado) =>
+              [0, 1].map((k) => {
+                const caida = ((respiracion * 0.9 + k * 0.5 + (lado > 0 ? 0.25 : 0)) % 1) * 0.5;
+                return (
+                  <mesh key={`${lado}${k}`} position={[lado * 0.17, 0.02 - caida, 0.42]} scale={llanto}>
+                    <icosahedronGeometry args={[0.045, 0]} />
+                    <meshBasicMaterial color="#6fd3ff" />
+                  </mesh>
+                );
+              }),
+            )}
           {/* Cejas enojadas */}
           {enojo > 0.05 &&
             [-1, 1].map((lado) => (

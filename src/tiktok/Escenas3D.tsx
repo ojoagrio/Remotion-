@@ -86,15 +86,15 @@ export const Cine: React.FC<{ frame: number }> = ({ frame }) => {
 };
 
 // ---------- Cuarto de Pepe ----------
-export const Habitacion: React.FC = () => {
+export const Habitacion: React.FC<{ noche?: boolean; hora?: string }> = ({ noche = false, hora = "7:31" }) => {
   const piso = useMemo(() => crearTexturaCuadros("#9a6a3c", "#8a5c32", 8), []);
-  const reloj = useTexturaTexto("7:31", "#101010", "#ff3b3b");
+  const reloj = useTexturaTexto(hora, "#101010", "#ff3b3b");
 
   return (
     <>
-      <color attach="background" args={["#e9d8b6"]} />
-      <ambientLight intensity={1.3} />
-      <directionalLight position={[3, 6, 4]} intensity={1.8} />
+      <color attach="background" args={[noche ? "#0a0d1a" : "#e9d8b6"]} />
+      <ambientLight intensity={noche ? 0.35 : 1.3} color={noche ? "#6f7fb8" : "#ffffff"} />
+      <directionalLight position={[3, 6, 4]} intensity={noche ? 0.35 : 1.8} color={noche ? "#7f8fd0" : "#ffffff"} />
 
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[12, 12]} />
@@ -105,7 +105,12 @@ export const Habitacion: React.FC = () => {
       <Caja pos={[-3, 2.5, 0]} tam={[0.2, 5, 10]} color="#6aa0c8" />
       {/* Ventana */}
       <Caja pos={[1.7, 2.9, -2.28]} tam={[1.8, 1.4, 0.05]} color="#ffffff" />
-      <Caja pos={[1.7, 2.9, -2.25]} tam={[1.6, 1.2, 0.05]} color="#f6a36b" emisivo="#5a3010" />
+      <Caja
+        pos={[1.7, 2.9, -2.25]}
+        tam={[1.6, 1.2, 0.05]}
+        color={noche ? "#0b1640" : "#f6a36b"}
+        emisivo={noche ? "#050a20" : "#5a3010"}
+      />
       <Caja pos={[1.7, 2.9, -2.22]} tam={[0.06, 1.2, 0.05]} color="#ffffff" />
       {/* Póster */}
       <Caja pos={[-1.4, 3.1, -2.28]} tam={[1, 1.4, 0.05]} color="#d62828" />

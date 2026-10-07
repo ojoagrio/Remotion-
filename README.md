@@ -19,6 +19,7 @@ npm run render:ia  # renderizar «El bug chiquito» (dev vs IA) a out/bug-chiqui
 npm run render:chancla # renderizar «La chancla» (mamá vs IA) a out/la-chancla.mp4
 npm run render:chisme # renderizar «El chisme» (parodia) a out/el-chisme.mp4
 npm run render:industria # renderizar «La industria tech» a out/industria-tech.mp4
+npm run render:tipos # renderizar «5 tipos de personas usando la IA» a out/tipos-ia.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -166,4 +167,20 @@ Flujo completo para regenerar:
 ELEVENLABS_API_KEY=tu_clave npm run voces -- src/industria/guion.json
 npm run ritmo -- src/industria/guion.json 1.15 0.3
 npm run render:industria
+```
+
+## «5 tipos de personas usando la IA»
+
+`src/tipos/` (45 s, vertical) usa el formato de lista con el que todos se identifican y
+termina pidiendo **etiquetar a un amigo**, lo que lo hace muy compartible: el educado, el del
+copy-paste, el que discute con la IA, el de las 3 AM y el hijo que le contesta a su mamá con
+la IA (guiño a «La chancla»). Empieza y termina en una rueda de reconocimiento de policía.
+
+Seis voces con `eleven_v3` y tiempos por palabra; los subtítulos virales cambian de color
+según quién habla. Regenerar:
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run voces -- src/tipos/guion.json
+npm run ritmo -- src/tipos/guion.json 1.12 0.3
+npm run render:tipos
 ```

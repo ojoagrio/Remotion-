@@ -1,0 +1,658 @@
+{
+ "10": [
+  {
+   "palabra": "Y",
+   "inicio": 0.045,
+   "fin": 0.054
+  },
+  {
+   "palabra": "entonces...",
+   "inicio": 0.141,
+   "fin": 1.161
+  },
+  {
+   "palabra": "me",
+   "inicio": 1.268,
+   "fin": 1.482
+  },
+  {
+   "palabra": "dejó",
+   "inicio": 1.518,
+   "fin": 1.696
+  },
+  {
+   "palabra": "en",
+   "inicio": 1.744,
+   "fin": 1.839
+  },
+  {
+   "palabra": "visto.",
+   "inicio": 1.899,
+   "fin": 2.268
+  }
+ ],
+ "11": [
+  {
+   "palabra": "Y",
+   "inicio": 0.0,
+   "fin": 0.071
+  },
+  {
+   "palabra": "cinco:",
+   "inicio": 0.131,
+   "fin": 0.5
+  },
+  {
+   "palabra": "el",
+   "inicio": 0.714,
+   "fin": 1.143
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.161,
+   "fin": 1.214
+  },
+  {
+   "palabra": "le",
+   "inicio": 1.262,
+   "fin": 1.357
+  },
+  {
+   "palabra": "pide",
+   "inicio": 1.393,
+   "fin": 1.571
+  },
+  {
+   "palabra": "a",
+   "inicio": 1.607,
+   "fin": 1.643
+  },
+  {
+   "palabra": "la",
+   "inicio": 1.667,
+   "fin": 1.714
+  },
+  {
+   "palabra": "IA",
+   "inicio": 1.786,
+   "fin": 1.929
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.964,
+   "fin": 2.071
+  },
+  {
+   "palabra": "le",
+   "inicio": 2.096,
+   "fin": 2.143
+  },
+  {
+   "palabra": "conteste",
+   "inicio": 2.196,
+   "fin": 2.643
+  },
+  {
+   "palabra": "a",
+   "inicio": 2.679,
+   "fin": 2.714
+  },
+  {
+   "palabra": "su",
+   "inicio": 2.738,
+   "fin": 2.786
+  },
+  {
+   "palabra": "mamá.",
+   "inicio": 2.821,
+   "fin": 3.143
+  }
+ ],
+ "12": [
+  {
+   "palabra": "¿Cómo",
+   "inicio": 0.045,
+   "fin": 0.195
+  },
+  {
+   "palabra": "que",
+   "inicio": 0.23,
+   "fin": 0.337
+  },
+  {
+   "palabra": "como",
+   "inicio": 0.38,
+   "fin": 0.552
+  },
+  {
+   "palabra": "modelo",
+   "inicio": 0.603,
+   "fin": 0.909
+  },
+  {
+   "palabra": "de",
+   "inicio": 0.956,
+   "fin": 1.052
+  },
+  {
+   "palabra": "lenguaje",
+   "inicio": 1.087,
+   "fin": 1.48
+  },
+  {
+   "palabra": "no",
+   "inicio": 1.528,
+   "fin": 1.623
+  },
+  {
+   "palabra": "puedo",
+   "inicio": 1.659,
+   "fin": 1.838
+  },
+  {
+   "palabra": "comer?",
+   "inicio": 1.897,
+   "fin": 2.337
+  }
+ ],
+ "13": [
+  {
+   "palabra": "¿Cuál",
+   "inicio": 0.045,
+   "fin": 0.402
+  },
+  {
+   "palabra": "eres",
+   "inicio": 0.449,
+   "fin": 0.616
+  },
+  {
+   "palabra": "tú?",
+   "inicio": 0.688,
+   "fin": 0.902
+  },
+  {
+   "palabra": "Etiqueta",
+   "inicio": 1.17,
+   "fin": 2.194
+  },
+  {
+   "palabra": "al",
+   "inicio": 2.265,
+   "fin": 2.408
+  },
+  {
+   "palabra": "que",
+   "inicio": 2.444,
+   "fin": 2.551
+  },
+  {
+   "palabra": "es",
+   "inicio": 2.622,
+   "fin": 2.765
+  },
+  {
+   "palabra": "el",
+   "inicio": 2.789,
+   "fin": 2.837
+  },
+  {
+   "palabra": "número",
+   "inicio": 2.878,
+   "fin": 3.122
+  },
+  {
+   "palabra": "cuatro.",
+   "inicio": 3.184,
+   "fin": 3.694
+  }
+ ],
+ "01": [
+  {
+   "palabra": "Hay",
+   "inicio": 0.045,
+   "fin": 0.077
+  },
+  {
+   "palabra": "cinco",
+   "inicio": 0.124,
+   "fin": 0.363
+  },
+  {
+   "palabra": "tipos",
+   "inicio": 0.41,
+   "fin": 0.648
+  },
+  {
+   "palabra": "de",
+   "inicio": 0.672,
+   "fin": 0.72
+  },
+  {
+   "palabra": "personas",
+   "inicio": 0.791,
+   "fin": 1.362
+  },
+  {
+   "palabra": "usando",
+   "inicio": 1.413,
+   "fin": 1.72
+  },
+  {
+   "palabra": "la",
+   "inicio": 1.767,
+   "fin": 1.863
+  },
+  {
+   "palabra": "IA...",
+   "inicio": 1.958,
+   "fin": 2.791
+  },
+  {
+   "palabra": "y",
+   "inicio": 2.99,
+   "fin": 2.996
+  },
+  {
+   "palabra": "tú",
+   "inicio": 2.998,
+   "fin": 3.005
+  },
+  {
+   "palabra": "eres",
+   "inicio": 3.053,
+   "fin": 3.291
+  },
+  {
+   "palabra": "uno,",
+   "inicio": 3.362,
+   "fin": 3.934
+  },
+  {
+   "palabra": "no",
+   "inicio": 3.981,
+   "fin": 4.077
+  },
+  {
+   "palabra": "lo",
+   "inicio": 4.101,
+   "fin": 4.148
+  },
+  {
+   "palabra": "niegues.",
+   "inicio": 4.202,
+   "fin": 4.791
+  }
+ ],
+ "02": [
+  {
+   "palabra": "Uno:",
+   "inicio": 0.0,
+   "fin": 0.679
+  },
+  {
+   "palabra": "el",
+   "inicio": 0.833,
+   "fin": 1.143
+  },
+  {
+   "palabra": "educado.",
+   "inicio": 1.2,
+   "fin": 1.714
+  }
+ ],
+ "03": [
+  {
+   "palabra": "Muchas",
+   "inicio": 0.045,
+   "fin": 0.145
+  },
+  {
+   "palabra": "gracias,",
+   "inicio": 0.189,
+   "fin": 0.573
+  },
+  {
+   "palabra": "IA.",
+   "inicio": 0.645,
+   "fin": 0.859
+  },
+  {
+   "palabra": "Por",
+   "inicio": 0.948,
+   "fin": 1.216
+  },
+  {
+   "palabra": "favor,",
+   "inicio": 1.276,
+   "fin": 1.859
+  },
+  {
+   "palabra": "acuérdate",
+   "inicio": 1.93,
+   "fin": 2.359
+  },
+  {
+   "palabra": "de",
+   "inicio": 2.406,
+   "fin": 2.502
+  },
+  {
+   "palabra": "mí",
+   "inicio": 2.549,
+   "fin": 2.645
+  },
+  {
+   "palabra": "cuando",
+   "inicio": 2.675,
+   "fin": 2.859
+  },
+  {
+   "palabra": "dominen",
+   "inicio": 2.906,
+   "fin": 3.216
+  },
+  {
+   "palabra": "el",
+   "inicio": 3.263,
+   "fin": 3.359
+  },
+  {
+   "palabra": "mundo.",
+   "inicio": 3.406,
+   "fin": 3.787
+  }
+ ],
+ "04": [
+  {
+   "palabra": "Dos:",
+   "inicio": 0.0,
+   "fin": 0.286
+  },
+  {
+   "palabra": "el",
+   "inicio": 0.524,
+   "fin": 1.0
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.036,
+   "fin": 1.143
+  },
+  {
+   "palabra": "copia",
+   "inicio": 1.214,
+   "fin": 1.5
+  },
+  {
+   "palabra": "y",
+   "inicio": 1.536,
+   "fin": 1.571
+  },
+  {
+   "palabra": "pega",
+   "inicio": 1.643,
+   "fin": 1.929
+  },
+  {
+   "palabra": "sin",
+   "inicio": 1.982,
+   "fin": 2.143
+  },
+  {
+   "palabra": "leer...",
+   "inicio": 2.214,
+   "fin": 3.213
+  },
+  {
+   "palabra": "y",
+   "inicio": 3.481,
+   "fin": 3.66
+  },
+  {
+   "palabra": "entrega",
+   "inicio": 3.696,
+   "fin": 3.946
+  },
+  {
+   "palabra": "la",
+   "inicio": 3.993,
+   "fin": 4.088
+  },
+  {
+   "palabra": "tarea",
+   "inicio": 4.136,
+   "fin": 4.374
+  },
+  {
+   "palabra": "que",
+   "inicio": 4.392,
+   "fin": 4.446
+  },
+  {
+   "palabra": "empieza",
+   "inicio": 4.499,
+   "fin": 4.874
+  },
+  {
+   "palabra": "con:",
+   "inicio": 4.963,
+   "fin": 5.303
+  },
+  {
+   "palabra": "¡Claro!",
+   "inicio": 5.481,
+   "fin": 6.374
+  },
+  {
+   "palabra": "Aquí",
+   "inicio": 6.463,
+   "fin": 6.803
+  },
+  {
+   "palabra": "tienes",
+   "inicio": 6.854,
+   "fin": 7.16
+  },
+  {
+   "palabra": "tu",
+   "inicio": 7.184,
+   "fin": 7.231
+  },
+  {
+   "palabra": "ensayo.",
+   "inicio": 7.285,
+   "fin": 8.017
+  }
+ ],
+ "05": [
+  {
+   "palabra": "Tres:",
+   "inicio": 0.0,
+   "fin": 0.357
+  },
+  {
+   "palabra": "el",
+   "inicio": 0.547,
+   "fin": 0.929
+  },
+  {
+   "palabra": "que",
+   "inicio": 0.946,
+   "fin": 1.0
+  },
+  {
+   "palabra": "discute",
+   "inicio": 1.057,
+   "fin": 1.5
+  },
+  {
+   "palabra": "con",
+   "inicio": 1.536,
+   "fin": 1.643
+  },
+  {
+   "palabra": "la",
+   "inicio": 1.667,
+   "fin": 1.714
+  },
+  {
+   "palabra": "IA.",
+   "inicio": 1.81,
+   "fin": 2.071
+  }
+ ],
+ "06": [
+  {
+   "palabra": "¡Estás",
+   "inicio": 0.045,
+   "fin": 0.409
+  },
+  {
+   "palabra": "mal!",
+   "inicio": 0.516,
+   "fin": 1.552
+  }
+ ],
+ "07": [
+  {
+   "palabra": "Tienes",
+   "inicio": 0.045,
+   "fin": 0.266
+  },
+  {
+   "palabra": "toda",
+   "inicio": 0.309,
+   "fin": 0.48
+  },
+  {
+   "palabra": "la",
+   "inicio": 0.528,
+   "fin": 0.623
+  },
+  {
+   "palabra": "razón.",
+   "inicio": 0.677,
+   "fin": 1.195
+  },
+  {
+   "palabra": "Me",
+   "inicio": 1.266,
+   "fin": 1.409
+  },
+  {
+   "palabra": "equivoqué.",
+   "inicio": 1.445,
+   "fin": 1.98
+  }
+ ],
+ "08": [
+  {
+   "palabra": "¡¿Y",
+   "inicio": 0.045,
+   "fin": 0.071
+  },
+  {
+   "palabra": "ahora",
+   "inicio": 0.095,
+   "fin": 0.213
+  },
+  {
+   "palabra": "por",
+   "inicio": 0.249,
+   "fin": 0.356
+  },
+  {
+   "palabra": "qué",
+   "inicio": 0.374,
+   "fin": 0.428
+  },
+  {
+   "palabra": "me",
+   "inicio": 0.452,
+   "fin": 0.499
+  },
+  {
+   "palabra": "das",
+   "inicio": 0.553,
+   "fin": 0.713
+  },
+  {
+   "palabra": "la",
+   "inicio": 0.737,
+   "fin": 0.785
+  },
+  {
+   "palabra": "razón?!",
+   "inicio": 0.874,
+   "fin": 1.499
+  }
+ ],
+ "09": [
+  {
+   "palabra": "Cuatro:",
+   "inicio": 0.0,
+   "fin": 0.357
+  },
+  {
+   "palabra": "el",
+   "inicio": 0.596,
+   "fin": 1.071
+  },
+  {
+   "palabra": "que",
+   "inicio": 1.107,
+   "fin": 1.214
+  },
+  {
+   "palabra": "le",
+   "inicio": 1.238,
+   "fin": 1.286
+  },
+  {
+   "palabra": "cuenta",
+   "inicio": 1.327,
+   "fin": 1.571
+  },
+  {
+   "palabra": "su",
+   "inicio": 1.619,
+   "fin": 1.714
+  },
+  {
+   "palabra": "vida...",
+   "inicio": 1.771,
+   "fin": 2.713
+  },
+  {
+   "palabra": "a",
+   "inicio": 2.776,
+   "fin": 2.787
+  },
+  {
+   "palabra": "las",
+   "inicio": 2.877,
+   "fin": 3.145
+  },
+  {
+   "palabra": "tres",
+   "inicio": 3.202,
+   "fin": 3.43
+  },
+  {
+   "palabra": "de",
+   "inicio": 3.478,
+   "fin": 3.573
+  },
+  {
+   "palabra": "la",
+   "inicio": 3.597,
+   "fin": 3.645
+  },
+  {
+   "palabra": "mañana.",
+   "inicio": 3.706,
+   "fin": 4.214
+  }
+ ]
+}

@@ -8,6 +8,8 @@ import { ElChisme } from "./syntek/ElChisme";
 import { DURACION as DURACION_CHISME } from "./syntek/tiempos";
 import { Industria } from "./industria/Industria";
 import { DURACION as DURACION_INDUSTRIA } from "./industria/tiempos";
+import { Tipos } from "./tipos/Tipos";
+import { DURACION as DURACION_TIPOS } from "./tipos/tiempos";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -67,6 +69,14 @@ export const RemotionRoot: React.FC = () => {
         id="Industria"
         component={Industria}
         durationInFrames={DURACION_INDUSTRIA}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="TiposIA"
+        component={Tipos}
+        durationInFrames={DURACION_TIPOS}
         fps={30}
         width={1080}
         height={1920}
