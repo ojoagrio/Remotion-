@@ -24,8 +24,8 @@
     }
   },
   "voz": {
-    "id": "CPv3Zr3CQCqE4ZzuCgBP",
-    "nombre": "Lulu – Adorable, Bright & Playful",
+    "id": "klD8ai7tOs4cUL3kcChn",
+    "nombre": "Rita – Friendly, lively (acento argentino)",
     "modelo": "eleven_v3",
     "ajustes": {
       "stability": 0.0,
@@ -53,8 +53,8 @@
   "archivos": {
     "hojaModelo": "src/sitcom-laoficinitamx/personajes/paty/hoja-modelo.png",
     "propuestas": "src/sitcom-laoficinitamx/personajes/paty/propuestas.png",
-    "guionPresentacion": "src/personajes/paty/guion.json",
-    "vocesPresentacion": "public/voces/personaje-paty"
+    "guionPresentacion": "src/personajes/paty/voz1/guion.json",
+    "vocesPresentacion": "public/voces/personaje-paty-voz1"
   },
   "vozOpciones": [
     {

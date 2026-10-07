@@ -19,14 +19,26 @@
     "copete": true,
     "emblema": "</>",
     "audifonos": "#ffbe0b",
-    "rasgos": { "lentes": 1.65, "sonrisa": 0.35 }
+    "rasgos": {
+      "lentes": 1.65,
+      "sonrisa": 0.35
+    }
   },
   "voz": {
     "id": "HxRDsm0E8jdUUrG0lqbK",
     "nombre": "Javi – Social Media",
     "modelo": "eleven_v3",
-    "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
-    "etiquetas": ["[casually]", "[confidently]", "[playfully]", "[laughs]", "[cool]"]
+    "ajustes": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "etiquetas": [
+      "[casually]",
+      "[confidently]",
+      "[playfully]",
+      "[laughs]",
+      "[cool]"
+    ]
   },
   "personalidad": [
     "Simpático y bromista: todo lo convierte en chiste de programador",
@@ -44,5 +56,25 @@
     "propuestas": "src/sitcom-laoficinitamx/personajes/juanito/propuestas.png",
     "guionPresentacion": "src/personajes/juanito/guion.json",
     "vocesPresentacion": "public/voces/personaje-juanito-v2"
-  }
+  },
+  "vozOpciones": [
+    {
+      "opcion": 1,
+      "id": "VvYiNBPylZtUh8Bf6u8l",
+      "nombre": "Juan – Friendly & Effortless",
+      "estilo": "Relajado y buena onda"
+    },
+    {
+      "opcion": 2,
+      "id": "3RY6eMOPBRvf0MCFFE2x",
+      "nombre": "Ivan Mendoza",
+      "estilo": "Casual chilango"
+    },
+    {
+      "opcion": 3,
+      "id": "I1n8B4pOly0qmOu46LFX",
+      "nombre": "Alejandro – Energic & Friendly",
+      "estilo": "Enérgico y simpático"
+    }
+  ]
 }

@@ -1,0 +1,25 @@
+{
+  "carpeta": "personaje-juanito-muestra3",
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "juanito": "I1n8B4pOly0qmOu46LFX"
+  },
+  "ajustes": {
+    "juanito": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "juanito",
+      "texto": "¿Qué onda? Soy Juanito... y aquí se programa con flow.",
+      "locucion": "[casually] ¿Qué onda? Soy Juanito... [confidently] y aquí se programa con flow."
+    }
+  ]
+}

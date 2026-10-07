@@ -41,8 +41,6 @@ const DATOS: DatosPresentacion = {
   },
 };
 
-export const DURACION_PRESENTACION_PATY = duracionPresentacion(DATOS);
-export const PresentacionPaty: React.FC = () => <Presentacion datos={DATOS} />;
 export const HojaModeloPaty: React.FC = () => <HojaModelo ficha={PATY} />;
 
 // Opciones de voz con acento: argentina, venezolana y colombiana
@@ -70,3 +68,8 @@ const MUESTRAS: DatosPresentacion[] = [
 export const MuestraPaty1: React.FC = () => <MuestraVoz datos={MUESTRAS[0]} />;
 export const MuestraPaty2: React.FC = () => <MuestraVoz datos={MUESTRAS[1]} />;
 export const MuestraPaty3: React.FC = () => <MuestraVoz datos={MUESTRAS[2]} />;
+
+// Presentación oficial: voz 1 (Rita, acento argentino), sin etiqueta de opción
+const OFICIAL: DatosPresentacion = { ...OPCIONES[0], etiquetaVoz: undefined };
+export const DURACION_PRESENTACION_PATY = duracionPresentacion(OFICIAL);
+export const PresentacionPaty: React.FC = () => <Presentacion datos={OFICIAL} />;

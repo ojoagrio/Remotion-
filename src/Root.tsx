@@ -18,7 +18,14 @@ import { EP2, SitcomEp2 } from "./sitcom/ep2/SitcomEp2";
 import { EP_MENSAJE, MensajeEnviado } from "./mensaje/MensajeEnviado";
 import { EP_MODO_MAMA, ModoMama } from "./mensaje/ep2/ModoMama";
 import { EP3, GemeloDigital } from "./sitcom/ep3/GemeloDigital";
-import { DURACION_PRESENTACION, HojaModeloJuanito, PresentacionJuanito } from "./personajes/juanito/Presentacion";
+import {
+  DURACION_PRESENTACION,
+  HojaModeloJuanito,
+  MuestraJuanito1,
+  MuestraJuanito2,
+  MuestraJuanito3,
+  PresentacionJuanito,
+} from "./personajes/juanito/Presentacion";
 import { PropuestasJuanito } from "./personajes/juanito/Propuestas";
 import { PropuestasPaty } from "./personajes/paty/Propuestas";
 import { PropuestasNova } from "./personajes/nova/Propuestas";
@@ -132,6 +139,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="GemeloDigital" component={GemeloDigital} durationInFrames={EP3.duracion} fps={30} width={1080} height={1920} />
       {/* Elenco fijo: presentación y hoja de modelo de cada personaje */}
       <Composition id="PresentacionJuanito" component={PresentacionJuanito} durationInFrames={DURACION_PRESENTACION} fps={30} width={1080} height={1920} />
+      {[MuestraJuanito1, MuestraJuanito2, MuestraJuanito3].map((c, i) => (
+        <Composition key={i} id={`MuestraJuanito${i + 1}`} component={c} durationInFrames={DURACION_MUESTRA} fps={30} width={1080} height={1920} />
+      ))}
       <Composition id="HojaModeloJuanito" component={HojaModeloJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasJuanito" component={PropuestasJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasPaty" component={PropuestasPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
