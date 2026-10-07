@@ -118,6 +118,11 @@ responde «como modelo de lenguaje, no puedo»... y empieza un duelo del viejo o
 
 Voces: `ELEVENLABS_API_KEY=tu_clave npm run voces -- src/chancla/guion.json`
 
+La mamá usa la voz «Azu» de la biblioteca de ElevenLabs. Para cambiar solo la voz de un
+personaje sin regenerar las demás, usa `--solo=<personaje>`:
+`ELEVENLABS_API_KEY=tu_clave npm run voces -- src/chancla/guion.json --solo=mama`.
+Si la nueva voz dura distinto, ajusta la `pausa` de esa línea para no mover el resto.
+
 ## «El chisme»: parodia de la polémica de Aleks Syntek
 
 `src/syntek/` es una **parodia** (39 s, vertical) contada por un programa de chismes ficticio.

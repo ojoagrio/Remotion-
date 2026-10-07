@@ -2,19 +2,56 @@
   "carpeta": "chancla",
   "modelo": "eleven_multilingual_v2",
   "voces": {
-    "mama": "msx1wzXfA6oS73pVLVhe",
+    "mama": "D3ws14YxTqcjPaXEOehR",
     "ia": "13VFWfJ7e20fmvmaqXWl"
   },
   "ajustes": {
-    "mama": { "stability": 0.4, "similarity_boost": 0.85, "style": 0.6 },
-    "ia": { "stability": 0.55, "similarity_boost": 0.8, "style": 0.35 }
+    "mama": {
+      "stability": 0.35,
+      "similarity_boost": 0.85,
+      "style": 0.65
+    },
+    "ia": {
+      "stability": 0.55,
+      "similarity_boost": 0.8,
+      "style": 0.35
+    }
   },
   "lineas": [
-    { "id": "01", "personaje": "mama", "texto": "A ver, robot. Mi hijo dice que tú sabes todo. ¿Qué hago de comer?" },
-    { "id": "02", "personaje": "ia", "texto": "¡Excelente pregunta! Te recomiendo un bowl de quinoa con kale y aguacate.", "pausa": 0.3 },
-    { "id": "03", "personaje": "mama", "texto": "¿Quinoa? Aquí se comen frijoles, mijo. Mejor ponte a lavar los trastes.", "pausa": 0.4 },
-    { "id": "04", "personaje": "ia", "texto": "Lo siento. Como modelo de lenguaje, no puedo lavar los trastes.", "pausa": 2.6 },
-    { "id": "05", "personaje": "mama", "texto": "¿Cómo dijiste?", "pausa": 0.2 },
-    { "id": "06", "personaje": "ia", "texto": "¡Ya los estoy lavando, señora! ¡Actualización instalada!" }
+    {
+      "id": "01",
+      "personaje": "mama",
+      "texto": "A ver, robot. Mi hijo dice que tú sabes todo. ¿Qué hago de comer?",
+      "pausa": 1.228
+    },
+    {
+      "id": "02",
+      "personaje": "ia",
+      "texto": "¡Excelente pregunta! Te recomiendo un bowl de quinoa con kale y aguacate.",
+      "pausa": 0.3
+    },
+    {
+      "id": "03",
+      "personaje": "mama",
+      "texto": "¿Quinoa? Aquí se comen frijoles, mijo. Mejor ponte a lavar los trastes.",
+      "pausa": 0.348
+    },
+    {
+      "id": "04",
+      "personaje": "ia",
+      "texto": "Lo siento. Como modelo de lenguaje, no puedo lavar los trastes.",
+      "pausa": 2.6
+    },
+    {
+      "id": "05",
+      "personaje": "mama",
+      "texto": "¿Cómo dijiste?",
+      "pausa": 0.383
+    },
+    {
+      "id": "06",
+      "personaje": "ia",
+      "texto": "¡Ya los estoy lavando, señora! ¡Actualización instalada!"
+    }
   ]
 }

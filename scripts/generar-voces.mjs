@@ -5,8 +5,11 @@
 // - "locucion": texto que se envía a la voz, si es distinto (p. ej. con etiquetas de
 //   eleven_v3 como [sings] o vocales alargadas para cantar)
 // - "modelo" y "ajustes": para usar otro modelo o ajustes de voz solo en esa línea
+//
+// Con --solo=<personaje> solo se regeneran las líneas de ese personaje; el resto de
+// audios y duraciones se conservan tal cual.
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const apiKey = process.env.ELEVENLABS_API_KEY;
@@ -15,14 +18,18 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const rutaGuion = process.argv[2] ?? "src/tiktok/guion.json";
+const args = process.argv.slice(2);
+const solo = args.find((a) => a.startsWith("--solo="))?.slice("--solo=".length);
+const rutaGuion = args.find((a) => !a.startsWith("--")) ?? "src/tiktok/guion.json";
 const guion = JSON.parse(readFileSync(rutaGuion, "utf8"));
 // Cada guion guarda sus audios en public/voces/<carpeta del guion>
 const carpetaAudio = join("public/voces", guion.carpeta ?? "");
 mkdirSync(carpetaAudio, { recursive: true });
 
-const duraciones = {};
+const rutaDuraciones = join(dirname(rutaGuion), "duraciones.json");
+const duraciones = solo && existsSync(rutaDuraciones) ? JSON.parse(readFileSync(rutaDuraciones, "utf8")) : {};
 for (const linea of guion.lineas) {
+  if (solo && linea.personaje !== solo) continue;
   const voz = guion.voces[linea.personaje];
   const respuesta = await fetch(
     `https://api.elevenlabs.io/v1/text-to-speech/${voz}?output_format=mp3_44100_128`,
@@ -55,4 +62,4 @@ for (const linea of guion.lineas) {
   console.log(`${archivo}  ${duraciones[linea.id].toFixed(2)} s  ${linea.texto}`);
 }
 
-writeFileSync(join(dirname(rutaGuion), "duraciones.json"), JSON.stringify(duraciones, null, 2) + "\n");
+writeFileSync(rutaDuraciones, JSON.stringify(duraciones, null, 2) + "\n");
