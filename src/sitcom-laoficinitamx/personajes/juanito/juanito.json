@@ -25,8 +25,8 @@
     }
   },
   "voz": {
-    "id": "HxRDsm0E8jdUUrG0lqbK",
-    "nombre": "Javi – Social Media",
+    "id": "VvYiNBPylZtUh8Bf6u8l",
+    "nombre": "Juan – Friendly & Effortless",
     "modelo": "eleven_v3",
     "ajustes": {
       "stability": 0.0,
@@ -55,7 +55,7 @@
     "hojaModelo": "src/sitcom-laoficinitamx/personajes/juanito/hoja-modelo.png",
     "propuestas": "src/sitcom-laoficinitamx/personajes/juanito/propuestas.png",
     "guionPresentacion": "src/personajes/juanito/guion.json",
-    "vocesPresentacion": "public/voces/personaje-juanito-v2"
+    "vocesPresentacion": "public/voces/personaje-juanito-v3"
   },
   "vozOpciones": [
     {

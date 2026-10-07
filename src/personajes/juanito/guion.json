@@ -1,13 +1,43 @@
 {
-  "carpeta": "personaje-juanito-v2",
+  "carpeta": "personaje-juanito-v3",
   "modelo": "eleven_v3",
-  "ritmo": { "velocidad": 1.05, "pausa": 0.35 },
-  "voces": { "juanito": "HxRDsm0E8jdUUrG0lqbK" },
-  "ajustes": { "juanito": { "stability": 0.0, "similarity_boost": 0.8 } },
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "juanito": "VvYiNBPylZtUh8Bf6u8l"
+  },
+  "ajustes": {
+    "juanito": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
   "lineas": [
-    { "id": "01", "personaje": "juanito", "texto": "¿Qué onda? Soy Juanito. Desarrollador de software... y de estilo, obvio.", "locucion": "[casually] ¿Qué onda? Soy Juanito. Desarrollador de software... [confidently] y de estilo, obvio." },
-    { "id": "02", "personaje": "juanito", "texto": "¿Los lentes? Son para ver los bugs antes de que existan.", "locucion": "[playfully] ¿Los lentes? Son para ver los bugs... antes de que existan." },
-    { "id": "03", "personaje": "juanito", "texto": "Mi código no tiene errores... tiene funcionalidades sorpresa.", "locucion": "Mi código no tiene errores... [laughs] tiene funcionalidades sorpresa." },
-    { "id": "04", "personaje": "juanito", "texto": "Sígueme. Aquí se programa con flow.", "locucion": "[cool] Sígueme. Aquí se programa con flow." }
+    {
+      "id": "01",
+      "personaje": "juanito",
+      "texto": "¿Qué onda? Soy Juanito. Desarrollador de software... y de estilo, obvio.",
+      "locucion": "[casually] ¿Qué onda? Soy Juanito. Desarrollador de software... [confidently] y de estilo, obvio."
+    },
+    {
+      "id": "02",
+      "personaje": "juanito",
+      "texto": "¿Los lentes? Son para ver los bugs antes de que existan.",
+      "locucion": "[playfully] ¿Los lentes? Son para ver los bugs... antes de que existan."
+    },
+    {
+      "id": "03",
+      "personaje": "juanito",
+      "texto": "Mi código no tiene errores... tiene funcionalidades sorpresa.",
+      "locucion": "Mi código no tiene errores... [laughs] tiene funcionalidades sorpresa."
+    },
+    {
+      "id": "04",
+      "personaje": "juanito",
+      "texto": "Sígueme. Aquí se programa con flow.",
+      "locucion": "[cool] Sígueme. Aquí se programa con flow."
+    }
   ]
 }
