@@ -46,16 +46,24 @@ const Set: React.FC<{ frame: number }> = ({ frame }) => (
   />
 );
 
+// Fondo de rayos amarillos y blancos que parten del centro (girando)
+const Rayos: React.FC<{ frame: number }> = ({ frame }) => (
+  <AbsoluteFill style={{ background: AMARILLO, overflow: "hidden" }}>
+    <AbsoluteFill style={{ transform: `rotate(${frame * 0.8}deg) scale(2.6)` }}>
+      <div style={{ width: "100%", height: "100%", background: `repeating-conic-gradient(from 0deg at 50% 50%, #ffffff 0deg 9deg, ${AMARILLO} 9deg 18deg)` }} />
+    </AbsoluteFill>
+    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 45%)" }} />
+  </AbsoluteFill>
+);
+
 // Tarjeta de título amarilla con el logo y el elenco
 const TarjetaAmarilla: TarjetaTitulo = ({ reparto }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const logo = spring({ frame: frame - 3, fps, config: { damping: 9, stiffness: 140 } });
   return (
-    <AbsoluteFill style={{ background: AMARILLO, alignItems: "center", justifyContent: "center" }}>
-      <AbsoluteFill style={{ opacity: 0.12, transform: `rotate(${frame * 0.5}deg) scale(2.4)` }}>
-        <div style={{ width: "100%", height: "100%", background: "repeating-conic-gradient(#000 0deg 10deg, transparent 10deg 20deg)" }} />
-      </AbsoluteFill>
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
+      <Rayos frame={frame} />
       <div style={{ ...estiloContorno, fontSize: 150, transform: `scale(${logo}) rotate(-4deg)`, textAlign: "center", lineHeight: 0.9 }}>
         LA
         <br />
@@ -86,16 +94,24 @@ const TarjetaAmarilla: TarjetaTitulo = ({ reparto }) => {
   );
 };
 
-// Cortinilla: franja amarilla diagonal que cruza la pantalla con el logo
-const DURACION_CORTINILLA = 20;
+// Cortinilla: los rayos amarillos y blancos se abren desde el centro, aparece el logo y se cierran
+const DURACION_CORTINILLA = 22;
 const Cortinilla: React.FC = () => {
   const frame = useCurrentFrame();
-  const x = interpolate(frame, [0, 8, 12, DURACION_CORTINILLA], [-130, 0, 0, 130], fijo);
+  const { fps } = useVideoConfig();
+  const radio = interpolate(frame, [0, 7, 15, DURACION_CORTINILLA], [0, 120, 120, 0], fijo);
+  const logo = spring({ frame: frame - 4, fps, config: { damping: 9, stiffness: 180 } });
+  const sale = interpolate(frame, [14, 19], [1, 0], fijo);
   return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
-      <AbsoluteFill style={{ transform: `translateX(${x}%) skewX(-12deg)`, background: AMARILLO, borderLeft: "24px solid #000", borderRight: "24px solid #000", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ ...estiloContorno, fontSize: 110, transform: "skewX(12deg) rotate(-4deg)", textAlign: "center", lineHeight: 0.9 }}>
-          LA OFICINITA <span style={{ color: "#e63946" }}>MX</span>
+    <AbsoluteFill style={{ clipPath: `circle(${radio}% at 50% 50%)` }}>
+      <Rayos frame={frame * 3} />
+      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
+        <div style={{ ...estiloContorno, fontSize: 120, transform: `scale(${logo * sale}) rotate(-4deg)`, textAlign: "center", lineHeight: 0.9 }}>
+          LA
+          <br />
+          OFICINITA
+          <br />
+          <span style={{ color: "#e63946" }}>MX</span>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
