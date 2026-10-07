@@ -1,11 +1,20 @@
 import { interpolate } from "remotion";
 import { fijo, fin } from "../../comun/lineaDeTiempo";
-import { DatosPresentacion, duracionPresentacion, HojaModelo, Presentacion } from "../Presentacion";
+import { DatosPresentacion, duracionPresentacion, HojaModelo, MuestraVoz, Presentacion } from "../Presentacion";
 import { PATY } from "../elenco";
 import duraciones from "./duraciones.json";
 import envolventes from "./envolventes.json";
 import guion from "./guion.json";
 import patyJson from "../../sitcom-laoficinitamx/personajes/paty/paty.json";
+import mdur1 from "./muestra1/duraciones.json";
+import menv1 from "./muestra1/envolventes.json";
+import mguion1 from "./muestra1/guion.json";
+import mdur2 from "./muestra2/duraciones.json";
+import menv2 from "./muestra2/envolventes.json";
+import mguion2 from "./muestra2/guion.json";
+import mdur3 from "./muestra3/duraciones.json";
+import menv3 from "./muestra3/envolventes.json";
+import mguion3 from "./muestra3/guion.json";
 import dur1 from "./voz1/duraciones.json";
 import env1 from "./voz1/envolventes.json";
 import guion1 from "./voz1/guion.json";
@@ -51,3 +60,13 @@ export const DURACIONES_PATY_VOCES = OPCIONES.map(duracionPresentacion);
 export const PresentacionPaty1: React.FC = () => <Presentacion datos={OPCIONES[0]} />;
 export const PresentacionPaty2: React.FC = () => <Presentacion datos={OPCIONES[1]} />;
 export const PresentacionPaty3: React.FC = () => <Presentacion datos={OPCIONES[2]} />;
+
+// Muestras de 5 s de cada acento
+const MUESTRAS: DatosPresentacion[] = [
+  { guion: mguion1, duraciones: mdur1, envolventes: menv1 },
+  { guion: mguion2, duraciones: mdur2, envolventes: menv2 },
+  { guion: mguion3, duraciones: mdur3, envolventes: menv3 },
+].map((v, i) => ({ ...DATOS, ...v, etiquetaVoz: `VOZ ${i + 1} · ${patyJson.vozOpciones[i].estilo}` }));
+export const MuestraPaty1: React.FC = () => <MuestraVoz datos={MUESTRAS[0]} />;
+export const MuestraPaty2: React.FC = () => <MuestraVoz datos={MUESTRAS[1]} />;
+export const MuestraPaty3: React.FC = () => <MuestraVoz datos={MUESTRAS[2]} />;

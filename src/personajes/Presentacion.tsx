@@ -283,3 +283,51 @@ export const HojaModelo: React.FC<{ ficha: FichaPersonaje }> = ({ ficha }) => {
     </AbsoluteFill>
   );
 };
+
+// ---------------------------------------------------------------- muestra de voz (5 s, vertical)
+// Una sola frase con el personaje de frente: sirve para comparar voces rápido.
+export const DURACION_MUESTRA = 150;
+
+export const MuestraVoz: React.FC<{ datos: DatosPresentacion }> = ({ datos }) => {
+  const f = useCurrentFrame();
+  const { width, height, fps } = useVideoConfig();
+  const { ficha, guion } = datos;
+  const lineas = crearLineas(guion.lineas, datos.duraciones, { inicio: 0.4, pausa: 0 });
+  const bocas = useBocas(lineas, datos.envolventes);
+  const l = lineas[0];
+  const pose: PosePersonaje = {
+    ...POSE,
+    respiracion: f / 15,
+    boca: bocas[ficha.id] ?? 0,
+    saludo: f < l.inicio + 40 ? 1 : 0,
+    jarras: f >= l.inicio + 40 ? 1 : 0,
+    salto: saltar(f, l.inicio, 12, 0.4),
+  };
+  const acercar = interpolate(f, [0, DURACION_MUESTRA], [0, 0.8], fijo);
+  return (
+    <AbsoluteFill style={{ background: "#0d1b2a" }}>
+      <Lienzo ancho={width} alto={height}>
+        <Camara pos={[0.4, 2.0 - acercar * 0.1, 5.2 - acercar]} mira={[0, 1.55, 0]} fov={46} />
+        <Estudio frame={f} color={ficha.color} simbolos={datos.simbolos} />
+        <group position={[0, 0.3, 0]}>
+          {datos.modelo ? datos.modelo(pose, f) : <Personaje colores={datos.aspecto ? datos.aspecto(f, () => l) : ficha.colores!} pose={pose} />}
+        </group>
+      </Lienzo>
+      <AbsoluteFill style={{ boxShadow: "inset 0 0 220px 60px rgba(0,0,0,0.6)" }} />
+      <AbsoluteFill style={{ alignItems: "center", paddingTop: 170 }}>
+        <div style={{ ...estiloContorno, fontSize: 130, color: ficha.color, transform: `scale(${spring({ frame: f, fps, config: { damping: 9 } })}) rotate(-3deg)` }}>{ficha.nombre}</div>
+      </AbsoluteFill>
+      {datos.etiquetaVoz && (
+        <AbsoluteFill style={{ alignItems: "center", paddingTop: 360 }}>
+          <div style={{ background: "#000000aa", color: "white", fontFamily: FUENTE, fontSize: 48, padding: "10px 26px", borderRadius: 18, border: `4px solid ${ficha.color}` }}>{datos.etiquetaVoz}</div>
+        </AbsoluteFill>
+      )}
+      <Sequence from={l.inicio} durationInFrames={l.duracion + 4} layout="none">
+        <Audio src={staticFile(`voces/${guion.carpeta}/${l.id}.mp3`)} />
+        <Subtitulo texto={l.texto} nombre={ficha.nombre} color={ficha.color} centroY={1180} />
+      </Sequence>
+      <Sonido archivo="sonidos/musica-chiptune.wav" desde={0} volumen={0.06} fundido={10} />
+      <Sonido archivo="sonidos/brillo.wav" desde={2} volumen={0.4} />
+    </AbsoluteFill>
+  );
+};

@@ -1,0 +1,25 @@
+{
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "paty": "yfUfwZTRubVrsUZWqzwp"
+  },
+  "ajustes": {
+    "paty": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "carpeta": "personaje-paty-muestra3",
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "paty",
+      "texto": "¡Hola, parce! Soy Paty... y yo sí cito mis fuentes.",
+      "locucion": "[excited] ¡Hola, parce! Soy Paty... [proud] y yo sí cito mis fuentes."
+    }
+  ]
+}

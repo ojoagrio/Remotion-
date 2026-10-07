@@ -6,12 +6,48 @@
   "color": "#4cc9f0",
   "look": "A «Orbe»: esfera blanca, ojos de pantalla gigantes, halo de luz, orejitas azules, cachetes rosas y manitas flotantes",
   "diseno": "orbe",
-  "colores": { "cuerpo": "#f1f5f9", "detalle": "#4361ee", "pantalla": "#0b132b", "luz": "#4cc9f0", "mejillas": "#ff8fab" },
-  "voz": null,
+  "colores": {
+    "cuerpo": "#f1f5f9",
+    "detalle": "#4361ee",
+    "pantalla": "#0b132b",
+    "luz": "#4cc9f0",
+    "mejillas": "#ff8fab"
+  },
+  "voz": {
+    "id": "2CGcaXd1E04jesxY7nfq",
+    "nombre": "Fruna – Playful, Mischievous, Sweet",
+    "modelo": "eleven_v3",
+    "ajustes": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "etiquetas": [
+      "[excited]",
+      "[proud]",
+      "[mischievously]",
+      "[confused]",
+      "[whispers]"
+    ]
+  },
   "vozOpciones": [
-    { "opcion": 1, "id": "2CGcaXd1E04jesxY7nfq", "nombre": "Fruna – Playful, Mischievous, Sweet", "estilo": "Tierna y traviesa" },
-    { "opcion": 2, "id": "jw1XYij1FCiI9FENSxIf", "nombre": "Martina – Proactive AI Assistant", "estilo": "Asistente entusiasta" },
-    { "opcion": 3, "id": "phT3cNAv8rxhS1xNjtpB", "nombre": "Hans – Robotic, Metallic, Neutral", "estilo": "Robot metálico" }
+    {
+      "opcion": 1,
+      "id": "2CGcaXd1E04jesxY7nfq",
+      "nombre": "Fruna – Playful, Mischievous, Sweet",
+      "estilo": "Tierna y traviesa"
+    },
+    {
+      "opcion": 2,
+      "id": "jw1XYij1FCiI9FENSxIf",
+      "nombre": "Martina – Proactive AI Assistant",
+      "estilo": "Asistente entusiasta"
+    },
+    {
+      "opcion": 3,
+      "id": "phT3cNAv8rxhS1xNjtpB",
+      "nombre": "Hans – Robotic, Metallic, Neutral",
+      "estilo": "Robot metálico"
+    }
   ],
   "personalidad": [
     "Servicial al 200 %: dice «¡listo!» antes de entender qué le pidieron",
@@ -26,6 +62,12 @@
   ],
   "archivos": {
     "propuestas": "src/sitcom-laoficinitamx/personajes/nova/propuestas.png",
-    "guionesPresentacion": ["src/personajes/nova/voz1/guion.json", "src/personajes/nova/voz2/guion.json", "src/personajes/nova/voz3/guion.json"]
+    "guionesPresentacion": [
+      "src/personajes/nova/voz1/guion.json",
+      "src/personajes/nova/voz2/guion.json",
+      "src/personajes/nova/voz3/guion.json"
+    ],
+    "guionPresentacion": "src/personajes/nova/voz1/guion.json",
+    "vocesPresentacion": "public/voces/personaje-nova-voz1"
   }
 }

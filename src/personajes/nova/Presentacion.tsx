@@ -61,3 +61,8 @@ export const DURACIONES_NOVA = DATOS.map(duracionPresentacion);
 export const PresentacionNova1: React.FC = () => <Presentacion datos={DATOS[0]} />;
 export const PresentacionNova2: React.FC = () => <Presentacion datos={DATOS[1]} />;
 export const PresentacionNova3: React.FC = () => <Presentacion datos={DATOS[2]} />;
+
+// Presentación oficial: voz 1 (Fruna), sin etiqueta de opción
+const OFICIAL: DatosPresentacion = { ...DATOS[0], etiquetaVoz: undefined };
+export const DURACION_NOVA = duracionPresentacion(OFICIAL);
+export const PresentacionNova: React.FC = () => <Presentacion datos={OFICIAL} />;
