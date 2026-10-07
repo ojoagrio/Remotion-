@@ -1,0 +1,8 @@
+{
+  "id": "sitcom-laoficinitamx",
+  "titulo": "LA OFICINITA MX",
+  "formato": "vertical",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.05, "pausa": 0.35 },
+  "elenco": ["juanito"]
+}

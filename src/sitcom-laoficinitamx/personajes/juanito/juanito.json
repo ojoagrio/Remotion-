@@ -1,0 +1,48 @@
+{
+  "id": "juanito",
+  "nombre": "JUANITO",
+  "rol": "Desarrollador de software",
+  "color": "#ffbe0b",
+  "look": "A «Lentes XL»: bomber negra, playera amarilla, cargo, tenis blancos y lentes gigantes con cristal azul",
+  "colores": {
+    "piel": "#e8b08a",
+    "camisa": "#ffbe0b",
+    "chaqueta": "#1b1b1f",
+    "pantalon": "#8d7b68",
+    "sombrero": "#1b1b1f",
+    "zapatos": "#f8f9fa",
+    "gorra": false,
+    "bigote": false,
+    "cabello": "#1d1d1d",
+    "lentes": true,
+    "lentesCristal": "#4cc9f0",
+    "copete": true,
+    "emblema": "</>",
+    "audifonos": "#ffbe0b",
+    "rasgos": { "lentes": 1.65, "sonrisa": 0.35 }
+  },
+  "voz": {
+    "id": "HxRDsm0E8jdUUrG0lqbK",
+    "nombre": "Javi – Social Media (ElevenLabs)",
+    "modelo": "eleven_v3",
+    "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
+    "etiquetas": ["[casually]", "[confidently]", "[playfully]", "[laughs]", "[cool]"]
+  },
+  "personalidad": [
+    "Simpático y bromista: todo lo convierte en chiste de programador",
+    "Optimista incluso con producción caída",
+    "Ama el café, los atajos de teclado y el modo oscuro"
+  ],
+  "muletillas": [
+    "Aquí se programa con flow.",
+    "No es un bug, es una funcionalidad sorpresa.",
+    "En mi máquina sí funciona.",
+    "Dame cinco minutos (de programador)."
+  ],
+  "archivos": {
+    "hojaModelo": "src/sitcom-laoficinitamx/personajes/juanito/hoja-modelo.png",
+    "propuestas": "src/sitcom-laoficinitamx/personajes/juanito/propuestas.png",
+    "guionPresentacion": "src/personajes/juanito/guion.json",
+    "vocesPresentacion": "public/voces/personaje-juanito-v2"
+  }
+}
