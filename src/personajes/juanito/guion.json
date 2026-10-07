@@ -1,0 +1,12 @@
+{
+  "carpeta": "personaje-juanito",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.05, "pausa": 0.35 },
+  "voces": { "juanito": "SzatlCk7ZMTGly6rtgt4" },
+  "ajustes": { "juanito": { "stability": 0.0, "similarity_boost": 0.8 } },
+  "lineas": [
+    { "id": "01", "personaje": "juanito", "texto": "¡Qué onda! Soy Juanito, desarrollador de software.", "locucion": "[cheerfully] ¡Qué onda! Soy Juanito, desarrollador de software." },
+    { "id": "02", "personaje": "juanito", "texto": "Mi código no tiene bugs... tiene funcionalidades sorpresa.", "locucion": "[playfully] Mi código no tiene bugs... [laughs] tiene funcionalidades sorpresa." },
+    { "id": "03", "personaje": "juanito", "texto": "Y si algo falla... en mi máquina sí funciona.", "locucion": "[confidently] Y si algo falla... [mischievously] en mi máquina sí funciona." }
+  ]
+}

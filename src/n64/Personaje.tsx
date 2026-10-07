@@ -21,6 +21,10 @@ export type ColoresPersonaje = {
   mandil?: string;
   // Chongo (moño de pelo) en la nuca
   chongo?: boolean;
+  // Texto corto en el pecho (p. ej. "</>"), copete despeinado y audífonos al cuello
+  emblema?: string;
+  copete?: boolean;
+  audifonos?: string;
 };
 
 export type PosePersonaje = {
@@ -68,6 +72,25 @@ const Material: React.FC<{ color: string }> = ({ color }) => (
   <meshLambertMaterial color={color} flatShading />
 );
 
+// Textura pequeña con el emblema del pecho (look pixelado)
+const useEmblema = (texto?: string) =>
+  useMemo(() => {
+    if (!texto) return null;
+    const c = document.createElement("canvas");
+    c.width = 32;
+    c.height = 16;
+    const ctx = c.getContext("2d")!;
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 12px monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(texto, 16, 9);
+    const t = new THREE.CanvasTexture(c);
+    t.magFilter = THREE.NearestFilter;
+    t.minFilter = THREE.NearestFilter;
+    return t;
+  }, [texto]);
+
 const ROJO_ENOJO = new THREE.Color("#ff2a2a");
 
 export const Personaje: React.FC<{
@@ -114,6 +137,7 @@ export const Personaje: React.FC<{
   const conBigote = colores.bigote ?? true;
   const conGorra = colores.gorra ?? true;
   const { cabello, mono } = colores;
+  const emblema = useEmblema(colores.emblema);
 
   return (
     <group position={[x + temblor, 0, z]} rotation={[0, rotacion, 0]} scale={escala}>
@@ -153,6 +177,26 @@ export const Personaje: React.FC<{
           <cylinderGeometry args={[0.36, 0.42, 0.75, 6]} />
           <Material color={colores.camisa} />
         </mesh>
+        {emblema && (
+          <mesh position={[0, 1.18, 0.4]} rotation={[-0.06, 0, 0]}>
+            <planeGeometry args={[0.44, 0.22]} />
+            <meshBasicMaterial map={emblema} transparent />
+          </mesh>
+        )}
+        {colores.audifonos && (
+          <>
+            <mesh position={[0, 1.5, 0.05]} rotation={[Math.PI / 2 - 0.25, 0, 0]}>
+              <torusGeometry args={[0.3, 0.04, 4, 10, Math.PI]} />
+              <meshLambertMaterial color={colores.audifonos} flatShading />
+            </mesh>
+            {[-1, 1].map((l) => (
+              <mesh key={l} position={[l * 0.3, 1.5, 0.12]}>
+                <cylinderGeometry args={[0.1, 0.1, 0.08, 8]} />
+                <meshLambertMaterial color={colores.audifonos} flatShading />
+              </mesh>
+            ))}
+          </>
+        )}
         {/* Overol / cinturón */}
         <mesh position={[0, 0.85, 0]}>
           <cylinderGeometry args={[0.43, 0.4, 0.3, 6]} />
@@ -323,6 +367,16 @@ export const Personaje: React.FC<{
                   </group>
                 ))}
             </>
+          )}
+          {colores.copete && cabello && (
+            <group position={[0.05, 0.48, 0.12]}>
+              {[-1, 0, 1].map((k) => (
+                <mesh key={k} position={[k * 0.11, 0, -k * 0.02]} rotation={[0.5, 0, -k * 0.35]}>
+                  <coneGeometry args={[0.09, 0.26, 4]} />
+                  <Material color={cabello} />
+                </mesh>
+              ))}
+            </group>
           )}
           {colores.chongo && cabello && (
             <mesh position={[0, 0.3, -0.33]}>

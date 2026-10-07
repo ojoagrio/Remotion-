@@ -9,10 +9,11 @@ export const Lienzo: React.FC<{
   desenfoque?: number;
   children: React.ReactNode;
 }> = ({ ancho, alto, escalaPixel = 4, desenfoque = 0, children }) => (
+  // ThreeCanvas exige medidas enteras
   <div
     style={{
-      width: ancho / escalaPixel,
-      height: alto / escalaPixel,
+      width: Math.round(ancho / escalaPixel),
+      height: Math.round(alto / escalaPixel),
       transform: `scale(${escalaPixel})`,
       transformOrigin: "top left",
       imageRendering: "pixelated",
@@ -20,8 +21,8 @@ export const Lienzo: React.FC<{
     }}
   >
     <ThreeCanvas
-      width={ancho / escalaPixel}
-      height={alto / escalaPixel}
+      width={Math.round(ancho / escalaPixel)}
+      height={Math.round(alto / escalaPixel)}
       dpr={1}
       gl={{ antialias: false }}
       camera={{ fov: 50, near: 0.1, far: 100 }}

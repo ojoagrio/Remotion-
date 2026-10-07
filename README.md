@@ -292,3 +292,18 @@ npm run render:mensaje
 
 Una línea del guion puede usar la voz de otro personaje con `"voz": "<personaje>"` (en «Modo
 mamá», Nube habla con la voz de la mamá).
+
+## Elenco fijo (`src/personajes/`)
+
+Personajes que aparecen siempre igual en cualquier video. `elenco.ts` define a cada uno con su
+aspecto (`colores`), su voz de ElevenLabs, su personalidad y sus muletillas; `comoMiembro()` lo
+convierte en miembro del reparto del motor de sitcom.
+
+| Personaje | Rol | Voz | Hoja de modelo |
+| --- | --- | --- | --- |
+| **Juanito** | Desarrollador de software, simpático y bromista, con lentes | «Gil» | `docs/elenco/juanito.png` |
+
+Cada personaje tiene una presentación en video (`PresentacionJuanito`) y una hoja de modelo
+(`HojaModeloJuanito`, imagen 16:9 con vistas, expresiones, paleta y voz): `npm run render:juanito`.
+
+El personaje 3D admite además `emblema` (texto en el pecho), `copete` y `audifonos`.
