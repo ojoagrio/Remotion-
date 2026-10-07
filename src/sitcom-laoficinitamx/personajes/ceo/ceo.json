@@ -1,0 +1,64 @@
+{
+  "id": "ceo",
+  "nombre": "MR. CEO",
+  "rol": "CEO de la startup",
+  "color": "#ffd166",
+  "look": "C «Barbilla de Líder»: barbilla de superhéroe, bigotón, canas, chaleco de startup azul marino, camisa celeste, pantalón caqui y tenis blancos",
+  "colores": {
+    "piel": "#e0ac85",
+    "camisa": "#8ecae6",
+    "chaqueta": "#14213d",
+    "pantalon": "#8d7b68",
+    "sombrero": "#adb5bd",
+    "zapatos": "#f8f9fa",
+    "gorra": false,
+    "bigote": true,
+    "cabello": "#adb5bd",
+    "copete": true,
+    "rasgos": {
+      "barbilla": 1.2,
+      "sonrisa": 0.5,
+      "copete": 0.9
+    }
+  },
+  "voz": null,
+  "vozOpciones": [
+    {
+      "opcion": 1,
+      "id": "G4IAP30yc6c1gK0csDfu",
+      "nombre": "Juan Carlos – Confident and Upbeat",
+      "estilo": "Motivacional y acelerado"
+    },
+    {
+      "opcion": 2,
+      "id": "rtQzMJmQhSg0YB7cp3ed",
+      "nombre": "Joaquín – Rich and Captivating",
+      "estilo": "Elegante y profundo"
+    },
+    {
+      "opcion": 3,
+      "id": "INWTGvzKdMrRuRgTL1rY",
+      "nombre": "Adrián – Jolly, fast-paced",
+      "estilo": "Bonachón y rapidito"
+    }
+  ],
+  "personalidad": [
+    "Optimista nivel «esto va a ser unicornio»",
+    "Le mete IA a todo: al café, a las juntas y al cumpleaños de la oficina",
+    "Se altera con las fechas de entrega (que él mismo puso)"
+  ],
+  "muletillas": [
+    "¡Esto lo resolvemos con IA!",
+    "¿Cómo que no está listo? ¡Era para ayer!",
+    "Somos AI-first, AI-only, AI-todo.",
+    "Pensemos fuera de la caja… de la IA."
+  ],
+  "archivos": {
+    "propuestas": "src/sitcom-laoficinitamx/personajes/ceo/propuestas.png",
+    "muestrasVoz": [
+      "src/personajes/ceo/muestra1/guion.json",
+      "src/personajes/ceo/muestra2/guion.json",
+      "src/personajes/ceo/muestra3/guion.json"
+    ]
+  }
+}

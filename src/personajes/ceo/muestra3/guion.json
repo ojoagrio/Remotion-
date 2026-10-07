@@ -1,0 +1,25 @@
+{
+  "carpeta": "personaje-ceo-muestra3",
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "ceo": "INWTGvzKdMrRuRgTL1rY"
+  },
+  "ajustes": {
+    "ceo": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "ceo",
+      "texto": "¡Buenos días, equipo! Esto lo resolvemos con IA... ¡para ayer!",
+      "locucion": "[enthusiastic] ¡Buenos días, equipo! Esto lo resolvemos con IA... [shouting] ¡para ayer!"
+    }
+  ]
+}
