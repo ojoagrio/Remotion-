@@ -23,7 +23,7 @@
   },
   "voz": {
     "id": "HxRDsm0E8jdUUrG0lqbK",
-    "nombre": "Javi – Social Media (ElevenLabs)",
+    "nombre": "Javi – Social Media",
     "modelo": "eleven_v3",
     "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
     "etiquetas": ["[casually]", "[confidently]", "[playfully]", "[laughs]", "[cool]"]

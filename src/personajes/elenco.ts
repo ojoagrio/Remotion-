@@ -2,6 +2,7 @@ import { ColoresPersonaje } from "../n64/Personaje";
 import type { Miembro } from "../sitcom/motor/Episodio";
 import type { Estado } from "../sitcom/motor/datos";
 import juanito from "../sitcom-laoficinitamx/personajes/juanito/juanito.json";
+import paty from "../sitcom-laoficinitamx/personajes/paty/paty.json";
 
 // Elenco fijo: cada personaje tiene SIEMPRE el mismo aspecto, la misma voz y la misma
 // personalidad en cualquier video o serie. Para usarlo en un guion, copia su "voz" en
@@ -20,8 +21,9 @@ export type FichaPersonaje = {
 
 // Fichas guardadas en src/sitcom-laoficinitamx (fuente única para reutilizarlas)
 export const JUANITO = juanito as FichaPersonaje;
+export const PATY = paty as FichaPersonaje;
 
-export const ELENCO: Record<string, FichaPersonaje> = { juanito: JUANITO };
+export const ELENCO: Record<string, FichaPersonaje> = { juanito: JUANITO, paty: PATY };
 
 // Convierte una ficha en miembro del reparto del motor de sitcom
 export const comoMiembro = (p: FichaPersonaje, inicial?: Partial<Estado>): Miembro => ({

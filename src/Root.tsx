@@ -21,6 +21,7 @@ import { EP3, GemeloDigital } from "./sitcom/ep3/GemeloDigital";
 import { DURACION_PRESENTACION, HojaModeloJuanito, PresentacionJuanito } from "./personajes/juanito/Presentacion";
 import { PropuestasJuanito } from "./personajes/juanito/Propuestas";
 import { PropuestasPaty } from "./personajes/paty/Propuestas";
+import { DURACION_PRESENTACION_PATY, HojaModeloPaty, PresentacionPaty } from "./personajes/paty/Presentacion";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -120,6 +121,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="HojaModeloJuanito" component={HojaModeloJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasJuanito" component={PropuestasJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasPaty" component={PropuestasPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="PresentacionPaty" component={PresentacionPaty} durationInFrames={DURACION_PRESENTACION_PATY} fps={30} width={1080} height={1920} />
+      <Composition id="HojaModeloPaty" component={HojaModeloPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
     </>
   );
 };

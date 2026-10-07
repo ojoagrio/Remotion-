@@ -1,0 +1,46 @@
+{
+  "id": "paty",
+  "nombre": "PATY",
+  "rol": "La niña sabelotodo",
+  "color": "#ff4fd8",
+  "look": "A «Coletas Antena» con el texto «¿IA?» de la B: coletas gigantes con moños rosas, jumper morado, blusa blanca y tenis rosas",
+  "colores": {
+    "piel": "#c98d6b",
+    "camisa": "#f8f9fa",
+    "mandil": "#7b2cbf",
+    "pantalon": "#7b2cbf",
+    "sombrero": "#7a3b1d",
+    "zapatos": "#ff4fd8",
+    "gorra": false,
+    "bigote": false,
+    "cabello": "#7a3b1d",
+    "mono": "#ff4fd8",
+    "lentes": true,
+    "emblema": "¿IA?",
+    "rasgos": { "coletas": 1.9, "lentes": 1.2, "sonrisa": 0.3 }
+  },
+  "voz": {
+    "id": "CPv3Zr3CQCqE4ZzuCgBP",
+    "nombre": "Lulu – Adorable, Bright & Playful",
+    "modelo": "eleven_v3",
+    "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
+    "etiquetas": ["[excited]", "[proud]", "[skeptical]", "[sarcastic]", "[giggles]"]
+  },
+  "personalidad": [
+    "Sabelotodo adorable: siempre levanta la mano primero",
+    "Desconfía de la IA… aunque a veces la usa a escondidas",
+    "Cita sus fuentes y corrige a los adultos (con cariño)"
+  ],
+  "muletillas": [
+    "Yo sí cito mis fuentes.",
+    "¡Eso no lo dijo la IA, lo dije yo!",
+    "Técnicamente…",
+    "¿Y de dónde sacó eso la IA?"
+  ],
+  "archivos": {
+    "hojaModelo": "src/sitcom-laoficinitamx/personajes/paty/hoja-modelo.png",
+    "propuestas": "src/sitcom-laoficinitamx/personajes/paty/propuestas.png",
+    "guionPresentacion": "src/personajes/paty/guion.json",
+    "vocesPresentacion": "public/voces/personaje-paty"
+  }
+}

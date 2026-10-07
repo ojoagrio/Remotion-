@@ -28,7 +28,8 @@
     "render:mensaje": "REMOTION_GL=swangle remotion render MensajeEnviado out/mensaje-enviado-ep1.mp4",
     "render:modomama": "REMOTION_GL=swangle remotion render ModoMama out/mensaje-enviado-ep2-modo-mama.mp4",
     "render:sitcom3": "REMOTION_GL=swangle remotion render GemeloDigital out/sitcom-ep3-gemelo-digital.mp4",
-    "render:juanito": "REMOTION_GL=swangle remotion render PresentacionJuanito out/juanito-presentacion.mp4 && REMOTION_GL=swangle remotion still HojaModeloJuanito docs/elenco/juanito.png"
+    "render:juanito": "REMOTION_GL=swangle remotion render PresentacionJuanito out/juanito-presentacion.mp4 && REMOTION_GL=swangle remotion still HojaModeloJuanito docs/elenco/juanito.png",
+    "render:paty": "remotion render PresentacionPaty out/paty-presentacion.mp4 --gl=swangle"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",
