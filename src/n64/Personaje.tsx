@@ -400,10 +400,10 @@ export const Personaje: React.FC<{
                 <meshBasicMaterial color="#120a06" />
               </mesh>
             ))}
-          {/* Barbilla prominente */}
+          {/* Barbilla prominente: debajo de la boca, para no taparla al hablar */}
           {(r.barbilla ?? 0) > 0 && (
-            <mesh position={[0, -0.33, 0.27 + (r.barbilla ?? 0) * 0.05]} scale={[1 + (r.barbilla ?? 0) * 0.25, 1 + (r.barbilla ?? 0) * 0.2, 1]}>
-              <boxGeometry args={[0.3, 0.14, 0.2]} />
+            <mesh position={[0, -0.44, 0.2 + (r.barbilla ?? 0) * 0.05]} scale={[1 + (r.barbilla ?? 0) * 0.25, 1 + (r.barbilla ?? 0) * 0.15, 1]}>
+              <boxGeometry args={[0.3, 0.12, 0.2]} />
               <Material color={colorPiel} />
             </mesh>
           )}
@@ -466,7 +466,11 @@ export const Personaje: React.FC<{
               </mesh>
             ))}
           {/* Boca: se abre con la voz; con "sonrisa" es más ancha y enseña los dientes */}
-          <mesh position={[0, -0.24, 0.37]} scale={[1 + (r.sonrisa ?? 0) * 0.9, 0.15 + Math.max(boca, (r.sonrisa ?? 0) * 0.45) * 1.1, 1]}>
+          {/* Con bigote, la boca crece hacia abajo para que se vea moverse */}
+          <mesh
+            position={[0, -0.24 - (conBigote ? Math.max(boca, (r.sonrisa ?? 0) * 0.45) * 0.09 : 0), 0.37]}
+            scale={[1 + (r.sonrisa ?? 0) * 0.9, 0.15 + Math.max(boca, (r.sonrisa ?? 0) * 0.45) * (conBigote ? 1.5 : 1.1), 1]}
+          >
             <boxGeometry args={[0.18, 0.14, 0.06]} />
             <meshBasicMaterial color="#5a0f12" />
           </mesh>
