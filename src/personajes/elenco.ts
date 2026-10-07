@@ -21,29 +21,34 @@ export const JUANITO: FichaPersonaje = {
   id: "juanito",
   nombre: "JUANITO",
   rol: "Desarrollador de software",
-  color: "#3a86ff",
+  color: "#ffbe0b",
+  // Look oficial: propuesta A «Lentes XL» (bomber negra, lentes gigantes con cristal azul)
   colores: {
     piel: "#e8b08a",
-    camisa: "#3a86ff", // sudadera azul eléctrico
-    pantalon: "#3d5a80", // jeans
-    sombrero: "#3a86ff",
-    zapatos: "#e63946", // tenis rojos
+    camisa: "#ffbe0b", // playera amarilla
+    chaqueta: "#1b1b1f", // bomber negra
+    pantalon: "#8d7b68", // cargo
+    sombrero: "#1b1b1f",
+    zapatos: "#f8f9fa", // tenis blancos
     gorra: false,
     bigote: false,
     cabello: "#1d1d1d",
     lentes: true,
+    lentesCristal: "#4cc9f0",
     copete: true,
     emblema: "</>",
     audifonos: "#ffbe0b",
+    rasgos: { lentes: 1.65, sonrisa: 0.35 },
   },
-  // ElevenLabs: «Gil – Cálida, natural y mexicana»
-  voz: { id: "SzatlCk7ZMTGly6rtgt4", nombre: "Gil", ajustes: { stability: 0.0, similarity_boost: 0.8 } },
+  // ElevenLabs: «Javi – Social Media» (mexicano, casual y con flow)
+  voz: { id: "HxRDsm0E8jdUUrG0lqbK", nombre: "Javi", ajustes: { stability: 0.0, similarity_boost: 0.8 } },
   personalidad: [
     "Simpático y bromista: todo lo convierte en chiste de programador",
     "Optimista incluso con producción caída",
     "Ama el café, los atajos de teclado y el modo oscuro",
   ],
   muletillas: [
+    "Aquí se programa con flow.",
     "No es un bug, es una funcionalidad sorpresa.",
     "En mi máquina sí funciona.",
     "Dame cinco minutos (de programador).",

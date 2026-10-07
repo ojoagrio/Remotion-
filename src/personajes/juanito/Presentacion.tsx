@@ -16,7 +16,7 @@ import guion from "./guion.json";
 
 const LINEAS = crearLineas(guion.lineas, duraciones, { inicio: 1.2, pausa: 0.35 });
 const L = (n: number) => LINEAS[n - 1];
-export const DURACION_PRESENTACION = fin(L(3)) + 110;
+export const DURACION_PRESENTACION = fin(L(4)) + 110;
 
 const POSE: PosePersonaje = { x: 0, z: 0, rotacion: 0, fasePaso: 0, caminar: 0, saludo: 0, salto: 0, respiracion: 0 };
 
@@ -74,19 +74,19 @@ export const PresentacionJuanito: React.FC = () => {
   const bocas = useBocas(LINEAS, envolventes);
 
   // Gira en el pedestal al inicio y al final; de frente mientras habla
-  const giro = interpolate(f, [0, L(1).inicio, fin(L(3)) + 15, DURACION_PRESENTACION], [Math.PI * 2, 0, 0, -Math.PI], { ...fijo, easing: suave.easing });
+  const giro = interpolate(f, [0, L(1).inicio, fin(L(4)) + 15, DURACION_PRESENTACION], [Math.PI * 2, 0, 0, -Math.PI], { ...fijo, easing: suave.easing });
   const pose: PosePersonaje = {
     ...POSE,
     rotacion: giro,
     respiracion: f / 15,
     boca: bocas.juanito ?? 0,
-    saludo: f >= L(1).inicio && f < L(1).inicio + 45 ? 1 : f >= fin(L(3)) + 20 ? 1 : 0,
-    teclear: f >= L(2).inicio && f < L(2).inicio + 50 ? 1 : 0,
-    jarras: (f >= L(2).inicio + 50 && f < fin(L(3)) + 20) ? 1 : 0,
+    saludo: f >= L(1).inicio && f < L(1).inicio + 45 ? 1 : f >= fin(L(4)) + 20 ? 1 : 0,
+    teclear: f >= L(3).inicio && f < L(3).inicio + 50 ? 1 : 0,
+    jarras: (f >= L(3).inicio + 50 && f < fin(L(4)) + 20) ? 1 : 0,
     salto: saltar(f, L(1).inicio, 12, 0.4) + saltar(f, L(2).inicio + 70, 12, 0.3),
-    sueno: f >= fin(L(3)) - 25 && f < fin(L(3)) + 5 ? 0.6 : 0,
+    sueno: f >= fin(L(4)) - 25 && f < fin(L(4)) + 5 ? 0.6 : 0,
   };
-  const a = interpolate(f, [0, L(1).inicio + 20, L(2).inicio, fin(L(3))], [-0.9, 0, 0, 0.35], fijo);
+  const a = interpolate(f, [0, L(1).inicio + 20, L(2).inicio, fin(L(4))], [-0.9, 0, 0, 0.35], fijo);
   const acercar = interpolate(f, [L(2).inicio, L(2).inicio + 30, fin(L(2)), fin(L(2)) + 20], [0, 1, 1, 0], fijo);
   const camPos: Vec3 = orbita([0, 0, 0], 5.2 - acercar * 1.6, a, 2.0 - acercar * 0.2);
 
@@ -113,7 +113,7 @@ export const PresentacionJuanito: React.FC = () => {
       </Sequence>
 
       {/* Rasgos de personalidad */}
-      <Sequence from={fin(L(3)) + 10} layout="none">
+      <Sequence from={fin(L(4)) + 10} layout="none">
         <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 380, gap: 14 }}>
           {["Simpático", "Bromista", "Ama el modo oscuro"].map((r, i) => (
             <Sequence key={r} from={i * 8} layout="none">
@@ -132,10 +132,10 @@ export const PresentacionJuanito: React.FC = () => {
 
       <Sonido archivo="sonidos/musica-chiptune.wav" desde={0} volumen={0.16} bajarConVoces={{ lineas: LINEAS, volumen: 0.06 }} fundido={10} bucle />
       <Sonido archivo="sonidos/brillo.wav" desde={L(1).inicio + 18} volumen={0.4} />
-      <Sonido archivo="sonidos/rimshot.wav" desde={fin(L(2)) + 2} volumen={0.5} />
-      <Sonido archivo="sonidos/risa-chica.wav" desde={fin(L(3))} volumen={0.4} />
+      <Sonido archivo="sonidos/rimshot.wav" desde={fin(L(3)) + 2} volumen={0.5} />
+      <Sonido archivo="sonidos/risa-chica.wav" desde={fin(L(4))} volumen={0.4} />
       {[0, 8, 16].map((d) => (
-        <Sonido key={d} archivo="sonidos/pop.wav" desde={fin(L(3)) + 10 + d} volumen={0.3} />
+        <Sonido key={d} archivo="sonidos/pop.wav" desde={fin(L(4)) + 10 + d} volumen={0.3} />
       ))}
     </AbsoluteFill>
   );
