@@ -22,6 +22,7 @@ npm run render:industria # renderizar «La industria tech» a out/industria-tech
 npm run render:tipos # renderizar «5 tipos de personas usando la IA» a out/tipos-ia.mp4
 npm run render:clawd # renderizar «Vida salvaje en la terminal» (Clawd) a out/clawd-documental.mp4
 npm run render:sitcom # renderizar la sitcom «Prompt & Compañía» (16:9) a out/sitcom-prompt-y-compania.mp4
+npm run render:sitcom2 # renderizar el episodio 2 «Vacaciones» (vertical)
 npm run typecheck  # comprobar tipos
 ```
 
@@ -232,3 +233,38 @@ npm run ritmo -- src/sitcom/guion.json 1.06 0.4
 npm run bocas -- src/sitcom/guion.json
 npm run render:sitcom
 ```
+
+## Flujo rápido (recomendado para videos nuevos)
+
+```bash
+# 1. Voces con caché + ritmo + bocas, todo en uno (solo pide a ElevenLabs las líneas que cambiaron)
+ELEVENLABS_API_KEY=tu_clave npm run producir -- src/sitcom/ep2/guion.json
+# 2. Hoja de contactos rápida (empaqueta una vez y reutiliza el navegador): ~2 s por fotograma
+REMOTION_GL=swangle npm run hoja -- SitcomEp2 12 0.25        # -> out/hoja-SitcomEp2.png
+# 3. Render final
+REMOTION_GL=swangle npx remotion render SitcomEp2 out/ep2.mp4
+```
+
+- `scripts/producir.mjs`: guarda los audios crudos en `audio-fuente/voces/<carpeta>/` con un
+  hash por línea; volver a correrlo tras editar una frase solo regenera esa frase.
+- `scripts/procesar-voces.py`: ritmo opcional (`"ritmo": {"velocidad", "pausa"}` en el guion),
+  duraciones, palabras y envolventes de boca en un solo paso.
+- `scripts/hoja.mjs`: 8 fotogramas en ~17 s (antes ~3 min con `remotion still` uno por uno).
+- `REMOTION_GL=swangle` activa el renderizado por software desde `remotion.config.ts`.
+  Subir `REMOTION_CONCURRENCY` no acelera en esta máquina (el 3D por software ya usa la CPU).
+- TypeScript usa `lib: es2019` (Object.entries, includes, flatMap...).
+
+## Motor de episodios de la sitcom (`src/sitcom/motor/`)
+
+Un episodio nuevo = un `guion.json` + un componente de 5 líneas (ver `src/sitcom/ep2/`).
+El guion indica `formato` (vertical u horizontal), las risas (`risa`, `pausa`), la canción de
+presentación (`tema`) y acciones por personaje con palabras sencillas:
+
+`sentado`, `de-pie`, `teclea`, `jarras`, `brazos-arriba`, `saluda`, `telefono`, `nada`,
+`enojo`, `sueno`, `feliz`, `malvado`, `asustado`, `llora`, `neutral`, `salta`, `aparece`,
+`desaparece`, `lentes-sol`.
+
+Ejemplo: `"acciones": { "sofi": "de-pie brazos-arriba enojo salta" }` (al empezar la línea) o
+`"accionesRisa"` (al empezar la risa). La cámara es automática: primer plano de quien habla y
+plano general en las risas; se puede forzar con `"camara"`/`"camaraRisa"` (`"general"`, el id
+de un personaje, o `"id!"` para un crash zoom).

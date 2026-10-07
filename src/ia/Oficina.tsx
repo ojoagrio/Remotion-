@@ -223,7 +223,10 @@ export const Robot: React.FC<{
   lavando?: number;
   // Holograma de un plato de comida sobre la mano 0..1
   holograma?: number;
-}> = ({ pos, rot, boca, frame, animo, temblor = 0, sudor = 0, lavando = 0, holograma = 0 }) => {
+  // Color del cuerpo (por defecto blanco) y lentes de sol
+  color?: string;
+  lentesSol?: boolean;
+}> = ({ pos, rot, boca, frame, animo, temblor = 0, sudor = 0, lavando = 0, holograma = 0, color = "#e8ecf2", lentesSol = false }) => {
   const flota = Math.sin(frame * 0.12) * 0.07;
   const ladeo = Math.sin(frame * 0.07) * 0.12;
   const colorOjos = animo === "malvado" ? "#ff2a2a" : "#5ef2ff";
@@ -236,8 +239,33 @@ export const Robot: React.FC<{
       {/* Cabeza */}
       <mesh>
         <icosahedronGeometry args={[0.42, 1]} />
-        <meshLambertMaterial color="#e8ecf2" flatShading />
+        <meshLambertMaterial color={color} flatShading />
       </mesh>
+      {lentesSol && (
+        <group position={[0, 0.1, 0.5]}>
+          {/* Montura rosa, cristales oscuros y un brillo blanco */}
+          <mesh position={[0, 0.07, 0]}>
+            <boxGeometry args={[0.5, 0.04, 0.03]} />
+            <meshBasicMaterial color="#ff4fa3" />
+          </mesh>
+          {[-1, 1].map((l) => (
+            <group key={l} position={[l * 0.13, 0, 0]}>
+              <mesh>
+                <boxGeometry args={[0.18, 0.13, 0.03]} />
+                <meshBasicMaterial color="#ff4fa3" />
+              </mesh>
+              <mesh position={[0, 0, 0.012]}>
+                <boxGeometry args={[0.14, 0.09, 0.02]} />
+                <meshBasicMaterial color="#3a0ca3" />
+              </mesh>
+              <mesh position={[-0.04, 0.02, 0.025]}>
+                <boxGeometry args={[0.03, 0.03, 0.01]} />
+                <meshBasicMaterial color="#ffffff" />
+              </mesh>
+            </group>
+          ))}
+        </group>
+      )}
       {/* Visor */}
       <mesh position={[0, 0.02, 0.3]} scale={[1, 0.62, 0.5]}>
         <sphereGeometry args={[0.33, 8, 6]} />
@@ -310,7 +338,7 @@ export const Robot: React.FC<{
             ]}
           >
             <icosahedronGeometry args={[0.1, 0]} />
-            <meshLambertMaterial color="#e8ecf2" flatShading />
+            <meshLambertMaterial color={color} flatShading />
           </mesh>
         );
       })}

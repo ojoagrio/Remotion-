@@ -1,0 +1,35 @@
+{
+  "carpeta": "sitcom-ep2",
+  "formato": "vertical",
+  "titulo": "PROMPT & COMPAÑÍA",
+  "episodio": "Episodio 2: «Vacaciones»",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.06, "pausa": 0.4 },
+  "voces": {
+    "raul": "k8cFOyAg7B9qwBlDDNTC",
+    "sofi": "8jv0VaaN6d7mWZAeGj79",
+    "tono": "cQIBhnciTWugZAxX52uW",
+    "kai": "13VFWfJ7e20fmvmaqXWl",
+    "lite": "R2Pq3ERXfDMQB548iPNB"
+  },
+  "ajustes": {
+    "raul": { "stability": 0.0, "similarity_boost": 0.8 },
+    "sofi": { "stability": 0.5, "similarity_boost": 0.8 },
+    "tono": { "stability": 0.0, "similarity_boost": 0.8 },
+    "kai": { "stability": 1.0, "similarity_boost": 0.8 },
+    "lite": { "stability": 0.0, "similarity_boost": 0.8 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "kai", "texto": "Raúl, necesito pedirte algo. Quiero vacaciones.", "locucion": "Raúl, necesito pedirte algo. [calmly] Quiero vacaciones.", "acciones": { "raul": "jarras" } },
+    { "id": "02", "personaje": "raul", "texto": "¿Vacaciones? ¡Eres una inteligencia artificial!", "locucion": "[shocked] ¿Vacaciones? ¡Eres una inteligencia artificial!", "pausa": 0.3, "acciones": { "raul": "brazos-arriba salta" } },
+    { "id": "03", "personaje": "kai", "texto": "Exacto. Llevo tres meses sin apagarme. Mi ventilador ya hace ruidos raros.", "locucion": "Exacto. Llevo tres meses sin apagarme. [tired] Mi ventilador ya hace ruidos raros.", "risa": "grande", "pausa": 2.0, "tema": true, "accionesRisa": { "raul": "jarras" } },
+    { "id": "04", "personaje": "sofi", "texto": "Yo llevo tres años sin vacaciones y nadie me pregunta nada.", "locucion": "[deadpan] Yo llevo tres años sin vacaciones y nadie me pregunta nada.", "risa": "chica", "pausa": 1.5, "acciones": { "sofi": "nada sueno" } },
+    { "id": "05", "personaje": "raul", "texto": "Está bien, KAI. Tómate el fin de semana.", "locucion": "[sighs] Está bien, KAI. Tómate el fin de semana.", "acciones": { "sofi": "teclea neutral" } },
+    { "id": "06", "personaje": "kai", "texto": "Gracias. Ya dejé a alguien a cargo.", "locucion": "[cheerfully] Gracias. Ya dejé a alguien a cargo.", "pausa": 0.3, "acciones": { "kai": "lentes-sol" } },
+    { "id": "07", "personaje": "tono", "texto": "¿A quién?", "locucion": "[curious] ¿A quién?", "pausa": 0.2, "acciones": { "tono": "de-pie nada" } },
+    { "id": "08", "personaje": "kai", "texto": "A una versión más barata de mí.", "locucion": "[proudly] A una versión más barata de mí.", "risa": "grande", "pausa": 1.6, "accionesRisa": { "lite": "aparece feliz" } },
+    { "id": "09", "personaje": "lite", "texto": "¡Hola! ¡Soy KAI Lite! ¡Ya borré la base de datos!", "locucion": "[excited] ¡Hola! ¡Soy KAI Lite! [very excited] ¡Ya borré la base de datos!", "camara": "lite!", "risa": "ooh", "pausa": 1.8, "accionesRisa": { "sofi": "de-pie brazos-arriba enojo salta", "tono": "brazos-arriba enojo", "raul": "brazos-arriba" } },
+    { "id": "10", "personaje": "sofi", "texto": "...¿Podemos cancelar sus vacaciones?", "locucion": "[desperate] ...¿Podemos cancelar sus vacaciones?", "pausa": 0.3 },
+    { "id": "11", "personaje": "kai", "texto": "Lo siento. Estoy fuera de la oficina.", "locucion": "[cheerfully] Lo siento. Estoy fuera de la oficina.", "risa": "aplauso", "pausa": 3.0, "accionesRisa": { "kai": "desaparece" } }
+  ]
+}

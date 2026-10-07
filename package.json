@@ -21,7 +21,10 @@
     "render:clawd": "remotion render ClawdDocumental out/clawd-documental.mp4",
     "render:sitcom": "remotion render Sitcom out/sitcom-prompt-y-compania.mp4",
     "risas": "python3 scripts/generar-risas.py",
-    "bocas": "python3 scripts/envolventes.py"
+    "bocas": "python3 scripts/envolventes.py",
+    "producir": "node scripts/producir.mjs",
+    "hoja": "node scripts/hoja.mjs",
+    "render:sitcom2": "REMOTION_GL=swangle remotion render SitcomEp2 out/sitcom-ep2-vacaciones.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

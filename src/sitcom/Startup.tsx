@@ -74,7 +74,18 @@ export const Startup: React.FC<{
   cafeCancelado: boolean;
   pantallaTono: string;
   pantallaSofi: string;
-}> = ({ frame, cafeCancelado, pantallaTono, pantallaSofi }) => {
+  // Posición y giro de cada escritorio (para el formato vertical se acercan al centro)
+  escritorios?: { pos: [number, number, number]; rot: number }[];
+}> = ({
+  frame,
+  cafeCancelado,
+  pantallaTono,
+  pantallaSofi,
+  escritorios = [
+    { pos: ESCRITORIO_SOFI, rot: ROT_SOFI },
+    { pos: ESCRITORIO_TONO, rot: ROT_TONO },
+  ],
+}) => {
   const piso = useMemo(() => crearTexturaCuadros("#b5835a", "#a8764f", 12), []);
   const parpadeo = Math.floor(frame / 20) % 6 !== 0;
 
@@ -198,8 +209,9 @@ export const Startup: React.FC<{
         <meshLambertMaterial color="#8338ec" flatShading />
       </mesh>
 
-      <Escritorio pos={ESCRITORIO_SOFI} rot={ROT_SOFI} pantalla={pantallaSofi} />
-      <Escritorio pos={ESCRITORIO_TONO} rot={ROT_TONO} pantalla={pantallaTono} />
+      {escritorios.map((e, i) => (
+        <Escritorio key={i} pos={e.pos} rot={e.rot} pantalla={i === 0 ? pantallaSofi : pantallaTono} />
+      ))}
     </>
   );
 };
