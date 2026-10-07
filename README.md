@@ -16,6 +16,7 @@ npm run render:n64 # renderizar la escena 3D estilo N64 a out/escena-n64.mp4
 npm run voces      # generar las voces del guion con ElevenLabs (ver abajo)
 npm run render:tiktok # renderizar el video vertical de TikTok a out/ya-voy-saliendo.mp4
 npm run render:ia  # renderizar «El bug chiquito» (dev vs IA) a out/bug-chiquito.mp4
+npm run render:chancla # renderizar «La chancla» (mamá vs IA) a out/la-chancla.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -102,3 +103,16 @@ No usan servicios externos ni tienen problemas de derechos.
 Se colocan en el video con el componente `<Sonido>` de `src/comun/Sonido.tsx`, que admite
 fundidos, bucle y bajar el volumen automáticamente mientras alguien habla. Ejemplo de uso:
 `src/ia/Sonidos.tsx`.
+
+## «La chancla»: la mamá contra la IA
+
+`src/chancla/` es un TikTok de 30 s: la mamá le pide a la IA que lave los trastes, la IA
+responde «como modelo de lenguaje, no puedo»... y empieza un duelo del viejo oeste
+(franjas de cine, silbido, primeros planos de ojos) hasta que aparece la chancla.
+
+- `tiempos.ts`: la línea de tiempo y los momentos clave (duelo, escape, lavado, final).
+- `ChanclaIA.tsx`: personajes, tomas de cámara y textos en pantalla.
+- `Cocina.tsx`: el escenario, con la torre de trastes y las burbujas.
+- `Sonidos.tsx`: música polka, silbido western, chanclazo, burbujas, etc.
+
+Voces: `ELEVENLABS_API_KEY=tu_clave npm run voces -- src/chancla/guion.json`

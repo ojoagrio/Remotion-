@@ -14,13 +14,16 @@ export const Sonido: React.FC<{
   bajarConVoces?: { lineas: Linea[]; volumen: number };
   fundido?: number;
   bucle?: boolean;
-}> = ({ archivo, desde, hasta, volumen = 1, bajarConVoces, fundido = 0, bucle = false }) => {
+  // Velocidad de reproducción (1 = normal)
+  velocidad?: number;
+}> = ({ archivo, desde, hasta, volumen = 1, bajarConVoces, fundido = 0, bucle = false, velocidad = 1 }) => {
   const duracion = hasta === undefined ? undefined : hasta - desde;
   return (
     <Sequence from={desde} durationInFrames={duracion} layout="none">
       <Audio
         src={staticFile(archivo)}
         loop={bucle}
+        playbackRate={velocidad}
         volume={(f) => {
           let v = volumen;
           if (bajarConVoces) {

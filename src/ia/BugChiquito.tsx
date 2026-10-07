@@ -10,6 +10,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { crearLineas, fijo, fin, saltar } from "../comun/lineaDeTiempo";
+import { enMano, mezclar, sumar, Toma } from "../comun/camara";
 import { Camara, Lienzo, Vec3 } from "../comun/Lienzo";
 import { estiloContorno, Gancho, Subtitulo } from "../comun/Textos";
 import { useBocas } from "../comun/useBocas";
@@ -47,23 +48,6 @@ const HACIA_ROBOT = Math.atan2(ROBOT[0] - SILLA[0], ROBOT[2] - SILLA[2]);
 
 const suave = { ...fijo, easing: Easing.inOut(Easing.cubic) };
 const golpe = { ...fijo, easing: Easing.out(Easing.exp) };
-
-const mezclar = (a: Vec3, b: Vec3, t: number): Vec3 => [
-  a[0] + (b[0] - a[0]) * t,
-  a[1] + (b[1] - a[1]) * t,
-  a[2] + (b[2] - a[2]) * t,
-];
-
-// Movimiento de cámara en mano: suma de senos con frecuencias distintas
-const enMano = (frame: number, fuerza: number): Vec3 => [
-  (Math.sin(frame * 1.7) + Math.sin(frame * 3.1) * 0.5) * fuerza,
-  (Math.sin(frame * 2.3 + 1) + Math.sin(frame * 4.3) * 0.4) * fuerza,
-  Math.sin(frame * 1.3 + 2) * fuerza * 0.5,
-];
-
-const sumar = (a: Vec3, b: Vec3): Vec3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
-
-type Toma = { pos: Vec3; mira: Vec3; fov: number; giro: number; desenfoque: number };
 
 // El "guion de cámara": devuelve la cámara para cada frame
 const camaraEn = (f: number): Toma => {

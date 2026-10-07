@@ -12,7 +12,8 @@
     "voces": "node scripts/generar-voces.mjs",
     "render:tiktok": "remotion render YaVoySaliendo out/ya-voy-saliendo.mp4",
     "render:ia": "remotion render BugChiquito out/bug-chiquito.mp4",
-    "sonidos": "python3 scripts/generar-sonidos.py"
+    "sonidos": "python3 scripts/generar-sonidos.py",
+    "render:chancla": "remotion render ChanclaIA out/la-chancla.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

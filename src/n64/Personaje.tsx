@@ -17,6 +17,10 @@ export type ColoresPersonaje = {
   // Si se indica, dibuja coletas y un moño de este color
   mono?: string;
   lentes?: boolean;
+  // Delantal de cocina de este color
+  mandil?: string;
+  // Chongo (moño de pelo) en la nuca
+  chongo?: boolean;
 };
 
 export type PosePersonaje = {
@@ -52,6 +56,10 @@ export type PosePersonaje = {
   teclear?: number;
   // Brazos arriba, agarrándose la cabeza 0..1
   manosCabeza?: number;
+  // Manos "en jarras" (en la cintura) 0..1
+  jarras?: number;
+  // Sujeta una chancla en la mano del saludo (brazoSaludo) 0..1 (escala de la chancla)
+  chancla?: number;
 };
 
 const Material: React.FC<{ color: string }> = ({ color }) => (
@@ -77,6 +85,8 @@ export const Personaje: React.FC<{
   const sentado = pose.sentado ?? 0;
   const teclear = pose.teclear ?? 0;
   const manosCabeza = pose.manosCabeza ?? 0;
+  const jarras = pose.jarras ?? 0;
+  const chancla = pose.chancla ?? 0;
 
   const balanceo = Math.sin(fasePaso) * 0.7 * caminar;
   const rebote = Math.abs(Math.sin(fasePaso)) * 0.08 * caminar;
@@ -146,13 +156,27 @@ export const Personaje: React.FC<{
           <Material color={colores.pantalon} />
         </mesh>
 
+        {colores.mandil && (
+          <>
+            <mesh position={[0, 0.98, 0.38]} rotation={[-0.08, 0, 0]}>
+              <boxGeometry args={[0.55, 0.72, 0.05]} />
+              <Material color={colores.mandil} />
+            </mesh>
+            <mesh position={[0, 0.82, 0.41]}>
+              <boxGeometry args={[0.3, 0.16, 0.03]} />
+              <Material color="#e63946" />
+            </mesh>
+          </>
+        )}
+
         {/* Brazos (pivotan desde el hombro). lado -1 = izquierdo, 1 = derecho */}
         {[-1, 1].map((lado) => {
           const saluda = lado === (brazoSaludo === "derecho" ? 1 : -1);
           const s = saluda ? saludo : 0;
           // El brazo derecho sujeta el teléfono si no está manejando
           const tel = lado === 1 ? telefono * (1 - adelante) : 0;
-          const libre = (1 - s) * (1 - tel) * (1 - adelante) * (1 - teclear) * (1 - manosCabeza);
+          const libre =
+            (1 - s) * (1 - tel) * (1 - adelante) * (1 - teclear) * (1 - manosCabeza) * (1 - jarras);
           const tecleo = Math.sin(respiracion * 30 + lado * 2) * 0.12 * teclear;
           // Ángulo de apertura lateral: en reposo un poco abierto, arriba al saltar o saludar
           const apertura =
@@ -161,9 +185,15 @@ export const Personaje: React.FC<{
             tel * -0.35 +
             adelante * (0.12 + lado * volante) +
             teclear * -0.12 +
-            manosCabeza * (2.75 + Math.sin(respiracion * 20) * 0.08);
+            manosCabeza * (2.75 + Math.sin(respiracion * 20) * 0.08) +
+            jarras * 0.75;
           const frente =
-            -lado * balanceo * libre - tel * 2.5 - adelante * 1.45 - teclear * 1.25 + tecleo;
+            -lado * balanceo * libre -
+            tel * 2.5 -
+            adelante * 1.45 -
+            teclear * 1.25 +
+            tecleo +
+            jarras * 0.35;
           return (
             <group key={lado} position={[lado * 0.5, 1.4, 0]} rotation={[frente, 0, lado * apertura]}>
               <mesh position={[0, -0.3, 0]}>
@@ -174,6 +204,22 @@ export const Personaje: React.FC<{
                 <icosahedronGeometry args={[0.15, 0]} />
                 <Material color="#ffffff" />
               </mesh>
+              {saluda && chancla > 0 && (
+                <group position={[0, -0.8, 0.05]} scale={chancla}>
+                  {/* Suela */}
+                  <mesh>
+                    <boxGeometry args={[0.2, 0.45, 0.05]} />
+                    <meshLambertMaterial color="#ff5fa2" flatShading />
+                  </mesh>
+                  {/* Tira en V */}
+                  {[-1, 1].map((l) => (
+                    <mesh key={l} position={[l * 0.05, 0.05, 0.05]} rotation={[0, 0, l * 0.5]}>
+                      <boxGeometry args={[0.03, 0.2, 0.04]} />
+                      <meshLambertMaterial color="#ffffff" flatShading />
+                    </mesh>
+                  ))}
+                </group>
+              )}
               {lado === 1 && telefono > 0 && (
                 <mesh position={[0, -0.72, 0.05]} rotation={[0.3, 0, 0]}>
                   <boxGeometry args={[0.13, 0.3, 0.06]} />
@@ -262,6 +308,12 @@ export const Personaje: React.FC<{
                   </group>
                 ))}
             </>
+          )}
+          {colores.chongo && cabello && (
+            <mesh position={[0, 0.3, -0.33]}>
+              <icosahedronGeometry args={[0.2, 0]} />
+              <Material color={cabello} />
+            </mesh>
           )}
           {conGorra && (
             <>

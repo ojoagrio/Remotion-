@@ -213,14 +213,24 @@ export const Robot: React.FC<{
   rot: number;
   boca: number;
   frame: number;
-  // "normal" | "feliz" (ojos ^ ^) | "malvado" (ojos rojos)
-  animo: "normal" | "feliz" | "malvado";
-}> = ({ pos, rot, boca, frame, animo }) => {
+  // "normal" | "feliz" (ojos ^ ^) | "malvado" (ojos rojos) | "asustado" (ojos muy abiertos)
+  animo: "normal" | "feliz" | "malvado" | "asustado";
+  // Temblor de miedo 0..1
+  temblor?: number;
+  // Gota de sudor 0..1
+  sudor?: number;
+  // Manos frotando muy rápido, como lavando 0..1
+  lavando?: number;
+  // Holograma de un plato de comida sobre la mano 0..1
+  holograma?: number;
+}> = ({ pos, rot, boca, frame, animo, temblor = 0, sudor = 0, lavando = 0, holograma = 0 }) => {
   const flota = Math.sin(frame * 0.12) * 0.07;
   const ladeo = Math.sin(frame * 0.07) * 0.12;
   const colorOjos = animo === "malvado" ? "#ff2a2a" : "#5ef2ff";
+  const tx = Math.sin(frame * 3.1) * 0.035 * temblor;
+  const ty = Math.cos(frame * 2.7) * 0.02 * temblor;
   return (
-    <group position={[pos[0], pos[1] + flota, pos[2]]} rotation={[0, rot, ladeo]}>
+    <group position={[pos[0] + tx, pos[1] + flota + ty, pos[2]]} rotation={[0, rot, ladeo]}>
       {/* La IA brilla e ilumina la cara de quien tiene enfrente */}
       <pointLight position={[0, 0, 0.8]} intensity={5} distance={4} color={colorOjos} />
       {/* Cabeza */}
@@ -252,7 +262,13 @@ export const Robot: React.FC<{
             position={[lado * 0.13, 0.08, 0.47]}
             rotation={[0, 0, animo === "malvado" ? lado * 0.4 : 0]}
           >
-            <boxGeometry args={[0.09, animo === "malvado" ? 0.04 : 0.11, 0.02]} />
+            <boxGeometry
+              args={[
+                animo === "asustado" ? 0.13 : 0.09,
+                animo === "malvado" ? 0.04 : animo === "asustado" ? 0.16 : 0.11,
+                0.02,
+              ]}
+            />
             <meshBasicMaterial color={colorOjos} />
           </mesh>
         ),
@@ -271,13 +287,64 @@ export const Robot: React.FC<{
         <icosahedronGeometry args={[0.05, 0]} />
         <meshBasicMaterial color={frame % 20 < 10 ? colorOjos : "#334"} />
       </mesh>
-      {/* Manitos flotantes */}
-      {[-1, 1].map((lado) => (
-        <mesh key={lado} position={[lado * 0.55, -0.15 + Math.sin(frame * 0.15 + lado) * 0.05, 0.05]}>
-          <icosahedronGeometry args={[0.1, 0]} />
-          <meshLambertMaterial color="#e8ecf2" flatShading />
+      {/* Manitos flotantes: en reposo a los lados, o frotando en círculos al lavar */}
+      {[-1, 1].map((lado) => {
+        const giro = frame * 1.6 + lado * 1.5;
+        const reposo: [number, number, number] = [
+          lado * 0.55,
+          -0.15 + Math.sin(frame * 0.15 + lado) * 0.05,
+          0.05,
+        ];
+        const lavar: [number, number, number] = [
+          lado * 0.28 + Math.cos(giro) * 0.14,
+          -0.45 + Math.sin(giro) * 0.1,
+          0.5,
+        ];
+        return (
+          <mesh
+            key={lado}
+            position={[
+              reposo[0] + (lavar[0] - reposo[0]) * lavando,
+              reposo[1] + (lavar[1] - reposo[1]) * lavando,
+              reposo[2] + (lavar[2] - reposo[2]) * lavando,
+            ]}
+          >
+            <icosahedronGeometry args={[0.1, 0]} />
+            <meshLambertMaterial color="#e8ecf2" flatShading />
+          </mesh>
+        );
+      })}
+      {/* Gota de sudor estilo anime */}
+      {sudor > 0 && (
+        <mesh position={[0.38, 0.25 - (frame % 20) * 0.006 * sudor, 0.25]} scale={sudor}>
+          <coneGeometry args={[0.06, 0.16, 5]} />
+          <meshBasicMaterial color="#7fd8ff" />
         </mesh>
-      ))}
+      )}
+      {/* Holograma: plato de quinoa con kale y aguacate */}
+      {holograma > 0 && (
+        <group position={[-0.1, 0.75, 0.25]} rotation={[0.3, frame * 0.05, 0]} scale={holograma}>
+          <mesh rotation={[Math.PI, 0, 0]}>
+            <sphereGeometry args={[0.3, 8, 4, 0, Math.PI * 2, 0, Math.PI / 2]} />
+            <meshBasicMaterial color="#5ef2ff" transparent opacity={0.45} side={2} />
+          </mesh>
+          {[0, 1, 2, 3, 4].map((i) => (
+            <mesh key={i} position={[Math.cos(i * 1.3) * 0.14, 0.02, Math.sin(i * 1.3) * 0.14]}>
+              <icosahedronGeometry args={[0.07, 0]} />
+              <meshBasicMaterial
+                color={i % 2 ? "#3fae49" : "#e9d8a6"}
+                transparent
+                opacity={0.8}
+              />
+            </mesh>
+          ))}
+          {/* Medio aguacate */}
+          <mesh position={[0, 0.06, 0]} scale={[1, 0.5, 1.3]}>
+            <icosahedronGeometry args={[0.1, 0]} />
+            <meshBasicMaterial color="#9acd32" transparent opacity={0.85} />
+          </mesh>
+        </group>
+      )}
       {/* Propulsor */}
       <mesh position={[0, -0.5, 0]} rotation={[Math.PI, 0, 0]}>
         <coneGeometry args={[0.1, 0.22, 5]} />

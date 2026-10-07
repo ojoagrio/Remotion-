@@ -280,6 +280,104 @@ def rimshot():
     return mezclar(1.7, *partes)
 
 
+# ---------------------------------------------------------------- «La chancla»
+def musica_polka():
+    """Polka alegre de cocina a 140 bpm (oom-pah) en Sol mayor."""
+    negra = 60 / 140
+    # (raíz del bajo, notas del acorde)
+    acordes = [(43, [67, 71, 74]), (38, [66, 69, 74]), (38, [66, 69, 72]), (43, [67, 71, 74]),
+               (43, [67, 71, 74]), (36, [64, 67, 72]), (38, [66, 69, 74]), (43, [67, 71, 74])]
+    melodia = [
+        [74, 71, 74, 79], [78, 76, 74, 72], [72, 74, 76, 78], [79, 0, 74, 0],
+        [71, 74, 79, 83], [84, 83, 81, 79], [78, 79, 81, 78], [79, 0, 0, 0],
+    ]
+    compas = 2 * negra
+    total = len(acordes) * compas * 2
+    partes = []
+    for vuelta in range(2):
+        for i, (raiz, acorde) in enumerate(acordes):
+            base = (vuelta * len(acordes) + i) * compas
+            for b in range(2):
+                # "Oom": bajo en el tiempo
+                n = raiz if b == 0 else raiz + 7
+                s = triangular(nota(n), negra * 0.45) * envolvente(int(SR * negra * 0.45), caida=0.12)
+                partes.append((base + b * negra, s * 0.6))
+                # "Pah": acorde en el contratiempo
+                for a in acorde:
+                    d = negra * 0.3
+                    s = cuadrada(nota(a), d, 0.25) * envolvente(int(SR * d), caida=0.05)
+                    partes.append((base + b * negra + negra / 2, s * 0.07))
+            # Melodía tipo trompeta (sierra suavizada) en corcheas
+            for k, n in enumerate(melodia[i]):
+                if n:
+                    d = negra / 2
+                    s = paso_bajo(sierra(nota(n), d * 0.9), 4) * envolvente(int(SR * d * 0.9), 0.01, 0.2)
+                    s *= 1 + 0.05 * np.sin(2 * np.pi * 6 * t(d * 0.9))
+                    partes.append((base + k * d, s * 0.28))
+            # Caja en el contratiempo
+            for b in range(2):
+                caja = paso_alto(ruido(0.08)) * envolvente(int(SR * 0.08), caida=0.02)
+                partes.append((base + b * negra + negra / 2, caja * 0.15))
+    return mezclar(total, *partes)
+
+
+def silbido_western():
+    """Silbido de duelo del viejo oeste: wa-wa-wa-wa-waaaa."""
+    notas = [(69, 0.2), (74, 0.2), (69, 0.2), (74, 0.2), (69, 1.0)]
+    partes = []
+    pos = 0.0
+    for n, d in notas:
+        f = nota(n + 12) * (1 + 0.012 * np.sin(2 * np.pi * 6 * t(d)))
+        # Pequeño deslizamiento al empezar cada nota
+        f = f * (1 - 0.04 * np.exp(-t(d) / 0.03))
+        s = senoidal(f, d) + paso_bajo(ruido(d), 3) * 0.04
+        partes.append((pos, s * envolvente(int(SR * d), 0.02, d * 1.5)))
+        pos += d + 0.03
+    return mezclar(pos + 0.2, *partes)
+
+
+def plaf():
+    """Chanclazo: golpe seco y brillante."""
+    seg = 0.35
+    golpe = paso_alto(ruido(seg)) * envolvente(int(SR * seg), 0.0005, 0.03)
+    cuerpo = senoidal(np.geomspace(300, 90, int(SR * seg)), seg) * envolvente(int(SR * seg), 0.0005, 0.05)
+    return golpe + cuerpo * 0.8
+
+
+def burbujas():
+    partes = []
+    pos = 0.0
+    while pos < 3:
+        d = rng.uniform(0.05, 0.1)
+        f = np.geomspace(rng.uniform(300, 600), rng.uniform(900, 1600), int(SR * d))
+        partes.append((pos, senoidal(f, d) * envolvente(int(SR * d), 0.002, d / 3)))
+        pos += rng.uniform(0.05, 0.14)
+    return mezclar(3.2, *partes)
+
+
+def brillo():
+    partes = []
+    for i, n in enumerate([88, 91, 96, 100, 103]):
+        s = senoidal(nota(n), 0.5) * envolvente(int(SR * 0.5), 0.002, 0.15)
+        partes.append((i * 0.06, s))
+    return mezclar(0.9, *partes)
+
+
+def gota():
+    seg = 0.25
+    f = np.geomspace(500, 1400, int(SR * seg))
+    return senoidal(f, seg) * envolvente(int(SR * seg), 0.002, 0.05)
+
+
+def actualizacion():
+    """Melodía de sistema operativo: «actualización instalada»."""
+    partes = []
+    for i, n in enumerate([72, 76, 79, 84]):
+        s = (cuadrada(nota(n), 0.35, 0.25) * 0.4 + senoidal(nota(n), 0.35)) * envolvente(int(SR * 0.35), 0.005, 0.2)
+        partes.append((i * 0.11, s))
+    return mezclar(1.0, *partes)
+
+
 if __name__ == "__main__":
     os.makedirs(CARPETA, exist_ok=True)
     guardar("musica-chiptune", musica_chiptune(), 0.8)
@@ -298,3 +396,10 @@ if __name__ == "__main__":
     guardar("silbato-caida", silbato_caida(), 0.7)
     guardar("golpe", golpe_seco())
     guardar("rimshot", rimshot())
+    guardar("musica-polka", musica_polka(), 0.8)
+    guardar("silbido-western", silbido_western(), 0.7)
+    guardar("plaf", plaf())
+    guardar("burbujas", burbujas(), 0.5)
+    guardar("brillo", brillo(), 0.6)
+    guardar("gota", gota(), 0.6)
+    guardar("actualizacion", actualizacion(), 0.7)

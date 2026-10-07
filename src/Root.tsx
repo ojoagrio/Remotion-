@@ -3,6 +3,7 @@ import { HelloWorld } from "./HelloWorld";
 import { EscenaEncuentro } from "./n64/EscenaEncuentro";
 import { YaVoySaliendo } from "./tiktok/YaVoySaliendo";
 import { BugChiquito } from "./ia/BugChiquito";
+import { ChanclaIA } from "./chancla/ChanclaIA";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -36,6 +37,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="BugChiquito"
         component={BugChiquito}
+        durationInFrames={900}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ChanclaIA"
+        component={ChanclaIA}
         durationInFrames={900}
         fps={30}
         width={1080}
