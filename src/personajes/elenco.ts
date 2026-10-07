@@ -23,8 +23,7 @@ export type FichaPersonaje = {
 // Fichas guardadas en src/sitcom-laoficinitamx (fuente única para reutilizarlas)
 export const JUANITO = juanito as FichaPersonaje;
 export const PATY = paty as FichaPersonaje;
-// Mr. CEO aún sin voz oficial (ver vozOpciones en ceo.json)
-export const CEO = ceo as unknown as FichaPersonaje;
+export const CEO = ceo as FichaPersonaje;
 
 export const ELENCO: Record<string, FichaPersonaje> = { juanito: JUANITO, paty: PATY, ceo: CEO };
 

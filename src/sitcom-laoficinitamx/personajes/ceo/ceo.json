@@ -21,7 +21,25 @@
       "copete": 0.9
     }
   },
-  "voz": null,
+  "voz": {
+    "id": "G4IAP30yc6c1gK0csDfu",
+    "nombre": "Juan Carlos – Confident and Upbeat",
+    "modelo": "eleven_v3",
+    "ajustes": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "ritmo": {
+      "velocidad": 1.15
+    },
+    "etiquetas": [
+      "[enthusiastic]",
+      "[excited]",
+      "[shouting]",
+      "[frustrated]",
+      "[laughs]"
+    ]
+  },
   "vozOpciones": [
     {
       "opcion": 1,
