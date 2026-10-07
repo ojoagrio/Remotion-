@@ -31,7 +31,23 @@ export type ColoresPersonaje = {
   cadena?: string;
   lentesCristal?: string;
   // Rasgos exagerados (1 = normal): tamaño de lentes, copete, sonrisa, cejas, orejas y nariz
-  rasgos?: { lentes?: number; copete?: number; sonrisa?: number; cejas?: number; orejas?: number; nariz?: number };
+  rasgos?: {
+    lentes?: number;
+    copete?: number;
+    sonrisa?: number;
+    cejas?: number;
+    orejas?: number;
+    nariz?: number;
+    // Rasgos extra: coletas y chongo más grandes, pecas, una ceja levantada (escéptica) y frenos
+    coletas?: number;
+    chongo?: number;
+    pecas?: number;
+    cejaEsceptica?: number;
+    frenos?: boolean;
+  };
+  // Melena larga detrás de la cabeza y lápiz atravesando el chongo
+  melena?: boolean;
+  lapiz?: boolean;
 };
 
 export type PosePersonaje = {
@@ -350,6 +366,34 @@ export const Personaje: React.FC<{
                 <meshBasicMaterial color={cabello ?? "#2b1608"} />
               </mesh>
             ))}
+          {/* Ceja escéptica: una normal y otra muy levantada */}
+          {(r.cejaEsceptica ?? 0) > 0 &&
+            enojo <= 0.05 &&
+            [-1, 1].map((lado) => (
+              <mesh
+                key={lado}
+                position={[lado * 0.16, 0.27 + (r.lentes ?? 1) * 0.02 + (lado === 1 ? 0.07 * (r.cejaEsceptica ?? 0) : 0), 0.46]}
+                rotation={[0, 0, lado === 1 ? 0.35 : -0.1]}
+              >
+                <boxGeometry args={[0.18, 0.05 * (1 + (r.cejaEsceptica ?? 0) * 0.5), 0.05]} />
+                <meshBasicMaterial color="#120a06" />
+              </mesh>
+            ))}
+          {/* Pecas */}
+          {(r.pecas ?? 0) > 0 &&
+            [-1, 1].map((lado) =>
+              [
+                [0.0, 0.0],
+                [0.07, 0.03],
+                [0.05, -0.05],
+                [0.12, -0.01],
+              ].map(([dx, dy], k) => (
+                <mesh key={`${lado}${k}`} position={[lado * (0.13 + dx), -0.06 + dy, 0.42 - dx * 0.4]} scale={r.pecas}>
+                  <boxGeometry args={[0.03, 0.03, 0.03]} />
+                  <meshBasicMaterial color="#b5653a" />
+                </mesh>
+              )),
+            )}
           {/* Orejas (rasgo exagerado) */}
           {(r.orejas ?? 0) > 0 &&
             [-1, 1].map((lado) => (
@@ -393,6 +437,12 @@ export const Personaje: React.FC<{
               <meshBasicMaterial color="#ffffff" />
             </mesh>
           )}
+          {r.frenos && (r.sonrisa ?? 0) > 0 && (
+            <mesh position={[0, -0.215, 0.418]}>
+              <boxGeometry args={[0.18 * (1 + (r.sonrisa ?? 0) * 0.9) * 0.8, 0.012, 0.02]} />
+              <meshBasicMaterial color="#8d99ae" />
+            </mesh>
+          )}
           {conBigote && (
             <mesh position={[0, -0.15, 0.4]}>
               <boxGeometry args={[0.32, 0.08, 0.08]} />
@@ -406,9 +456,15 @@ export const Personaje: React.FC<{
                 <sphereGeometry args={[0.45, 8, 5, 0, Math.PI * 2, 0, Math.PI / 2.3]} />
                 <Material color={cabello} />
               </mesh>
+              {colores.melena && (
+                <mesh position={[0, -0.12, -0.24]}>
+                  <boxGeometry args={[0.92, 0.78, 0.4]} />
+                  <Material color={cabello} />
+                </mesh>
+              )}
               {mono &&
                 [-1, 1].map((lado) => (
-                  <group key={lado} position={[lado * 0.5, 0.1, -0.1]}>
+                  <group key={lado} position={[lado * (0.45 + 0.05 * (r.coletas ?? 1)), 0.1, -0.1]} scale={r.coletas ?? 1}>
                     <mesh position={[lado * 0.08, -0.2, 0]} rotation={[0, 0, lado * 0.4]}>
                       <coneGeometry args={[0.14, 0.5, 5]} />
                       <Material color={cabello} />
@@ -444,10 +500,28 @@ export const Personaje: React.FC<{
             </group>
           )}
           {colores.chongo && cabello && (
-            <mesh position={[0, 0.3, -0.33]}>
-              <icosahedronGeometry args={[0.2, 0]} />
-              <Material color={cabello} />
-            </mesh>
+            <group position={r.chongo ? [0, 0.44 + r.chongo * 0.06, -0.14] : [0, 0.3, -0.33]} scale={r.chongo ?? 1}>
+              <mesh>
+                <icosahedronGeometry args={[0.2, 0]} />
+                <Material color={cabello} />
+              </mesh>
+              {colores.lapiz && (
+                <group rotation={[0, 0, 0.9]}>
+                  <mesh>
+                    <cylinderGeometry args={[0.03, 0.03, 0.6, 6]} />
+                    <meshLambertMaterial color="#ffd60a" flatShading />
+                  </mesh>
+                  <mesh position={[0, 0.33, 0]}>
+                    <coneGeometry args={[0.03, 0.07, 6]} />
+                    <meshLambertMaterial color="#f1c27d" flatShading />
+                  </mesh>
+                  <mesh position={[0, -0.31, 0]}>
+                    <cylinderGeometry args={[0.032, 0.032, 0.05, 6]} />
+                    <meshLambertMaterial color="#ff8fab" flatShading />
+                  </mesh>
+                </group>
+              )}
+            </group>
           )}
           {conGorra && (
             <>

@@ -20,6 +20,7 @@ import { EP_MODO_MAMA, ModoMama } from "./mensaje/ep2/ModoMama";
 import { EP3, GemeloDigital } from "./sitcom/ep3/GemeloDigital";
 import { DURACION_PRESENTACION, HojaModeloJuanito, PresentacionJuanito } from "./personajes/juanito/Presentacion";
 import { PropuestasJuanito } from "./personajes/juanito/Propuestas";
+import { PropuestasPaty } from "./personajes/paty/Propuestas";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -118,6 +119,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PresentacionJuanito" component={PresentacionJuanito} durationInFrames={DURACION_PRESENTACION} fps={30} width={1080} height={1920} />
       <Composition id="HojaModeloJuanito" component={HojaModeloJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="PropuestasJuanito" component={PropuestasJuanito} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="PropuestasPaty" component={PropuestasPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
     </>
   );
 };
