@@ -17,14 +17,27 @@
     "mono": "#ff4fd8",
     "lentes": true,
     "emblema": "¿IA?",
-    "rasgos": { "coletas": 1.9, "lentes": 1.2, "sonrisa": 0.3 }
+    "rasgos": {
+      "coletas": 1.9,
+      "lentes": 1.2,
+      "sonrisa": 0.3
+    }
   },
   "voz": {
     "id": "CPv3Zr3CQCqE4ZzuCgBP",
     "nombre": "Lulu – Adorable, Bright & Playful",
     "modelo": "eleven_v3",
-    "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
-    "etiquetas": ["[excited]", "[proud]", "[skeptical]", "[sarcastic]", "[giggles]"]
+    "ajustes": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "etiquetas": [
+      "[excited]",
+      "[proud]",
+      "[skeptical]",
+      "[sarcastic]",
+      "[giggles]"
+    ]
   },
   "personalidad": [
     "Sabelotodo adorable: siempre levanta la mano primero",
@@ -42,5 +55,25 @@
     "propuestas": "src/sitcom-laoficinitamx/personajes/paty/propuestas.png",
     "guionPresentacion": "src/personajes/paty/guion.json",
     "vocesPresentacion": "public/voces/personaje-paty"
-  }
+  },
+  "vozOpciones": [
+    {
+      "opcion": 1,
+      "id": "klD8ai7tOs4cUL3kcChn",
+      "nombre": "Rita – Friendly, lively",
+      "estilo": "Acento argentina"
+    },
+    {
+      "opcion": 2,
+      "id": "WtRYgQbAJ4i0AckgdVbq",
+      "nombre": "Carito – Silly & Comical",
+      "estilo": "Acento venezolana"
+    },
+    {
+      "opcion": 3,
+      "id": "yfUfwZTRubVrsUZWqzwp",
+      "nombre": "Lina – Colombian Paisa",
+      "estilo": "Acento colombiana"
+    }
+  ]
 }

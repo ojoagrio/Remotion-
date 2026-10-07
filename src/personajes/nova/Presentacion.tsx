@@ -1,7 +1,5 @@
-import { AbsoluteFill } from "remotion";
 import { fin } from "../../comun/lineaDeTiempo";
 import { Sonido } from "../../comun/Sonido";
-import { FUENTE } from "../../comun/Textos";
 import nova from "../../sitcom-laoficinitamx/personajes/nova/nova.json";
 import { DatosPresentacion, duracionPresentacion, Presentacion } from "../Presentacion";
 import { ColoresNova, DisenoNova, Nova3D } from "./Nova3D";
@@ -47,16 +45,12 @@ const datosVoz = (i: number): DatosPresentacion => {
         />
       </group>
     ),
+    etiquetaVoz: `VOZ ${opcion.opcion} · ${opcion.estilo}`,
     sonidos: (L) => (
       <>
         <Sonido archivo="sonidos/bip-robot.wav" desde={L(1).inicio - 6} volumen={0.4} />
         <Sonido archivo="sonidos/procesando.wav" desde={L(3).inicio + 20} hasta={L(3).inicio + 50} volumen={0.3} />
         <Sonido archivo="sonidos/error.wav" desde={fin(L(3)) - 45} volumen={0.3} />
-        <AbsoluteFill style={{ padding: 36 }}>
-          <div style={{ alignSelf: "flex-start", background: "#000000aa", color: "white", fontFamily: FUENTE, fontSize: 34, padding: "10px 22px", borderRadius: 16, border: "3px solid #4cc9f0" }}>
-            VOZ {opcion.opcion} · {opcion.estilo}
-          </div>
-        </AbsoluteFill>
       </>
     ),
   };

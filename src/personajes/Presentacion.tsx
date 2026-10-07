@@ -29,6 +29,8 @@ export type DatosPresentacion = {
   // Otro modelo 3D en lugar del Personaje (p. ej. Nova) y sonidos extra
   modelo?: (pose: PosePersonaje, f: number) => React.ReactNode;
   sonidos?: (L: (n: number) => Linea) => React.ReactNode;
+  // Etiqueta arriba a la izquierda (para comparar opciones de voz)
+  etiquetaVoz?: string;
 };
 
 const lineasDe = (d: DatosPresentacion) => crearLineas(d.guion.lineas, d.duraciones, { inicio: 1.2, pausa: 0.35 });
@@ -158,6 +160,13 @@ export const Presentacion: React.FC<{ datos: DatosPresentacion }> = ({ datos }) 
       <Sonido archivo="sonidos/rimshot.wav" desde={fin(L(3)) + 2} volumen={0.5} />
       <Sonido archivo="sonidos/risa-chica.wav" desde={fin(L(4))} volumen={0.4} />
       {datos.sonidos?.(L)}
+      {datos.etiquetaVoz && (
+        <AbsoluteFill style={{ padding: 36 }}>
+          <div style={{ alignSelf: "flex-start", background: "#000000aa", color: "white", fontFamily: FUENTE, fontSize: 34, padding: "10px 22px", borderRadius: 16, border: `3px solid ${ficha.color}` }}>
+            {datos.etiquetaVoz}
+          </div>
+        </AbsoluteFill>
+      )}
       {[0, 8, 16].map((d) => (
         <Sonido key={d} archivo="sonidos/pop.wav" desde={fin(L(4)) + 10 + d} volumen={0.3} />
       ))}

@@ -1,0 +1,43 @@
+{
+  "carpeta": "personaje-paty-voz3",
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.05,
+    "pausa": 0.35
+  },
+  "voces": {
+    "paty": "yfUfwZTRubVrsUZWqzwp"
+  },
+  "ajustes": {
+    "paty": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "paty",
+      "texto": "¡Hola, parce! Soy Paty. Tengo diez años... y ya me leí toda la enciclopedia. Dos veces.",
+      "locucion": "[excited] ¡Hola, parce! Soy Paty. Tengo diez años... [proud] y ya me leí toda la enciclopedia. Dos veces."
+    },
+    {
+      "id": "02",
+      "personaje": "paty",
+      "texto": "¿Ves mis coletas? Se levantan solitas cuando sé la respuesta. O sea... siempre.",
+      "locucion": "¿Ves mis coletas? Se levantan solitas cuando sé la respuesta. [giggles] O sea... siempre."
+    },
+    {
+      "id": "03",
+      "personaje": "paty",
+      "texto": "¿Que la IA ya lo sabe todo? Ajá... pregúntale cuántas erres tiene «ferrocarril».",
+      "locucion": "[skeptical] ¿Que la IA ya lo sabe todo? Ajá... [sarcastic] pregúntale cuántas erres tiene ferrocarril."
+    },
+    {
+      "id": "04",
+      "personaje": "paty",
+      "texto": "Sígueme. Yo sí cito mis fuentes.",
+      "locucion": "[proud] Sígueme. Yo sí cito mis fuentes."
+    }
+  ]
+}
