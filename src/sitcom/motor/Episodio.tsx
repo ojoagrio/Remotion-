@@ -16,6 +16,7 @@ import { Sonido } from "../../comun/Sonido";
 import { estiloContorno, FUENTE, Gancho, Subtitulo } from "../../comun/Textos";
 import { useBocas } from "../../comun/useBocas";
 import { Robot } from "../../ia/Oficina";
+import { ColoresNova, DisenoNova, Nova3D } from "../../personajes/nova/Nova3D";
 import { ColoresPersonaje, Personaje, PosePersonaje } from "../../n64/Personaje";
 import { Startup } from "../Startup";
 import { Episodio as DatosEpisodio, Estado, estadoEn } from "./datos";
@@ -23,9 +24,11 @@ import { Episodio as DatosEpisodio, Estado, estadoEn } from "./datos";
 // Motor de episodios de «Prompt & Compañía»: set, reparto, cámaras de sitcom, risas,
 // presentación y final congelado salen del guion; cada episodio solo aporta su guion.json.
 
-type Humano = { tipo: "humano"; nombre: string; color: string; colores: ColoresPersonaje; inicial?: Partial<Estado> };
+type Humano = { tipo: "humano"; nombre: string; color: string; colores: ColoresPersonaje; escala?: number; inicial?: Partial<Estado> };
 type Bot = { tipo: "robot"; nombre: string; color: string; cuerpo?: string; escala?: number; inicial?: Partial<Estado> };
-export type Miembro = Humano | Bot;
+// Robot flotante (Nova): su "pos" es el piso bajo él; flota a la altura indicada
+type Flotante = { tipo: "nova"; nombre: string; color: string; diseno: DisenoNova; colores: ColoresNova; altura?: number; escala?: number; inicial?: Partial<Estado> };
+export type Miembro = Humano | Bot | Flotante;
 
 export const persona = (camisa: string, pantalon: string, cabello: string, extra: Partial<ColoresPersonaje> = {}): ColoresPersonaje => ({
   piel: "#e0a47c",
@@ -71,8 +74,11 @@ const posicionDe = (ep: DatosEpisodio, id: string) =>
 const cabezaDe = (ep: DatosEpisodio, reparto: Record<string, Miembro>, id: string, frame: number): Vec3 => {
   const { pos } = posicionDe(ep, id);
   if (reparto[id]?.tipo === "robot") return pos;
+  const m = reparto[id];
+  if (m?.tipo === "nova") return [pos[0], (m.altura ?? 1.2) * (m.escala ?? 1) + 0.15, pos[2]];
   const sentado = estadoEn(ep, id, reparto[id]?.inicial ?? {}, frame).postura === "sentado";
-  return [pos[0], sentado ? 1.53 : 1.82, pos[2]];
+  const escala = m?.tipo === "humano" ? m.escala ?? 1 : 1;
+  return [pos[0], (sentado ? 1.53 : 1.82) * escala, pos[2]];
 };
 
 const camaraEn = (ep: DatosEpisodio, reparto: Record<string, Miembro>, f: number) => {
@@ -155,6 +161,25 @@ const Mundo: React.FC<{ ep: DatosEpisodio; reparto: Record<string, Miembro>; esc
         if (!e.visible) return null;
         const { pos: p, rot } = posicionDe(ep, id);
         const aparicion = e.desdeVisible > 0 ? spring({ frame: f - e.desdeVisible, fps, config: { damping: 9 } }) : 1;
+        if (m.tipo === "nova") {
+          const asustado = e.cara === "asustado";
+          return (
+            <group key={id} position={[p[0] + (asustado ? Math.sin(f * 2.3) * 0.04 : 0), p[1], p[2]]} scale={(m.escala ?? 1) * aparicion}>
+              <Nova3D
+                diseno={m.diseno}
+                colores={m.colores}
+                altura={m.altura ?? 1.2}
+                pose={{
+                  flotar: f / 12,
+                  giro: rot,
+                  saludo: e.brazos === "saluda" || e.brazos === "brazos-arriba" ? 1 : 0,
+                  boca: bocas[id] ?? (e.cara === "feliz" ? 0.3 : 0),
+                  parpadeo: e.cara === "sueno" ? 0.7 : f % 90 < 4 ? 1 : 0,
+                }}
+              />
+            </group>
+          );
+        }
         if (m.tipo === "robot") {
           const animo = e.cara === "malvado" || e.cara === "asustado" || e.cara === "feliz" ? e.cara : "normal";
           return (
@@ -174,8 +199,9 @@ const Mundo: React.FC<{ ep: DatosEpisodio; reparto: Record<string, Miembro>; esc
           );
         }
         return (
-          <group key={id} position={p} rotation={[0, rot, 0]} scale={aparicion}>
-            <Personaje colores={m.colores} pose={poseHumano(e, f, bocas[id] ?? 0)} />
+          <group key={id} position={p} rotation={[0, rot, 0]} scale={(m.escala ?? 1) * aparicion}>
+            {/* Al enojarse les salta la vena en la frente */}
+            <Personaje colores={e.cara === "enojo" ? { ...m.colores, rasgos: { ...m.colores.rasgos, vena: 1.3 } } : m.colores} pose={poseHumano(e, f, bocas[id] ?? 0)} />
           </group>
         );
       })}
@@ -225,16 +251,23 @@ const Creditos: React.FC<{ titulo: string; vertical: boolean }> = ({ titulo, ver
   );
 };
 
+export type TarjetaTitulo = React.FC<{ titulo: string; reparto: Record<string, Miembro>; vertical: boolean }>;
+
 export const EpisodioSitcom: React.FC<{
   ep: DatosEpisodio;
   reparto?: Record<string, Miembro>;
   gancho?: string;
   escenario?: Escenario;
+  // Presentación (tarjeta de título) y capa extra encima de todo (p. ej. cortinillas)
+  tarjeta?: TarjetaTitulo;
+  encima?: React.ReactNode;
 }> = ({
   ep,
   reparto = REPARTO,
   gancho,
   escenario,
+  tarjeta: Tarjeta = Presentacion,
+  encima,
 }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
@@ -274,12 +307,13 @@ export const EpisodioSitcom: React.FC<{
 
       {ep.titulo >= 0 && (
         <Sequence from={ep.titulo} durationInFrames={ep.tituloFin - ep.titulo} layout="none">
-          <Presentacion titulo={titulo} reparto={reparto} vertical={vertical} />
+          <Tarjeta titulo={titulo} reparto={reparto} vertical={vertical} />
         </Sequence>
       )}
       <Sequence from={ep.congelar + 6} layout="none">
         <Creditos titulo={titulo} vertical={vertical} />
       </Sequence>
+      {encima}
 
       {/* Sonido: riff, risas, apariciones, tema y aplausos finales */}
       <Sonido archivo={s("riff-slap")} desde={0} volumen={0.45} />

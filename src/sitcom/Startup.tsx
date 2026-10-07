@@ -76,7 +76,12 @@ export const Startup: React.FC<{
   pantallaSofi: string;
   // Posición y giro de cada escritorio (para el formato vertical se acercan al centro)
   escritorios?: { pos: [number, number, number]; rot: number }[];
+  // Textos del letrero de neón y del pizarrón (otra serie puede cambiarlos)
+  letrero?: string;
+  pizarronFinal?: string;
 }> = ({
+  letrero: textoLetrero = "PROMPT & CO.",
+  pizarronFinal = "AI-FIRST!!",
   frame,
   cafeCancelado,
   pantallaTono,
@@ -101,9 +106,9 @@ export const Startup: React.FC<{
       ctx.shadowColor = "#ff4fd8";
       ctx.shadowBlur = parpadeo ? 8 : 0;
       ctx.fillStyle = parpadeo ? "#ffd6f5" : "#7a3a6e";
-      ctx.fillText("PROMPT & CO.", 80, 21);
+      ctx.fillText(textoLetrero, 80, 21);
     },
-    `letrero-${parpadeo}`,
+    `letrero-${parpadeo}-${textoLetrero}`,
   );
   const pizarron = useLienzo(
     96,
@@ -128,9 +133,9 @@ export const Startup: React.FC<{
       ctx.stroke();
       ctx.fillStyle = "#1d4ed8";
       ctx.font = "bold 13px sans-serif";
-      ctx.fillText("AI-FIRST!!", 14, 52);
+      ctx.fillText(pizarronFinal, 14, 52);
     },
-    "pizarron",
+    `pizarron-${pizarronFinal}`,
   );
   const cartelCafe = useLienzo(
     64,

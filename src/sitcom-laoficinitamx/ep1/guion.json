@@ -1,0 +1,153 @@
+{
+  "carpeta": "oficinitamx-ep1",
+  "formato": "vertical",
+  "titulo": "LA OFICINITA MX",
+  "episodio": "Episodio 1 (piloto): «IA para todo»",
+  "modelo": "eleven_v3",
+  "ritmo": {
+    "velocidad": 1.15,
+    "pausa": 0.35
+  },
+  "voces": {
+    "ceo": "G4IAP30yc6c1gK0csDfu",
+    "juanito": "VvYiNBPylZtUh8Bf6u8l",
+    "paty": "klD8ai7tOs4cUL3kcChn",
+    "nova": "2CGcaXd1E04jesxY7nfq"
+  },
+  "ajustes": {
+    "ceo": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "juanito": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "paty": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    },
+    "nova": {
+      "stability": 0.0,
+      "similarity_boost": 0.8
+    }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "ceo",
+      "texto": "¡Equipo! Noticia histórica: a partir de hoy... ¡usaremos IA para TODO!",
+      "locucion": "[enthusiastic] ¡Equipo! Noticia histórica: a partir de hoy... [shouting] ¡usaremos IA para TODO!",
+      "camara": "general",
+      "acciones": {
+        "ceo": "brazos-arriba salta"
+      }
+    },
+    {
+      "id": "02",
+      "personaje": "juanito",
+      "texto": "¿Para todo-todo? ¿Hasta para el café?",
+      "locucion": "[worried] ¿Para todo-todo? ¿Hasta para el café?",
+      "acciones": {
+        "ceo": "jarras",
+        "juanito": "nada"
+      }
+    },
+    {
+      "id": "03",
+      "personaje": "ceo",
+      "texto": "¡Sobre todo para el café! Nova, ¿cómo va mi capuchino?",
+      "locucion": "[excited] ¡Sobre todo para el café! Nova, ¿cómo va mi capuchino?"
+    },
+    {
+      "id": "04",
+      "personaje": "nova",
+      "texto": "¡Listo, ya lo hice! ...¿Qué es un capuchino?",
+      "locucion": "[excited] ¡Listo, ya lo hice! [pause] [confused] ...¿Qué es un capuchino?",
+      "risa": "grande",
+      "pausa": 2.0,
+      "tema": true,
+      "acciones": {
+        "nova": "saluda"
+      },
+      "accionesRisa": {
+        "ceo": "enojo",
+        "nova": "nada"
+      },
+      "camaraRisa": "ceo"
+    },
+    {
+      "id": "05",
+      "personaje": "paty",
+      "texto": "Técnicamente, una IA no puede hacer café. No tiene manos.",
+      "locucion": "[matter-of-fact] Técnicamente, una IA no puede hacer café. [proud] No tiene manos.",
+      "acciones": {
+        "ceo": "neutral jarras",
+        "paty": "jarras"
+      }
+    },
+    {
+      "id": "06",
+      "personaje": "nova",
+      "texto": "¿Y estas qué son, Paty?",
+      "locucion": "[mischievously] ¿Y estas qué son, Paty?",
+      "risa": "chica",
+      "pausa": 1.0,
+      "camara": "nova!",
+      "acciones": {
+        "nova": "saluda"
+      },
+      "accionesRisa": {
+        "paty": "enojo",
+        "nova": "nada"
+      }
+    },
+    {
+      "id": "07",
+      "personaje": "ceo",
+      "texto": "¡Excelente! Nova hará el código. Juanito, tú solo explícale qué hace el tuyo.",
+      "locucion": "[enthusiastic] ¡Excelente! Nova hará el código. [cheerfully] Juanito, tú solo explícale qué hace el tuyo.",
+      "acciones": {
+        "paty": "neutral nada",
+        "ceo": "saluda"
+      }
+    },
+    {
+      "id": "08",
+      "personaje": "juanito",
+      "texto": "¿Qué hace mi código? ...Ni yo sé qué hace mi código.",
+      "locucion": "[nervous] ¿Qué hace mi código? [pause] [laughs nervously] ...Ni yo sé qué hace mi código.",
+      "risa": "grande",
+      "pausa": 1.3,
+      "acciones": {
+        "ceo": "jarras",
+        "juanito": "de-pie brazos-arriba"
+      }
+    },
+    {
+      "id": "09",
+      "personaje": "ceo",
+      "texto": "¡Pues lo quiero listo... PARA AYER!",
+      "locucion": "[frustrated] ¡Pues lo quiero listo... [shouting] PARA AYER!",
+      "camara": "ceo!",
+      "acciones": {
+        "ceo": "enojo salta"
+      }
+    },
+    {
+      "id": "11",
+      "personaje": "nova",
+      "texto": "Procesando «para ayer»... ¡Error! ¡Reiniciando!",
+      "locucion": "[robotic] Procesando para ayer... [panicking] ¡Error! ¡Reiniciando!",
+      "risa": "aplauso",
+      "pausa": 1.3,
+      "acciones": {
+        "nova": "asustado"
+      },
+      "accionesRisa": {
+        "ceo": "brazos-arriba",
+        "juanito": "brazos-arriba"
+      }
+    }
+  ]
+}

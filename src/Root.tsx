@@ -31,6 +31,7 @@ import { PropuestasPaty } from "./personajes/paty/Propuestas";
 import { PropuestasNova } from "./personajes/nova/Propuestas";
 import { PropuestasCeo } from "./personajes/ceo/Propuestas";
 import { MuestraCeo1, MuestraCeo2, MuestraCeo3 } from "./personajes/ceo/Muestras";
+import { EP1 as EP1_MX, PilotoOficinita } from "./sitcom-laoficinitamx/ep1/Piloto";
 import { DURACION_NOVA, DURACIONES_NOVA, PresentacionNova, PresentacionNova1, PresentacionNova2, PresentacionNova3 } from "./personajes/nova/Presentacion";
 import {
   DURACION_PRESENTACION_PATY,
@@ -164,6 +165,7 @@ export const RemotionRoot: React.FC = () => {
       ))}
       <Composition id="PresentacionNova" component={PresentacionNova} durationInFrames={DURACION_NOVA} fps={30} width={1080} height={1920} />
       <Composition id="HojaModeloPaty" component={HojaModeloPaty} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="PilotoOficinita" component={PilotoOficinita} durationInFrames={EP1_MX.duracion} fps={30} width={1080} height={1920} />
     </>
   );
 };
