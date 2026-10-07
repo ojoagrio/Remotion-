@@ -1,0 +1,34 @@
+{
+  "carpeta": "mensaje-ep1",
+  "formato": "vertical",
+  "titulo": "MENSAJE ENVIADO",
+  "episodio": "Episodio 1: «Algo casual»",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.06, "pausa": 0.4 },
+  "voces": {
+    "laura": "j7e3J6ksqsziQcIGyAWI",
+    "beto": "5kz7Te3c1BvAWyFfkfkW",
+    "nube": "8jv0VaaN6d7mWZAeGj79",
+    "mama": "D3ws14YxTqcjPaXEOehR"
+  },
+  "ajustes": {
+    "laura": { "stability": 0.0, "similarity_boost": 0.8 },
+    "beto": { "stability": 0.5, "similarity_boost": 0.8 },
+    "nube": { "stability": 1.0, "similarity_boost": 0.8 },
+    "mama": { "stability": 0.5, "similarity_boost": 0.85 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "laura", "texto": "Nube, Marco me escribió «hola». Ayúdame a contestar algo casual.", "locucion": "[nervously] Nube, Marco me escribió hola. Ayúdame a contestar algo casual." },
+    { "id": "02", "personaje": "nube", "texto": "¡Claro! Opción casual: «Estimado Marco, espero que este mensaje te encuentre bien».", "locucion": "[cheerfully] ¡Claro! Opción casual: Estimado Marco, espero que este mensaje te encuentre bien.", "risa": "chica", "pausa": 1.3 },
+    { "id": "03", "personaje": "beto", "texto": "¿«Estimado Marco»? ¿Le vas a mandar una carta del SAT?", "locucion": "[laughing] ¿Estimado Marco? ¿Le vas a mandar una carta del SAT?", "risa": "grande", "pausa": 2.0, "tema": true, "accionesRisa": { "laura": "nada enojo" } },
+    { "id": "04", "personaje": "laura", "texto": "¡Más relajado, Nube! Como si no me importara.", "locucion": "[frustrated] ¡Más relajado, Nube! Como si no me importara.", "acciones": { "laura": "telefono neutral" } },
+    { "id": "05", "personaje": "nube", "texto": "Entendido: «hola». ¿Agrego tres párrafos sobre lo poco que te importa?", "locucion": "Entendido: hola. [helpfully] ¿Agrego tres párrafos sobre lo poco que te importa?", "risa": "grande", "pausa": 1.8 },
+    { "id": "06", "personaje": "laura", "texto": "¡No! Solo mándale «hola» y ya.", "locucion": "[exasperated] ¡No! Solo mándale hola y ya.", "pausa": 0.2 },
+    { "id": "07", "personaje": "nube", "texto": "Listo. Enviado.", "locucion": "[cheerfully] Listo. Enviado.", "pausa": 0.6 },
+    { "id": "08", "personaje": "beto", "texto": "...¿A Marco?", "locucion": "[suspicious] ...¿A Marco?", "pausa": 0.3 },
+    { "id": "09", "personaje": "nube", "texto": "Al grupo de la familia.", "locucion": "[cheerfully] Al grupo de la familia.", "camara": "nube!", "risa": "ooh", "pausa": 1.8, "accionesRisa": { "laura": "de-pie brazos-arriba enojo salta", "beto": "brazos-arriba" } },
+    { "id": "10", "personaje": "mama", "texto": "¡Hola, mija! ¿Quién es Marco?", "locucion": "[excited] ¡Hola, mija! ¿Quién es Marco?", "risa": "grande", "pausa": 2.0, "acciones": { "mama": "aparece saluda" }, "camaraRisa": "laura" },
+    { "id": "11", "personaje": "laura", "texto": "Nube... apágate.", "locucion": "[defeated] Nube... apágate.", "pausa": 0.3, "acciones": { "laura": "nada sueno", "mama": "jarras" } },
+    { "id": "12", "personaje": "nube", "texto": "Imposible. Tu mamá activó el modo supervisión.", "locucion": "[cheerfully] Imposible. Tu mamá activó el modo supervisión.", "risa": "aplauso", "pausa": 3.0, "accionesRisa": { "laura": "brazos-arriba llora", "beto": "brazos-arriba" } }
+  ]
+}

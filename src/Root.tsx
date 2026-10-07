@@ -15,6 +15,7 @@ import { DURACION as DURACION_CLAWD } from "./clawd/tiempos";
 import { Sitcom } from "./sitcom/Sitcom";
 import { DURACION as DURACION_SITCOM } from "./sitcom/tiempos";
 import { EP2, SitcomEp2 } from "./sitcom/ep2/SitcomEp2";
+import { EP_MENSAJE, MensajeEnviado } from "./mensaje/MensajeEnviado";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -105,6 +106,8 @@ export const RemotionRoot: React.FC = () => {
       />
       {/* Episodio 2 en vertical (TikTok), hecho con el motor de episodios */}
       <Composition id="SitcomEp2" component={SitcomEp2} durationInFrames={EP2.duracion} fps={30} width={1080} height={1920} />
+      {/* Nueva sitcom: «Mensaje enviado» (vertical) */}
+      <Composition id="MensajeEnviado" component={MensajeEnviado} durationInFrames={EP_MENSAJE.duracion} fps={30} width={1080} height={1920} />
     </>
   );
 };

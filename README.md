@@ -268,3 +268,15 @@ Ejemplo: `"acciones": { "sofi": "de-pie brazos-arriba enojo salta" }` (al empeza
 `"accionesRisa"` (al empezar la risa). La cámara es automática: primer plano de quien habla y
 plano general en las risas; se puede forzar con `"camara"`/`"camaraRisa"` (`"general"`, el id
 de un personaje, o `"id!"` para un crash zoom).
+
+## Sitcom «Mensaje enviado» (`src/mensaje/`)
+
+Segunda serie hecha con el motor de episodios, con otro escenario (`Sala.tsx`) y otro reparto:
+Laura le pide a su asistente de IA, Nube, que conteste «algo casual» a Marco... y Nube lo manda
+al grupo de la familia. El motor acepta `escenario` y `posiciones` propios, así que una serie
+nueva es: un set, un reparto y un `guion.json`.
+
+```bash
+ELEVENLABS_API_KEY=tu_clave npm run producir -- src/mensaje/guion.json
+npm run render:mensaje
+```

@@ -27,7 +27,7 @@ type Humano = { tipo: "humano"; nombre: string; color: string; colores: ColoresP
 type Bot = { tipo: "robot"; nombre: string; color: string; cuerpo?: string; escala?: number; inicial?: Partial<Estado> };
 export type Miembro = Humano | Bot;
 
-const persona = (camisa: string, pantalon: string, cabello: string, extra: Partial<ColoresPersonaje> = {}): ColoresPersonaje => ({
+export const persona = (camisa: string, pantalon: string, cabello: string, extra: Partial<ColoresPersonaje> = {}): ColoresPersonaje => ({
   piel: "#e0a47c",
   camisa,
   pantalon,
@@ -65,7 +65,8 @@ const POSICIONES: Record<"vertical" | "horizontal", Record<string, { pos: Vec3; 
   },
 };
 
-const posicionDe = (ep: DatosEpisodio, id: string) => POSICIONES[ep.formato][id] ?? POSICIONES[ep.formato].extra;
+const posicionDe = (ep: DatosEpisodio, id: string) =>
+  ep.posiciones?.[id] ?? POSICIONES[ep.formato][id] ?? POSICIONES[ep.formato].extra;
 
 const cabezaDe = (ep: DatosEpisodio, reparto: Record<string, Miembro>, id: string, frame: number): Vec3 => {
   const { pos } = posicionDe(ep, id);
@@ -120,7 +121,14 @@ const poseHumano = (e: Estado, f: number, boca: number): PosePersonaje => ({
   llanto: e.cara === "llora" ? 1 : 0,
 });
 
-const Mundo: React.FC<{ ep: DatosEpisodio; reparto: Record<string, Miembro> }> = ({ ep, reparto }) => {
+// Escenario: por defecto la oficina; un episodio de otra serie puede pasar el suyo
+export type Escenario = React.FC<{ frame: number }>;
+
+const Mundo: React.FC<{ ep: DatosEpisodio; reparto: Record<string, Miembro>; escenario?: Escenario }> = ({
+  ep,
+  reparto,
+  escenario: EscenarioPropio,
+}) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const bocas = useBocas(ep.lineas, ep.envolventes) as Record<string, number | undefined>;
@@ -131,13 +139,17 @@ const Mundo: React.FC<{ ep: DatosEpisodio; reparto: Record<string, Miembro> }> =
   return (
     <>
       <Camara pos={cam.pos} mira={cam.mira} fov={cam.fov} />
-      <Startup
-        frame={f}
-        cafeCancelado
-        pantallaTono="#4fc3f7"
-        pantallaSofi="#80ed99"
-        escritorios={vertical ? [pos.sofi, pos.tono] : undefined}
-      />
+      {EscenarioPropio ? (
+        <EscenarioPropio frame={f} />
+      ) : (
+        <Startup
+          frame={f}
+          cafeCancelado
+          pantallaTono="#4fc3f7"
+          pantallaSofi="#80ed99"
+          escritorios={vertical ? [pos.sofi, pos.tono] : undefined}
+        />
+      )}
       {Object.entries(reparto).map(([id, m]) => {
         const e = estadoEn(ep, id, m.inicial ?? {}, f);
         if (!e.visible) return null;
@@ -213,10 +225,16 @@ const Creditos: React.FC<{ titulo: string; vertical: boolean }> = ({ titulo, ver
   );
 };
 
-export const EpisodioSitcom: React.FC<{ ep: DatosEpisodio; reparto?: Record<string, Miembro>; gancho?: string }> = ({
+export const EpisodioSitcom: React.FC<{
+  ep: DatosEpisodio;
+  reparto?: Record<string, Miembro>;
+  gancho?: string;
+  escenario?: Escenario;
+}> = ({
   ep,
   reparto = REPARTO,
   gancho,
+  escenario,
 }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
@@ -225,7 +243,7 @@ export const EpisodioSitcom: React.FC<{ ep: DatosEpisodio; reparto?: Record<stri
   const congelado = frame >= ep.congelar;
   const escena = (
     <Lienzo ancho={width} alto={height}>
-      <Mundo ep={ep} reparto={reparto} />
+      <Mundo ep={ep} reparto={reparto} escenario={escenario} />
     </Lienzo>
   );
   const s = (n: string) => `sonidos/${n}.wav`;

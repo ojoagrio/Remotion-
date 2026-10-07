@@ -24,7 +24,8 @@
     "bocas": "python3 scripts/envolventes.py",
     "producir": "node scripts/producir.mjs",
     "hoja": "node scripts/hoja.mjs",
-    "render:sitcom2": "REMOTION_GL=swangle remotion render SitcomEp2 out/sitcom-ep2-vacaciones.mp4"
+    "render:sitcom2": "REMOTION_GL=swangle remotion render SitcomEp2 out/sitcom-ep2-vacaciones.mp4",
+    "render:mensaje": "REMOTION_GL=swangle remotion render MensajeEnviado out/mensaje-enviado-ep1.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",

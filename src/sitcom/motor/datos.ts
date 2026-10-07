@@ -1,5 +1,8 @@
 import { crearLineas, fin, Linea } from "../../comun/lineaDeTiempo";
+import { Vec3 } from "../../comun/Lienzo";
 import { Envolventes } from "../../comun/useBocas";
+
+export type Posiciones = Record<string, { pos: Vec3; rot: number }>;
 
 // Datos de un episodio de la sitcom. Un episodio nuevo solo necesita su guion.json:
 //
@@ -45,7 +48,13 @@ const ARCHIVO_RISA = { chica: "risa-chica", grande: "risa-grande", ooh: "ooh", a
 
 export type Episodio = ReturnType<typeof prepararEpisodio>;
 
-export const prepararEpisodio = (guion: GuionEpisodio, duraciones: Record<string, number>, envolventes: Envolventes) => {
+// "posiciones" permite otro escenario (por defecto, la oficina de «Prompt & Compañía»)
+export const prepararEpisodio = (
+  guion: GuionEpisodio,
+  duraciones: Record<string, number>,
+  envolventes: Envolventes,
+  posiciones?: Posiciones,
+) => {
   const lineasGuion = guion.lineas.map((l) => ({ ...l, pausa: (l.pausa ?? 0) + (l.tema ? TITULO_SEG : 0) }));
   const lineas: Linea[] = crearLineas(lineasGuion, duraciones, { inicio: 0.6, fps: FPS, pausa: 0.22 });
   const indiceTema = guion.lineas.findIndex((l) => l.tema);
@@ -86,6 +95,7 @@ export const prepararEpisodio = (guion: GuionEpisodio, duraciones: Record<string
   return {
     guion,
     formato: guion.formato ?? "vertical",
+    posiciones,
     lineas,
     duraciones,
     envolventes,
