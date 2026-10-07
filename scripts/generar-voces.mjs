@@ -1,5 +1,10 @@
 // Genera las voces del guion con ElevenLabs y guarda la duración de cada línea.
 // Uso: ELEVENLABS_API_KEY=... node scripts/generar-voces.mjs [src/tiktok/guion.json]
+//
+// Cada línea puede indicar, además de "texto" (el subtítulo):
+// - "locucion": texto que se envía a la voz, si es distinto (p. ej. con etiquetas de
+//   eleven_v3 como [sings] o vocales alargadas para cantar)
+// - "modelo" y "ajustes": para usar otro modelo o ajustes de voz solo en esa línea
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -25,9 +30,9 @@ for (const linea of guion.lineas) {
       method: "POST",
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
       body: JSON.stringify({
-        text: linea.texto,
-        model_id: guion.modelo,
-        voice_settings: guion.ajustes?.[linea.personaje] ?? {
+        text: linea.locucion ?? linea.texto,
+        model_id: linea.modelo ?? guion.modelo,
+        voice_settings: linea.ajustes ?? guion.ajustes?.[linea.personaje] ?? {
           stability: 0.35,
           similarity_boost: 0.8,
           style: 0.6,

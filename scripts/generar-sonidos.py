@@ -378,6 +378,87 @@ def actualizacion():
     return mezclar(1.0, *partes)
 
 
+# ---------------------------------------------------------------- «El chisme»
+def musica_synthpop():
+    """Synth-pop ochentero a 112 bpm en La menor: Am - F - C - G, con bajo arpegiado y pads."""
+    negra = 60 / 112
+    acordes = [(45, [57, 60, 64]), (41, [53, 57, 60]), (48, [55, 60, 64]), (43, [55, 59, 62])]
+    compas = 4 * negra
+    vueltas = 4
+    total = len(acordes) * compas * vueltas
+    partes = []
+    gancho = [76, 74, 72, 74, 76, 79, 76, 0]
+    for v in range(vueltas):
+        for i, (raiz, acorde) in enumerate(acordes):
+            base = (v * len(acordes) + i) * compas
+            # Pad: sierras desafinadas y suavizadas
+            pad = sum(sierra(nota(n) * d, compas) for n in acorde for d in (0.997, 1.003))
+            pad = paso_bajo(pad, 12) * envolvente(int(SR * compas), 0.15) * np.linspace(1, 0.7, int(SR * compas))
+            partes.append((base, pad * 0.05))
+            # Bajo en corcheas, octavas alternas
+            for k in range(8):
+                n = raiz if k % 2 == 0 else raiz + 12
+                d = negra / 2
+                s = paso_bajo(sierra(nota(n), d * 0.9), 5) * envolvente(int(SR * d * 0.9), 0.003, 0.12)
+                partes.append((base + k * d, s * 0.35))
+            # Gancho de sintetizador (solo en vueltas pares)
+            if v % 2 == 1:
+                for k, n in enumerate(gancho):
+                    if n:
+                        d = negra / 2
+                        s = cuadrada(nota(n), d * 0.8, 0.3) * envolvente(int(SR * d * 0.8), 0.005, 0.15)
+                        partes.append((base + k * d, s * 0.1))
+            # Batería: bombo a negras, caja en 2 y 4 con eco, charles en corcheas
+            for b in range(4):
+                bombo = senoidal(np.geomspace(140, 45, int(SR * 0.18)), 0.18) * envolvente(int(SR * 0.18), 0.001, 0.06)
+                partes.append((base + b * negra, bombo * 0.7))
+                if b % 2 == 1:
+                    caja = (paso_alto(ruido(0.25)) + senoidal(190, 0.25) * 0.5) * envolvente(int(SR * 0.25), 0.001, 0.07)
+                    partes.append((base + b * negra, caja * 0.3))
+                    partes.append((base + b * negra + negra * 0.75, caja * 0.08))
+            for k in range(8):
+                charles = paso_alto(paso_alto(ruido(0.05))) * envolvente(int(SR * 0.05), 0.001, 0.012)
+                partes.append((base + k * negra / 2, charles * 0.1))
+    return mezclar(total, *partes)
+
+
+def sting_chisme():
+    """Cortinilla de programa de chismes: tres golpes y un brillo."""
+    partes = []
+    for i, n in enumerate([64, 67, 72]):
+        s = (sierra(nota(n), 0.18) + sierra(nota(n + 7), 0.18)) * envolvente(int(SR * 0.18), 0.003, 0.08)
+        partes.append((i * 0.14, paso_bajo(s, 4)))
+        golpe = senoidal(np.geomspace(150, 50, int(SR * 0.15)), 0.15) * envolvente(int(SR * 0.15), 0.001, 0.05)
+        partes.append((i * 0.14, golpe))
+    platillo = paso_alto(paso_alto(ruido(1.0))) * envolvente(int(SR * 1.0), 0.001, 0.3)
+    partes.append((0.42, platillo * 0.4))
+    partes.append((0.42, brillo() * 0.5))
+    return mezclar(1.4, *partes)
+
+
+def abucheo():
+    """Público abucheando: muchas voces graves «buuu» que bajan de tono."""
+    seg = 2.4
+    n = int(SR * seg)
+    total = np.zeros(n)
+    for _ in range(24):
+        f0 = rng.uniform(95, 180)
+        caida = np.linspace(1.0, rng.uniform(0.8, 0.9), n)
+        vibrato = 1 + 0.02 * np.sin(2 * np.pi * rng.uniform(4, 7) * t(seg) + rng.uniform(0, 6))
+        voz = sierra(f0 * caida * vibrato, seg)
+        retraso = int(SR * rng.uniform(0, 0.3))
+        total[retraso:] += voz[: n - retraso]
+    # Formante de «u»: muy suavizado
+    total = paso_bajo(paso_bajo(total, 20), 20)
+    return total * envolvente(n, 0.25) * np.linspace(1, 0.3, n)
+
+
+def pop():
+    seg = 0.12
+    f = np.geomspace(600, 1500, int(SR * seg))
+    return senoidal(f, seg) * envolvente(int(SR * seg), 0.001, 0.03)
+
+
 if __name__ == "__main__":
     os.makedirs(CARPETA, exist_ok=True)
     guardar("musica-chiptune", musica_chiptune(), 0.8)
@@ -403,3 +484,7 @@ if __name__ == "__main__":
     guardar("brillo", brillo(), 0.6)
     guardar("gota", gota(), 0.6)
     guardar("actualizacion", actualizacion(), 0.7)
+    guardar("musica-synthpop", musica_synthpop(), 0.8)
+    guardar("sting-chisme", sting_chisme(), 0.8)
+    guardar("abucheo", abucheo(), 0.7)
+    guardar("pop", pop(), 0.5)

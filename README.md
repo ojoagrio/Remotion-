@@ -17,6 +17,7 @@ npm run voces      # generar las voces del guion con ElevenLabs (ver abajo)
 npm run render:tiktok # renderizar el video vertical de TikTok a out/ya-voy-saliendo.mp4
 npm run render:ia  # renderizar «El bug chiquito» (dev vs IA) a out/bug-chiquito.mp4
 npm run render:chancla # renderizar «La chancla» (mamá vs IA) a out/la-chancla.mp4
+npm run render:chisme # renderizar «El chisme» (parodia) a out/el-chisme.mp4
 npm run typecheck  # comprobar tipos
 ```
 
@@ -116,3 +117,26 @@ responde «como modelo de lenguaje, no puedo»... y empieza un duelo del viejo o
 - `Sonidos.tsx`: música polka, silbido western, chanclazo, burbujas, etc.
 
 Voces: `ELEVENLABS_API_KEY=tu_clave npm run voces -- src/chancla/guion.json`
+
+## «El chisme»: parodia de la polémica de Aleks Syntek
+
+`src/syntek/` es una **parodia** (39 s, vertical) contada por un programa de chismes ficticio.
+Las voces son de ElevenLabs y **no** imitan la voz del cantante. Las partes cantadas usan el
+modelo `eleven_v3` con la etiqueta `[sings]` (campos `locucion` y `modelo` del guion). El
+video muestra el aviso «PARODIA» todo el tiempo y un cartel final con las fuentes.
+
+Hechos en los que se basa (septiembre de 2026):
+
+- 15 de septiembre, concierto gratuito del Grito en la alcaldía Benito Juárez: le piden una
+  canción de Juan Gabriel, responde «entre más me digas eso, menos voy a cantar» y lo abuchean.
+- 20 de septiembre, en un live: dice «sí estoy loco», se compara con Dalí, Picasso y Frida
+  Kahlo y anuncia que se va a Inglaterra porque «allá sí lo quieren». Algunos medios reportan
+  que luego dijo que era «un juego».
+- Después aclara que volverá y anuncia un concierto gratuito el 15 de noviembre en el
+  Festival del Chocolate de Villahermosa, Tabasco.
+
+Fuentes: [N+](https://www.nmas.com.mx/entretenimiento/foro-tv-video-si-estoy-loco-aleks-syntek-hace-polemico-live-en-redes-sociales/),
+[Infobae](https://www.infobae.com/mexico/2026/09/25/aleks-syntek-confirma-que-se-va-a-inglaterra-y-publica-cancion-para-explicar-sus-razones/),
+[Récord](https://www.record.com.mx/historia/video-aleks-syntek-dice-que-esta-loco-y-sorprende-con-comentario-sobre-zague-la-tiene-bien-grande-2026092022325323911),
+[Criterio Hidalgo](https://www.criteriohidalgo.com/ticket/lo-que-circula-en-la-red/aleks-syntek-causa-polemica-tras-decir-si-estoy-loco-durante-un-live-en-redes-sociales),
+[ABC Noticias](https://abcnoticias.mx/show/2026/10/6/y-el-no-mas-gratis-aleks-syntek-anuncia-concierto-gratuito-esto-se-sabe-291613.html).

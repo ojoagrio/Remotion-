@@ -1,0 +1,59 @@
+{
+  "carpeta": "syntek",
+  "modelo": "eleven_multilingual_v2",
+  "voces": {
+    "conductor": "YKUjKbMlejgvkOZlnnvt",
+    "conductora": "8jv0VaaN6d7mWZAeGj79",
+    "aleks": "INWTGvzKdMrRuRgTL1rY"
+  },
+  "ajustes": {
+    "conductor": { "stability": 0.3, "similarity_boost": 0.8, "style": 0.75 },
+    "conductora": { "stability": 0.35, "similarity_boost": 0.8, "style": 0.7 }
+  },
+  "lineas": [
+    {
+      "id": "01",
+      "personaje": "conductor",
+      "texto": "¡Llegó el chisme! Aleks Syntek dio un concierto gratis... ¡y le pidieron una de Juan Gabriel!"
+    },
+    {
+      "id": "02",
+      "personaje": "conductora",
+      "texto": "Y él contestó: «entre más me digas eso, menos voy a cantar». ¡Lo abuchearon!"
+    },
+    {
+      "id": "03",
+      "personaje": "conductor",
+      "texto": "Días después prendió un live y, según los medios, dijo esto...",
+      "pausa": 0.2
+    },
+    {
+      "id": "04",
+      "personaje": "aleks",
+      "texto": "♪ ¡Sí estoy loco! Como Dalí, como Picasso... ¡Me voy pa' Inglaterra, que allá sí me quieren! ♪",
+      "locucion": "[sings] ¡Sí estoy locooo! Como Dalííí, como Picassooo... [sings] ¡Me voy pa' Inglaterraaa, que allá sí me quieeeren!",
+      "modelo": "eleven_v3",
+      "ajustes": { "stability": 0.0, "similarity_boost": 0.8 },
+      "pausa": 0.2
+    },
+    {
+      "id": "05",
+      "personaje": "conductora",
+      "texto": "Luego dijo que era un juego... ¡y ya anunció concierto gratis en Tabasco!"
+    },
+    {
+      "id": "06",
+      "personaje": "conductor",
+      "texto": "¿Pero no que ya no más gratis?",
+      "pausa": 0.2
+    },
+    {
+      "id": "07",
+      "personaje": "aleks",
+      "texto": "♪ ¡Les prometo volver... con chocolate! ♪",
+      "locucion": "[sings] ¡Les prometo volveeer... con chocolaaateee!",
+      "modelo": "eleven_v3",
+      "ajustes": { "stability": 0.0, "similarity_boost": 0.8 }
+    }
+  ]
+}

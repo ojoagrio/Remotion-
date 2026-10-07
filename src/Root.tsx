@@ -4,6 +4,8 @@ import { EscenaEncuentro } from "./n64/EscenaEncuentro";
 import { YaVoySaliendo } from "./tiktok/YaVoySaliendo";
 import { BugChiquito } from "./ia/BugChiquito";
 import { ChanclaIA } from "./chancla/ChanclaIA";
+import { ElChisme } from "./syntek/ElChisme";
+import { DURACION as DURACION_CHISME } from "./syntek/tiempos";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -46,6 +48,15 @@ export const RemotionRoot: React.FC = () => {
         id="ChanclaIA"
         component={ChanclaIA}
         durationInFrames={900}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Parodia: la duración sale de los audios del guion */}
+      <Composition
+        id="ElChisme"
+        component={ElChisme}
+        durationInFrames={DURACION_CHISME}
         fps={30}
         width={1080}
         height={1920}
