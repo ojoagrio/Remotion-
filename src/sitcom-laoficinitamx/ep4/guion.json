@@ -1,0 +1,34 @@
+{
+  "carpeta": "oficinitamx-ep4",
+  "formato": "vertical",
+  "titulo": "LA OFICINITA MX",
+  "episodio": "Episodio 4: «Recursos inhumanos»",
+  "fuente": "30 sep 2026: California firma leyes contra los «robo bosses»: prohíbe IA que predice emociones de empleados (AB 1883) y exige que un humano revise despidos influidos por IA (SB 947). Además, reportes de jefes que le preguntan a ChatGPT a quién despedir. https://www.kqed.org/news/12102337/newsom-signs-slate-of-ai-workplace-laws-barring-robo-bosses-and-surveillance · https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai",
+  "modelo": "eleven_v3",
+  "ritmo": { "velocidad": 1.15, "pausa": 0.35 },
+  "voces": {
+    "ceo": "G4IAP30yc6c1gK0csDfu",
+    "juanito": "VvYiNBPylZtUh8Bf6u8l",
+    "paty": "klD8ai7tOs4cUL3kcChn",
+    "nova": "2CGcaXd1E04jesxY7nfq"
+  },
+  "ajustes": {
+    "ceo": { "stability": 0.0, "similarity_boost": 0.8 },
+    "juanito": { "stability": 0.0, "similarity_boost": 0.8 },
+    "paty": { "stability": 0.0, "similarity_boost": 0.8 },
+    "nova": { "stability": 0.0, "similarity_boost": 0.8 }
+  },
+  "lineas": [
+    { "id": "01", "personaje": "ceo", "texto": "¡Equipo! Desde hoy, Nova mide su productividad... ¡y sus emociones!", "locucion": "[enthusiastic] ¡Equipo! Desde hoy, Nova mide su productividad... [shouting] ¡y sus emociones!", "camara": "general", "acciones": { "ceo": "brazos-arriba salta" } },
+    { "id": "02", "personaje": "nova", "texto": "Juanito: hoy sonreíste tres veces. Solo una fue sincera.", "locucion": "[cheerfully] Juanito: hoy sonreíste tres veces. [whispers] Solo una fue sincera.", "acciones": { "ceo": "jarras", "nova": "saluda" } },
+    { "id": "03", "personaje": "juanito", "texto": "¿Y cómo sabes cuál?", "locucion": "[suspicious] ¿Y cómo sabes cuál?", "acciones": { "nova": "nada", "juanito": "de-pie nada" } },
+    { "id": "04", "personaje": "nova", "texto": "Fue cuando dijiste: «ya me voy».", "locucion": "[sweetly] Fue cuando dijiste: [mischievously] ya me voy.", "risa": "grande", "pausa": 2.0, "tema": true, "accionesRisa": { "juanito": "enojo" }, "camaraRisa": "juanito" },
+    { "id": "05", "personaje": "paty", "texto": "Técnicamente, en California ya prohibieron que la IA lea emociones en el trabajo.", "locucion": "[matter-of-fact] Técnicamente, en California ya prohibieron que la IA lea emociones en el trabajo.", "acciones": { "paty": "jarras", "juanito": "neutral nada" } },
+    { "id": "06", "personaje": "ceo", "texto": "Bueno, bueno... Nova, ¿a quién despedimos?", "locucion": "[conspiratorially] Bueno, bueno... [whispers] Nova, ¿a quién despedimos?", "acciones": { "ceo": "nada", "paty": "nada" } },
+    { "id": "07", "personaje": "nova", "texto": "Según mis datos... al que le pregunta a la IA a quién despedir.", "locucion": "[thoughtfully] Según mis datos... [cheerfully] al que le pregunta a la IA a quién despedir.", "risa": "grande", "pausa": 1.3, "camara": "nova!", "acciones": { "nova": "feliz" }, "accionesRisa": { "juanito": "brazos-arriba salta", "ceo": "asustado" } },
+    { "id": "08", "personaje": "ceo", "texto": "¡¿YO?!", "locucion": "[shouting] ¡¿YO?!", "camara": "ceo!", "acciones": { "ceo": "enojo salta", "juanito": "nada" } },
+    { "id": "09", "personaje": "paty", "texto": "Tranquilo: por ley, un humano tiene que revisar la decisión.", "locucion": "[reassuringly] Tranquilo: por ley, un humano tiene que revisar la decisión.", "acciones": { "paty": "jarras" } },
+    { "id": "10", "personaje": "ceo", "texto": "¡Uf! Juanito, revísala tú... ¡para ayer!", "locucion": "[relieved] ¡Uf! [enthusiastic] Juanito, revísala tú... ¡para ayer!", "acciones": { "ceo": "neutral jarras" } },
+    { "id": "11", "personaje": "juanito", "texto": "Revisada... y aprobada.", "locucion": "[smugly] Revisada... [cheerfully] y aprobada.", "risa": "aplauso", "pausa": 1.3, "camara": "juanito!", "acciones": { "juanito": "jarras" }, "accionesRisa": { "ceo": "enojo brazos-arriba", "nova": "saluda", "paty": "salta" } }
+  ]
+}

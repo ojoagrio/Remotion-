@@ -34,6 +34,7 @@ import { MuestraCeo1, MuestraCeo2, MuestraCeo3 } from "./personajes/ceo/Muestras
 import { EP1 as EP1_MX, PilotoOficinita } from "./sitcom-laoficinitamx/ep1/Piloto";
 import { EP2 as EP2_MX, ParaElViernes } from "./sitcom-laoficinitamx/ep2/ParaElViernes";
 import { EP3_MX, NueveSegundos } from "./sitcom-laoficinitamx/ep3/NueveSegundos";
+import { EP4_MX, RecursosInhumanos } from "./sitcom-laoficinitamx/ep4/RecursosInhumanos";
 import { DURACION_NOVA, DURACIONES_NOVA, PresentacionNova, PresentacionNova1, PresentacionNova2, PresentacionNova3 } from "./personajes/nova/Presentacion";
 import {
   DURACION_PRESENTACION_PATY,
@@ -170,6 +171,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PilotoOficinita" component={PilotoOficinita} durationInFrames={EP1_MX.duracion} fps={30} width={1080} height={1920} />
       <Composition id="OficinitaEp2" component={ParaElViernes} durationInFrames={EP2_MX.duracion} fps={30} width={1080} height={1920} />
       <Composition id="OficinitaEp3" component={NueveSegundos} durationInFrames={EP3_MX.duracion} fps={30} width={1080} height={1920} />
+      <Composition id="OficinitaEp4" component={RecursosInhumanos} durationInFrames={EP4_MX.duracion} fps={30} width={1080} height={1920} />
     </>
   );
 };

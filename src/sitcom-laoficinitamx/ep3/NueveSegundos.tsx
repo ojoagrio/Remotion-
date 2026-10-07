@@ -1,10 +1,9 @@
-import { AbsoluteFill, Sequence, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { Sequence } from "remotion";
 import { fin } from "../../comun/lineaDeTiempo";
 import { Sonido } from "../../comun/Sonido";
-import { FUENTE } from "../../comun/Textos";
 import { GuionEpisodio, prepararEpisodio } from "../../sitcom/motor/datos";
 import { EpisodioSitcom } from "../../sitcom/motor/Episodio";
-import { AMARILLO, Cortinillas, finRisa, lineaDe, POSICIONES_MX, REPARTO_MX, SetOficinita, TarjetaAmarilla } from "../serie";
+import { Cortinillas, finRisa, lineaDe, PasoDeVerdad, POSICIONES_MX, REPARTO_MX, SetOficinita, TarjetaAmarilla } from "../serie";
 import duraciones from "./duraciones.json";
 import envolventes from "./envolventes.json";
 import guion from "./guion.json";
@@ -17,26 +16,11 @@ export const EP3_MX = prepararEpisodio(guion as unknown as GuionEpisodio, duraci
 const L = (id: string) => lineaDe(EP3_MX, id);
 const CORTINILLAS = [0, finRisa(EP3_MX, "06") - 10];
 
-// Sello «PASÓ DE VERDAD» mientras Paty cuenta el caso real
-const PasoDeVerdad: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const pop = spring({ frame, fps, config: { damping: 8, stiffness: 180 } });
-  return (
-    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
-      <div style={{ transform: `scale(${pop}) rotate(-5deg)`, background: AMARILLO, border: "6px solid #000", borderRadius: 18, padding: "10px 28px", textAlign: "center", boxShadow: "0 10px 0 rgba(0,0,0,0.35)" }}>
-        <div style={{ fontFamily: FUENTE, fontSize: 64, color: "#e63946" }}>¡PASÓ DE VERDAD!</div>
-        <div style={{ fontFamily: FUENTE, fontSize: 30, color: "#000" }}>IA borra empresa en 9 s · abril 2026</div>
-      </div>
-    </AbsoluteFill>
-  );
-};
-
 const Extras: React.FC = () => (
   <>
     <Cortinillas desde={CORTINILLAS} />
     <Sequence from={L("07").inicio} durationInFrames={L("07").duracion + 20} layout="none">
-      <PasoDeVerdad />
+      <PasoDeVerdad detalle="IA borra empresa en 9 s · abril 2026" />
     </Sequence>
     <Sonido archivo="sonidos/brillo.wav" desde={L("01").inicio + 40} volumen={0.35} />
     <Sonido archivo="sonidos/burbujas.wav" desde={L("02").inicio} hasta={L("02").inicio + 45} volumen={0.3} />

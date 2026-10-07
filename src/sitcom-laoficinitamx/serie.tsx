@@ -15,7 +15,7 @@ import nova from "./personajes/nova/nova.json";
 export const AMARILLO = "#ffe600";
 
 export const POSICIONES_MX: Posiciones = {
-  juanito: { pos: [-1.5, 0, 0.0], rot: 0.35 },
+  juanito: { pos: [-1.5, 0, 0.0], rot: 0.12 },
   // Paty (bajita) frente al escritorio de la derecha; Nova flota alto entre ella y el CEO
   paty: { pos: [1.2, 0, 1.6], rot: -0.3 },
   ceo: { pos: [-0.55, 0, 1.25], rot: 0.1 },
@@ -131,3 +131,18 @@ export const Cortinillas: React.FC<{ desde: number[] }> = ({ desde }) => (
     ))}
   </>
 );
+
+// Sello «¡PASÓ DE VERDAD!» para cuando se cita el caso real del episodio
+export const PasoDeVerdad: React.FC<{ detalle: string }> = ({ detalle }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame, fps, config: { damping: 8, stiffness: 180 } });
+  return (
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
+      <div style={{ transform: `scale(${pop}) rotate(-5deg)`, background: AMARILLO, border: "6px solid #000", borderRadius: 18, padding: "10px 28px", textAlign: "center", boxShadow: "0 10px 0 rgba(0,0,0,0.35)" }}>
+        <div style={{ fontFamily: FUENTE, fontSize: 64, color: "#e63946" }}>¡PASÓ DE VERDAD!</div>
+        <div style={{ fontFamily: FUENTE, fontSize: 30, color: "#000" }}>{detalle}</div>
+      </div>
+    </AbsoluteFill>
+  );
+};
