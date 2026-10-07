@@ -25,6 +25,13 @@ export type ColoresPersonaje = {
   emblema?: string;
   copete?: boolean;
   audifonos?: string;
+  // Ropa extra: chaqueta abierta (la camisa se ve al frente), gorro, cadena y cristal de lentes
+  chaqueta?: string;
+  gorro?: string;
+  cadena?: string;
+  lentesCristal?: string;
+  // Rasgos exagerados (1 = normal): tamaño de lentes, copete, sonrisa, cejas, orejas y nariz
+  rasgos?: { lentes?: number; copete?: number; sonrisa?: number; cejas?: number; orejas?: number; nariz?: number };
 };
 
 export type PosePersonaje = {
@@ -137,6 +144,8 @@ export const Personaje: React.FC<{
   const conBigote = colores.bigote ?? true;
   const conGorra = colores.gorra ?? true;
   const { cabello, mono } = colores;
+  const r = colores.rasgos ?? {};
+  const ropaArriba = colores.chaqueta ?? colores.camisa;
   const emblema = useEmblema(colores.emblema);
 
   return (
@@ -172,11 +181,23 @@ export const Personaje: React.FC<{
           </group>
         ))}
 
-        {/* Torso */}
+        {/* Torso (con chaqueta abierta si la hay) */}
         <mesh position={[0, 1.1, 0]}>
           <cylinderGeometry args={[0.36, 0.42, 0.75, 6]} />
-          <Material color={colores.camisa} />
+          <Material color={ropaArriba} />
         </mesh>
+        {colores.chaqueta && (
+          <mesh position={[0, 1.1, 0.36]} rotation={[-0.07, 0, 0]}>
+            <boxGeometry args={[0.3, 0.72, 0.04]} />
+            <Material color={colores.camisa} />
+          </mesh>
+        )}
+        {colores.cadena && (
+          <mesh position={[0, 1.18, 0.38]} rotation={[-0.2, 0, 0]}>
+            <torusGeometry args={[0.16, 0.025, 4, 10, Math.PI]} />
+            <meshLambertMaterial color={colores.cadena} emissive="#5a4300" flatShading />
+          </mesh>
+        )}
         {emblema && (
           <mesh position={[0, 1.18, 0.4]} rotation={[-0.06, 0, 0]}>
             <planeGeometry args={[0.44, 0.22]} />
@@ -245,7 +266,7 @@ export const Personaje: React.FC<{
             <group key={lado} position={[lado * 0.5, 1.4, 0]} rotation={[frente, 0, lado * apertura]}>
               <mesh position={[0, -0.3, 0]}>
                 <boxGeometry args={[0.2, 0.6, 0.2]} />
-                <Material color={colores.camisa} />
+                <Material color={ropaArriba} />
               </mesh>
               <mesh position={[0, -0.66, 0]}>
                 <icosahedronGeometry args={[0.15, 0]} />
@@ -283,7 +304,7 @@ export const Personaje: React.FC<{
             <Material color={colorPiel} />
           </mesh>
           {/* Nariz */}
-          <mesh position={[0, -0.02, 0.45]}>
+          <mesh position={[0, -0.02, 0.45]} scale={r.nariz ?? 1}>
             <icosahedronGeometry args={[conBigote ? 0.13 : 0.08, 0]} />
             <Material color={colorPiel} />
           </mesh>
@@ -298,19 +319,45 @@ export const Personaje: React.FC<{
               <meshBasicMaterial color="#1a1a40" />
             </mesh>
           ))}
-          {colores.lentes &&
-            [-1, 1].map((lado) => (
-              <mesh key={lado} position={[lado * 0.16, 0.12, 0.43]}>
-                <torusGeometry args={[0.11, 0.025, 3, 6]} />
+          {colores.lentes && (
+            <group position={[0, 0.12, 0.43]} scale={r.lentes ?? 1}>
+              {[-1, 1].map((lado) => (
+                <group key={lado} position={[lado * 0.16, 0, 0]}>
+                  <mesh>
+                    <torusGeometry args={[0.11, 0.025, 3, 6]} />
+                    <meshBasicMaterial color="#111111" />
+                  </mesh>
+                  {colores.lentesCristal && (
+                    <mesh position={[0, 0, 0.005]}>
+                      <circleGeometry args={[0.1, 6]} />
+                      <meshBasicMaterial color={colores.lentesCristal} transparent opacity={0.55} />
+                    </mesh>
+                  )}
+                </group>
+              ))}
+              <mesh position={[0, 0.02, 0.02]}>
+                <boxGeometry args={[0.1, 0.03, 0.03]} />
                 <meshBasicMaterial color="#111111" />
               </mesh>
-            ))}
-          {colores.lentes && (
-            <mesh position={[0, 0.14, 0.45]}>
-              <boxGeometry args={[0.1, 0.03, 0.03]} />
-              <meshBasicMaterial color="#111111" />
-            </mesh>
+            </group>
           )}
+          {/* Cejas pobladas (rasgo exagerado) */}
+          {(r.cejas ?? 0) > 0 &&
+            enojo <= 0.05 &&
+            [-1, 1].map((lado) => (
+              <mesh key={lado} position={[lado * 0.16, 0.3 + (r.lentes ?? 1) * 0.02, 0.42]} rotation={[0, 0, -lado * 0.12]}>
+                <boxGeometry args={[0.2, 0.04 * (1 + (r.cejas ?? 0)), 0.05]} />
+                <meshBasicMaterial color={cabello ?? "#2b1608"} />
+              </mesh>
+            ))}
+          {/* Orejas (rasgo exagerado) */}
+          {(r.orejas ?? 0) > 0 &&
+            [-1, 1].map((lado) => (
+              <mesh key={lado} position={[lado * 0.45, 0.02, 0]} scale={[0.6, 1, 0.5].map((v) => v * (1 + (r.orejas ?? 0))) as [number, number, number]}>
+                <icosahedronGeometry args={[0.12, 0]} />
+                <Material color={colorPiel} />
+              </mesh>
+            ))}
           {llanto > 0 &&
             [-1, 1].map((lado) =>
               [0, 1].map((k) => {
@@ -335,11 +382,17 @@ export const Personaje: React.FC<{
                 <meshBasicMaterial color="#2b1608" />
               </mesh>
             ))}
-          {/* Boca: se abre con la voz */}
-          <mesh position={[0, -0.24, 0.37]} scale={[1, 0.15 + boca * 1.1, 1]}>
+          {/* Boca: se abre con la voz; con "sonrisa" es más ancha y enseña los dientes */}
+          <mesh position={[0, -0.24, 0.37]} scale={[1 + (r.sonrisa ?? 0) * 0.9, 0.15 + Math.max(boca, (r.sonrisa ?? 0) * 0.45) * 1.1, 1]}>
             <boxGeometry args={[0.18, 0.14, 0.06]} />
             <meshBasicMaterial color="#5a0f12" />
           </mesh>
+          {(r.sonrisa ?? 0) > 0 && (
+            <mesh position={[0, -0.215, 0.405]}>
+              <boxGeometry args={[0.18 * (1 + (r.sonrisa ?? 0) * 0.9) * 0.85, 0.035, 0.02]} />
+              <meshBasicMaterial color="#ffffff" />
+            </mesh>
+          )}
           {conBigote && (
             <mesh position={[0, -0.15, 0.4]}>
               <boxGeometry args={[0.32, 0.08, 0.08]} />
@@ -369,13 +422,25 @@ export const Personaje: React.FC<{
             </>
           )}
           {colores.copete && cabello && (
-            <group position={[0.05, 0.48, 0.12]}>
+            <group position={[0.05, 0.48, 0.12]} scale={r.copete ?? 1}>
               {[-1, 0, 1].map((k) => (
                 <mesh key={k} position={[k * 0.11, 0, -k * 0.02]} rotation={[0.5, 0, -k * 0.35]}>
                   <coneGeometry args={[0.09, 0.26, 4]} />
                   <Material color={cabello} />
                 </mesh>
               ))}
+            </group>
+          )}
+          {colores.gorro && (
+            <group position={[0, 0.16, -0.02]}>
+              <mesh scale={[1.12, 1.05, 1.12]}>
+                <sphereGeometry args={[0.45, 8, 5, 0, Math.PI * 2, 0, Math.PI / 2.2]} />
+                <Material color={colores.gorro} />
+              </mesh>
+              <mesh position={[0, 0.02, 0]}>
+                <cylinderGeometry args={[0.52, 0.52, 0.12, 8]} />
+                <Material color={colores.gorro} />
+              </mesh>
             </group>
           )}
           {colores.chongo && cabello && (
